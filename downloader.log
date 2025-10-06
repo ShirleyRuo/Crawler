@@ -1,0 +1,1506 @@
+2025-10-05 12:44:16,929 INFO 未下载的ts文件数量: 511
+2025-10-05 12:44:16,933 INFO 开始下载ts文件...
+2025-10-05 12:44:16,933 INFO 下载ts文件: 52898188.ts
+2025-10-05 12:44:17,910 INFO m3u8文件已过期,将重新下载
+2025-10-05 12:44:31,821 INFO m3u8文件未变化,跳过下载
+2025-10-05 12:44:31,851 INFO 开始下载ts文件...
+2025-10-05 12:44:31,851 INFO 下载ts文件: 528980.ts
+2025-10-05 12:44:34,441 INFO m3u8文件已过期,将重新下载
+2025-10-05 12:44:45,709 INFO m3u8文件未变化,跳过下载
+2025-10-05 12:44:45,731 INFO 开始下载ts文件...
+2025-10-05 12:44:45,731 INFO 下载ts文件: 528980.ts
+2025-10-05 12:44:48,925 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:25:21,926 INFO 未下载的ts文件数量: 511
+2025-10-05 15:25:21,934 INFO 开始下载ts文件...
+2025-10-05 15:25:21,934 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:25:25,426 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:27:27,625 INFO 未下载的ts文件数量: 511
+2025-10-05 15:27:27,628 INFO 开始下载ts文件...
+2025-10-05 15:27:27,628 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:27:35,981 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:27:41,390 INFO <html>
+<head><title>410 Gone</title></head>
+<body>
+<center><h1>410 Gone</h1></center>
+<hr><center>openresty</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+
+2025-10-05 15:30:27,768 INFO 未下载的ts文件数量: 511
+2025-10-05 15:30:27,768 INFO 开始下载ts文件...
+2025-10-05 15:30:27,768 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:30:31,297 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:30:45,279 INFO m3u8文件已变化, 重新下载
+2025-10-05 15:30:45,299 INFO 开始下载ts文件...
+2025-10-05 15:30:45,299 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:30:46,565 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:30:48,813 INFO m3u8文件未变化, 跳过下载
+2025-10-05 15:30:48,813 INFO 开始下载ts文件...
+2025-10-05 15:30:48,813 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:30:52,575 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:30:59,293 INFO m3u8文件未变化, 跳过下载
+2025-10-05 15:30:59,293 INFO 开始下载ts文件...
+2025-10-05 15:30:59,293 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:31:01,373 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:41:21,711 INFO 未下载的ts文件数量: 511
+2025-10-05 15:41:21,711 INFO 开始下载ts文件...
+2025-10-05 15:41:21,711 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:41:25,769 INFO m3u8文件已过期,将重新下载
+2025-10-05 15:41:42,534 INFO m3u8文件已变化, 重新下载
+2025-10-05 15:41:42,546 INFO 开始下载ts文件...
+2025-10-05 15:41:42,546 INFO 下载ts文件: 52898188.ts
+2025-10-05 15:42:27,078 INFO 下载ts文件: 52898189.ts
+2025-10-05 15:43:40,998 INFO 下载ts文件: 52898190.ts
+2025-10-05 15:45:24,631 INFO 下载ts文件: 52898191.ts
+2025-10-05 15:47:55,141 INFO 下载ts文件: 528981253.ts
+2025-10-05 15:49:38,300 INFO 下载ts文件: 528981254.ts
+2025-10-05 15:50:41,080 INFO 下载ts文件: 528981255.ts
+2025-10-05 15:52:29,272 INFO 下载ts文件: 528981256.ts
+2025-10-05 15:53:21,089 INFO 下载ts文件: 528981257.ts
+2025-10-05 15:55:09,554 INFO 下载ts文件: 528981546.ts
+文件损坏,文件名:528981546.ts
+2025-10-05 16:23:50,988 WARNING 文件损坏,文件名:528981546.ts
+文件损坏,文件名:528981762.ts
+2025-10-05 16:23:52,262 WARNING 文件损坏,文件名:528981762.ts
+文件损坏,文件名:52898187.ts
+2025-10-05 16:23:52,598 WARNING 文件损坏,文件名:52898187.ts
+文件损坏,文件名:528981546.ts
+2025-10-05 16:24:33,779 WARNING 文件损坏,文件名:528981546.ts
+文件损坏,文件名:528981762.ts
+2025-10-05 16:24:33,884 WARNING 文件损坏,文件名:528981762.ts
+文件损坏,文件名:52898187.ts
+2025-10-05 16:24:33,910 WARNING 文件损坏,文件名:52898187.ts
+m3u8文件未变化, 跳过下载
+2025-10-05 16:52:16,034 INFO m3u8文件未变化, 跳过下载
+文件损坏,文件名:528981546.ts
+2025-10-05 16:52:16,351 WARNING 文件损坏,文件名:528981546.ts
+文件损坏,文件名:528981762.ts
+2025-10-05 16:52:16,451 WARNING 文件损坏,文件名:528981762.ts
+文件损坏,文件名:52898187.ts
+2025-10-05 16:52:16,481 WARNING 文件损坏,文件名:52898187.ts
+未下载的ts文件数量: 504
+2025-10-05 16:52:16,842 INFO 未下载的ts文件数量: 504
+开始下载ts文件...
+2025-10-05 16:52:16,842 INFO 开始下载ts文件...
+下载ts文件: 52898187.ts
+2025-10-05 16:52:16,853 INFO 下载ts文件: 52898187.ts
+下载ts文件: 528981546.ts
+2025-10-05 16:52:16,858 INFO 下载ts文件: 528981546.ts
+下载ts文件: 528981547.ts
+2025-10-05 16:52:16,859 INFO 下载ts文件: 528981547.ts
+下载ts文件: 528981548.ts
+2025-10-05 16:52:16,860 INFO 下载ts文件: 528981548.ts
+下载ts文件: 528981549.ts
+2025-10-05 16:52:16,860 INFO 下载ts文件: 528981549.ts
+下载ts文件: 528981550.ts
+2025-10-05 16:52:20,641 INFO 下载ts文件: 528981550.ts
+下载ts文件: 528981551.ts
+2025-10-05 16:52:22,141 INFO 下载ts文件: 528981551.ts
+下载ts文件: 528981552.ts
+2025-10-05 16:52:25,037 INFO 下载ts文件: 528981552.ts
+下载ts文件: 528981553.ts
+2025-10-05 16:52:29,483 INFO 下载ts文件: 528981553.ts
+下载ts文件: 528981554.ts
+2025-10-05 16:52:30,040 INFO 下载ts文件: 528981554.ts
+下载ts文件: 528981555.ts
+2025-10-05 16:52:32,781 INFO 下载ts文件: 528981555.ts
+下载ts文件: 528981556.ts
+2025-10-05 16:52:36,386 INFO 下载ts文件: 528981556.ts
+下载ts文件: 528981557.ts
+2025-10-05 16:52:38,156 INFO 下载ts文件: 528981557.ts
+下载ts文件: 528981558.ts
+2025-10-05 16:52:39,247 INFO 下载ts文件: 528981558.ts
+下载ts文件: 528981762.ts
+2025-10-05 16:52:40,217 INFO 下载ts文件: 528981762.ts
+下载ts文件: 528981763.ts
+2025-10-05 16:52:44,442 INFO 下载ts文件: 528981763.ts
+下载ts文件: 528981764.ts
+2025-10-05 16:52:51,453 INFO 下载ts文件: 528981764.ts
+下载ts文件: 528981765.ts
+2025-10-05 16:52:57,999 INFO 下载ts文件: 528981765.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981762.ts
+2025-10-05 16:55:44,422 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981762.ts
+下载ts文件: 528981766.ts
+2025-10-05 16:55:44,422 INFO 下载ts文件: 528981766.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981764.ts
+2025-10-05 16:55:44,544 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981764.ts
+下载ts文件: 528981767.ts
+2025-10-05 16:55:44,544 INFO 下载ts文件: 528981767.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981556.ts
+2025-10-05 16:55:45,024 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981556.ts
+下载ts文件: 528981784.ts
+2025-10-05 16:55:45,024 INFO 下载ts文件: 528981784.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981763.ts
+2025-10-05 16:55:45,986 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981763.ts
+下载ts文件: 528981785.ts
+2025-10-05 16:55:45,986 INFO 下载ts文件: 528981785.ts
+下载ts文件: 528981786.ts
+2025-10-05 16:56:06,677 INFO 下载ts文件: 528981786.ts
+下载ts文件: 528981787.ts
+2025-10-05 16:56:15,230 INFO 下载ts文件: 528981787.ts
+下载ts文件: 528981788.ts
+2025-10-05 16:56:16,569 INFO 下载ts文件: 528981788.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981787.ts
+2025-10-05 16:57:04,391 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981787.ts
+下载ts文件: 528981789.ts
+2025-10-05 16:57:04,391 INFO 下载ts文件: 528981789.ts
+下载ts文件: 528981821.ts
+2025-10-05 16:58:28,899 INFO 下载ts文件: 528981821.ts
+下载ts文件: 528981822.ts
+2025-10-05 16:58:43,560 INFO 下载ts文件: 528981822.ts
+下载ts文件: 528981823.ts
+2025-10-05 16:59:10,321 INFO 下载ts文件: 528981823.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981786.ts
+2025-10-05 16:59:13,337 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981786.ts
+下载ts文件: 528981824.ts
+2025-10-05 16:59:13,337 INFO 下载ts文件: 528981824.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981788.ts
+2025-10-05 16:59:25,833 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981788.ts
+下载ts文件: 528981825.ts
+2025-10-05 16:59:25,833 INFO 下载ts文件: 528981825.ts
+下载ts文件: 528981826.ts
+2025-10-05 17:00:34,867 INFO 下载ts文件: 528981826.ts
+下载ts文件: 528981827.ts
+2025-10-05 17:00:46,037 INFO 下载ts文件: 528981827.ts
+下载ts文件: 528981828.ts
+2025-10-05 17:00:58,892 INFO 下载ts文件: 528981828.ts
+下载ts文件: 528981829.ts
+2025-10-05 17:01:06,683 INFO 下载ts文件: 528981829.ts
+下载ts文件: 528981830.ts
+2025-10-05 17:01:38,982 INFO 下载ts文件: 528981830.ts
+下载ts文件: 528981831.ts
+2025-10-05 17:02:36,538 INFO 下载ts文件: 528981831.ts
+下载ts文件: 528981832.ts
+2025-10-05 17:04:10,509 INFO 下载ts文件: 528981832.ts
+下载ts文件: 528981833.ts
+2025-10-05 17:04:29,840 INFO 下载ts文件: 528981833.ts
+下载ts文件: 528981834.ts
+2025-10-05 17:04:51,579 INFO 下载ts文件: 528981834.ts
+下载ts文件: 528981835.ts
+2025-10-05 17:05:01,000 INFO 下载ts文件: 528981835.ts
+下载ts文件: 528981836.ts
+2025-10-05 17:05:35,017 INFO 下载ts文件: 528981836.ts
+下载ts文件: 528981837.ts
+2025-10-05 17:05:40,106 INFO 下载ts文件: 528981837.ts
+下载ts文件: 528981838.ts
+2025-10-05 17:06:13,743 INFO 下载ts文件: 528981838.ts
+下载ts文件: 528981839.ts
+2025-10-05 17:06:19,427 INFO 下载ts文件: 528981839.ts
+下载ts文件: 528981840.ts
+2025-10-05 17:06:22,257 INFO 下载ts文件: 528981840.ts
+下载ts文件: 528981841.ts
+2025-10-05 17:06:52,765 INFO 下载ts文件: 528981841.ts
+下载ts文件: 528981842.ts
+2025-10-05 17:07:16,040 INFO 下载ts文件: 528981842.ts
+下载ts文件: 528981843.ts
+2025-10-05 17:07:50,270 INFO 下载ts文件: 528981843.ts
+下载ts文件: 528981844.ts
+2025-10-05 17:07:50,853 INFO 下载ts文件: 528981844.ts
+下载ts文件: 528981845.ts
+2025-10-05 17:08:37,063 INFO 下载ts文件: 528981845.ts
+下载ts文件: 528981846.ts
+2025-10-05 17:09:11,107 INFO 下载ts文件: 528981846.ts
+下载ts文件: 528981847.ts
+2025-10-05 17:09:12,334 INFO 下载ts文件: 528981847.ts
+下载ts文件: 528981848.ts
+2025-10-05 17:10:25,269 INFO 下载ts文件: 528981848.ts
+下载ts文件: 528981849.ts
+2025-10-05 17:10:26,353 INFO 下载ts文件: 528981849.ts
+下载ts文件: 528981850.ts
+2025-10-05 17:10:34,795 INFO 下载ts文件: 528981850.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981847.ts
+2025-10-05 17:12:39,733 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981847.ts
+下载ts文件: 528981851.ts
+2025-10-05 17:12:39,733 INFO 下载ts文件: 528981851.ts
+下载ts文件: 528981852.ts
+2025-10-05 17:12:45,167 INFO 下载ts文件: 528981852.ts
+下载ts文件: 528981853.ts
+2025-10-05 17:12:58,247 INFO 下载ts文件: 528981853.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981848.ts
+2025-10-05 17:13:23,474 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981848.ts
+下载ts文件: 528981854.ts
+2025-10-05 17:13:23,474 INFO 下载ts文件: 528981854.ts
+下载ts文件: 528981855.ts
+2025-10-05 17:14:02,881 INFO 下载ts文件: 528981855.ts
+下载ts文件: 528981856.ts
+2025-10-05 17:14:04,568 INFO 下载ts文件: 528981856.ts
+下载ts文件: 528981857.ts
+2025-10-05 17:14:22,161 INFO 下载ts文件: 528981857.ts
+下载ts文件: 528981858.ts
+2025-10-05 17:15:02,465 INFO 下载ts文件: 528981858.ts
+下载ts文件: 528981859.ts
+2025-10-05 17:15:17,907 INFO 下载ts文件: 528981859.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981859.ts
+2025-10-05 17:15:38,457 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981859.ts
+下载ts文件: 528981860.ts
+2025-10-05 17:15:38,457 INFO 下载ts文件: 528981860.ts
+下载ts文件: 528981861.ts
+2025-10-05 17:16:53,652 INFO 下载ts文件: 528981861.ts
+下载ts文件: 528981862.ts
+2025-10-05 17:17:00,936 INFO 下载ts文件: 528981862.ts
+下载ts文件: 528981863.ts
+2025-10-05 17:17:44,587 INFO 下载ts文件: 528981863.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981857.ts
+2025-10-05 17:17:52,493 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981857.ts
+下载ts文件: 528981864.ts
+2025-10-05 17:17:52,493 INFO 下载ts文件: 528981864.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981860.ts
+2025-10-05 17:19:10,260 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981860.ts
+下载ts文件: 528981865.ts
+2025-10-05 17:19:10,260 INFO 下载ts文件: 528981865.ts
+下载ts文件: 528981866.ts
+2025-10-05 17:20:10,694 INFO 下载ts文件: 528981866.ts
+下载ts文件: 528981867.ts
+2025-10-05 17:20:28,195 INFO 下载ts文件: 528981867.ts
+下载ts文件: 528981868.ts
+2025-10-05 17:20:29,543 INFO 下载ts文件: 528981868.ts
+下载ts文件: 528981869.ts
+2025-10-05 17:20:50,708 INFO 下载ts文件: 528981869.ts
+下载ts文件: 528981870.ts
+2025-10-05 17:21:15,748 INFO 下载ts文件: 528981870.ts
+下载ts文件: 528981871.ts
+2025-10-05 17:22:56,937 INFO 下载ts文件: 528981871.ts
+下载ts文件: 528981872.ts
+2025-10-05 17:23:04,621 INFO 下载ts文件: 528981872.ts
+下载ts文件: 528981873.ts
+2025-10-05 17:23:33,493 INFO 下载ts文件: 528981873.ts
+下载ts文件: 528981874.ts
+2025-10-05 17:23:59,874 INFO 下载ts文件: 528981874.ts
+下载ts文件: 528981875.ts
+2025-10-05 17:25:35,803 INFO 下载ts文件: 528981875.ts
+下载ts文件: 528981876.ts
+2025-10-05 17:25:52,447 INFO 下载ts文件: 528981876.ts
+下载ts文件: 528981877.ts
+2025-10-05 17:26:16,045 INFO 下载ts文件: 528981877.ts
+下载ts文件: 528981878.ts
+2025-10-05 17:27:21,288 INFO 下载ts文件: 528981878.ts
+下载ts文件: 528981879.ts
+2025-10-05 17:27:26,236 INFO 下载ts文件: 528981879.ts
+下载ts文件: 528981880.ts
+2025-10-05 17:27:28,901 INFO 下载ts文件: 528981880.ts
+下载ts文件: 528981881.ts
+2025-10-05 17:27:29,090 INFO 下载ts文件: 528981881.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981875.ts
+2025-10-05 17:27:42,190 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981875.ts
+下载ts文件: 528981882.ts
+2025-10-05 17:27:42,190 INFO 下载ts文件: 528981882.ts
+下载ts文件: 528981883.ts
+2025-10-05 17:29:47,372 INFO 下载ts文件: 528981883.ts
+下载ts文件: 528981884.ts
+2025-10-05 17:30:15,061 INFO 下载ts文件: 528981884.ts
+下载ts文件: 528981885.ts
+2025-10-05 17:30:16,348 INFO 下载ts文件: 528981885.ts
+下载ts文件: 528981886.ts
+2025-10-05 17:30:19,946 INFO 下载ts文件: 528981886.ts
+下载ts文件: 528981887.ts
+2025-10-05 17:30:41,308 INFO 下载ts文件: 528981887.ts
+下载ts文件: 528981888.ts
+2025-10-05 17:33:07,757 INFO 下载ts文件: 528981888.ts
+下载ts文件: 528981889.ts
+2025-10-05 17:33:10,105 INFO 下载ts文件: 528981889.ts
+下载ts文件: 528981890.ts
+2025-10-05 17:34:56,519 INFO 下载ts文件: 528981890.ts
+下载ts文件: 528981891.ts
+2025-10-05 17:34:58,036 INFO 下载ts文件: 528981891.ts
+下载ts文件: 528981892.ts
+2025-10-05 17:35:16,056 INFO 下载ts文件: 528981892.ts
+下载ts文件: 528981893.ts
+2025-10-05 17:35:30,765 INFO 下载ts文件: 528981893.ts
+下载ts文件: 528981894.ts
+2025-10-05 17:35:42,162 INFO 下载ts文件: 528981894.ts
+下载ts文件: 528981895.ts
+2025-10-05 17:35:54,240 INFO 下载ts文件: 528981895.ts
+下载ts文件: 528981896.ts
+2025-10-05 17:36:12,084 INFO 下载ts文件: 528981896.ts
+m3u8文件未变化, 跳过下载
+2025-10-05 17:37:31,583 INFO m3u8文件未变化, 跳过下载
+文件损坏,文件名:528981556.ts
+2025-10-05 17:37:31,894 WARNING 文件损坏,文件名:528981556.ts
+文件损坏,文件名:528981762.ts
+2025-10-05 17:37:32,009 WARNING 文件损坏,文件名:528981762.ts
+文件损坏,文件名:528981763.ts
+2025-10-05 17:37:32,012 WARNING 文件损坏,文件名:528981763.ts
+文件损坏,文件名:528981847.ts
+2025-10-05 17:37:32,220 WARNING 文件损坏,文件名:528981847.ts
+文件损坏,文件名:528981857.ts
+2025-10-05 17:37:32,261 WARNING 文件损坏,文件名:528981857.ts
+文件损坏,文件名:528981860.ts
+2025-10-05 17:37:32,273 WARNING 文件损坏,文件名:528981860.ts
+文件损坏,文件名:528981870.ts
+2025-10-05 17:37:32,331 WARNING 文件损坏,文件名:528981870.ts
+文件损坏,文件名:528981875.ts
+2025-10-05 17:37:32,339 WARNING 文件损坏,文件名:528981875.ts
+文件损坏,文件名:528981891.ts
+2025-10-05 17:37:32,430 WARNING 文件损坏,文件名:528981891.ts
+文件损坏,文件名:528981896.ts
+2025-10-05 17:37:32,479 WARNING 文件损坏,文件名:528981896.ts
+未下载的ts文件数量: 414
+2025-10-05 17:37:32,835 INFO 未下载的ts文件数量: 414
+开始下载ts文件...
+2025-10-05 17:37:32,835 INFO 开始下载ts文件...
+下载ts文件: 528981556.ts
+2025-10-05 17:37:32,850 INFO 下载ts文件: 528981556.ts
+下载ts文件: 528981762.ts
+2025-10-05 17:37:32,850 INFO 下载ts文件: 528981762.ts
+下载ts文件: 528981763.ts
+2025-10-05 17:37:32,858 INFO 下载ts文件: 528981763.ts
+下载ts文件: 528981787.ts
+2025-10-05 17:37:32,858 INFO 下载ts文件: 528981787.ts
+下载ts文件: 528981847.ts
+2025-10-05 17:37:32,859 INFO 下载ts文件: 528981847.ts
+下载ts文件: 528981857.ts
+2025-10-05 17:37:43,205 INFO 下载ts文件: 528981857.ts
+下载ts文件: 528981859.ts
+2025-10-05 17:37:44,338 INFO 下载ts文件: 528981859.ts
+下载ts文件: 528981860.ts
+2025-10-05 17:37:44,534 INFO 下载ts文件: 528981860.ts
+下载ts文件: 528981870.ts
+2025-10-05 17:37:48,333 INFO 下载ts文件: 528981870.ts
+下载ts文件: 528981875.ts
+2025-10-05 17:37:50,985 INFO 下载ts文件: 528981875.ts
+下载ts文件: 528981891.ts
+2025-10-05 17:37:52,029 INFO 下载ts文件: 528981891.ts
+下载ts文件: 528981896.ts
+2025-10-05 17:37:52,321 INFO 下载ts文件: 528981896.ts
+下载ts文件: 528981897.ts
+2025-10-05 17:37:56,173 INFO 下载ts文件: 528981897.ts
+下载ts文件: 528981898.ts
+2025-10-05 17:37:56,302 INFO 下载ts文件: 528981898.ts
+下载ts文件: 528981899.ts
+2025-10-05 17:38:03,563 INFO 下载ts文件: 528981899.ts
+下载ts文件: 528981900.ts
+2025-10-05 17:38:06,428 INFO 下载ts文件: 528981900.ts
+下载ts文件: 528981901.ts
+2025-10-05 17:38:11,171 INFO 下载ts文件: 528981901.ts
+下载ts文件: 528981902.ts
+2025-10-05 17:38:19,427 INFO 下载ts文件: 528981902.ts
+下载ts文件: 528981903.ts
+2025-10-05 17:38:35,507 INFO 下载ts文件: 528981903.ts
+下载ts文件: 528981904.ts
+2025-10-05 17:39:01,293 INFO 下载ts文件: 528981904.ts
+下载ts文件: 528981905.ts
+2025-10-05 17:39:33,369 INFO 下载ts文件: 528981905.ts
+下载ts文件: 528981906.ts
+2025-10-05 17:39:45,448 INFO 下载ts文件: 528981906.ts
+下载ts文件: 528981907.ts
+2025-10-05 17:39:47,387 INFO 下载ts文件: 528981907.ts
+下载ts文件: 528981908.ts
+2025-10-05 17:39:48,949 INFO 下载ts文件: 528981908.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981905.ts
+2025-10-05 17:40:21,947 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981905.ts
+下载ts文件: 528981909.ts
+2025-10-05 17:40:21,947 INFO 下载ts文件: 528981909.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981907.ts
+2025-10-05 17:40:21,947 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981907.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981908.ts
+2025-10-05 17:40:21,950 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981908.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981906.ts
+2025-10-05 17:40:21,951 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981906.ts
+下载ts文件: 528981910.ts
+2025-10-05 17:40:21,951 INFO 下载ts文件: 528981910.ts
+下载ts文件: 528981911.ts
+2025-10-05 17:40:21,951 INFO 下载ts文件: 528981911.ts
+下载ts文件: 528981912.ts
+2025-10-05 17:40:21,952 INFO 下载ts文件: 528981912.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981904.ts
+2025-10-05 17:40:21,962 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981904.ts
+下载ts文件: 528981913.ts
+2025-10-05 17:40:21,963 INFO 下载ts文件: 528981913.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981909.ts
+2025-10-05 17:40:22,597 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981909.ts
+下载ts文件: 528981914.ts
+2025-10-05 17:40:22,597 INFO 下载ts文件: 528981914.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981912.ts
+2025-10-05 17:40:22,611 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981912.ts
+下载ts文件: 528981915.ts
+2025-10-05 17:40:22,611 INFO 下载ts文件: 528981915.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981911.ts
+2025-10-05 17:40:22,611 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981911.ts
+下载ts文件: 528981916.ts
+2025-10-05 17:40:22,612 INFO 下载ts文件: 528981916.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981915.ts
+2025-10-05 17:40:22,973 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981915.ts
+下载ts文件: 528981917.ts
+2025-10-05 17:40:22,973 INFO 下载ts文件: 528981917.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981916.ts
+2025-10-05 17:40:22,982 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981916.ts
+下载ts文件: 528981918.ts
+2025-10-05 17:40:22,982 INFO 下载ts文件: 528981918.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981910.ts
+2025-10-05 17:40:23,597 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981910.ts
+下载ts文件: 528981919.ts
+2025-10-05 17:40:23,597 INFO 下载ts文件: 528981919.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981914.ts
+2025-10-05 17:40:24,035 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981914.ts
+下载ts文件: 528981920.ts
+2025-10-05 17:40:24,036 INFO 下载ts文件: 528981920.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981917.ts
+2025-10-05 17:40:24,277 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981917.ts
+下载ts文件: 528981921.ts
+2025-10-05 17:40:24,277 INFO 下载ts文件: 528981921.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981918.ts
+2025-10-05 17:40:24,322 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981918.ts
+下载ts文件: 528981922.ts
+2025-10-05 17:40:24,322 INFO 下载ts文件: 528981922.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981921.ts
+2025-10-05 17:40:24,372 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981921.ts
+下载ts文件: 528981923.ts
+2025-10-05 17:40:24,373 INFO 下载ts文件: 528981923.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981923.ts
+2025-10-05 17:40:24,469 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981923.ts
+下载ts文件: 528981924.ts
+2025-10-05 17:40:24,469 INFO 下载ts文件: 528981924.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981924.ts
+2025-10-05 17:40:24,571 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981924.ts
+下载ts文件: 528981925.ts
+2025-10-05 17:40:24,571 INFO 下载ts文件: 528981925.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981919.ts
+2025-10-05 17:40:24,695 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981919.ts
+下载ts文件: 528981926.ts
+2025-10-05 17:40:24,695 INFO 下载ts文件: 528981926.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981913.ts
+2025-10-05 17:40:25,094 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981913.ts
+下载ts文件: 528981927.ts
+2025-10-05 17:40:25,094 INFO 下载ts文件: 528981927.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981927.ts
+2025-10-05 17:40:25,758 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981927.ts
+下载ts文件: 528981928.ts
+2025-10-05 17:40:25,759 INFO 下载ts文件: 528981928.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981926.ts
+2025-10-05 17:40:25,805 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981926.ts
+下载ts文件: 528981929.ts
+2025-10-05 17:40:25,805 INFO 下载ts文件: 528981929.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981920.ts
+2025-10-05 17:40:26,042 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981920.ts
+下载ts文件: 528981930.ts
+2025-10-05 17:40:26,042 INFO 下载ts文件: 528981930.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981928.ts
+2025-10-05 17:40:26,112 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981928.ts
+下载ts文件: 528981931.ts
+2025-10-05 17:40:26,112 INFO 下载ts文件: 528981931.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981929.ts
+2025-10-05 17:40:26,148 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981929.ts
+下载ts文件: 528981932.ts
+2025-10-05 17:40:26,148 INFO 下载ts文件: 528981932.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981930.ts
+2025-10-05 17:40:26,149 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981930.ts
+下载ts文件: 528981933.ts
+2025-10-05 17:40:26,150 INFO 下载ts文件: 528981933.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981931.ts
+2025-10-05 17:40:26,206 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981931.ts
+下载ts文件: 528981934.ts
+2025-10-05 17:40:26,206 INFO 下载ts文件: 528981934.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981932.ts
+2025-10-05 17:40:26,498 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981932.ts
+下载ts文件: 528981935.ts
+2025-10-05 17:40:26,498 INFO 下载ts文件: 528981935.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981933.ts
+2025-10-05 17:40:26,790 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981933.ts
+下载ts文件: 528981936.ts
+2025-10-05 17:40:26,791 INFO 下载ts文件: 528981936.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981935.ts
+2025-10-05 17:40:28,067 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981935.ts
+下载ts文件: 528981937.ts
+2025-10-05 17:40:28,068 INFO 下载ts文件: 528981937.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981937.ts
+2025-10-05 17:40:28,462 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981937.ts
+下载ts文件: 528981938.ts
+2025-10-05 17:40:28,462 INFO 下载ts文件: 528981938.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981934.ts
+2025-10-05 17:40:28,574 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981934.ts
+下载ts文件: 528981939.ts
+2025-10-05 17:40:28,574 INFO 下载ts文件: 528981939.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981939.ts
+2025-10-05 17:40:28,942 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981939.ts
+下载ts文件: 528981940.ts
+2025-10-05 17:40:28,942 INFO 下载ts文件: 528981940.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981936.ts
+2025-10-05 17:40:30,152 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981936.ts
+下载ts文件: 528981941.ts
+2025-10-05 17:40:30,152 INFO 下载ts文件: 528981941.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981940.ts
+2025-10-05 17:40:30,606 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981940.ts
+下载ts文件: 528981942.ts
+2025-10-05 17:40:30,606 INFO 下载ts文件: 528981942.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981942.ts
+2025-10-05 17:40:31,667 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981942.ts
+下载ts文件: 528981943.ts
+2025-10-05 17:40:31,668 INFO 下载ts文件: 528981943.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981925.ts
+2025-10-05 17:40:31,681 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981925.ts
+下载ts文件: 528981944.ts
+2025-10-05 17:40:31,682 INFO 下载ts文件: 528981944.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981941.ts
+2025-10-05 17:40:31,799 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981941.ts
+下载ts文件: 528981945.ts
+2025-10-05 17:40:31,799 INFO 下载ts文件: 528981945.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981944.ts
+2025-10-05 17:40:32,025 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981944.ts
+下载ts文件: 528981946.ts
+2025-10-05 17:40:32,025 INFO 下载ts文件: 528981946.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981946.ts
+2025-10-05 17:40:32,120 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981946.ts
+下载ts文件: 528981947.ts
+2025-10-05 17:40:32,120 INFO 下载ts文件: 528981947.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981947.ts
+2025-10-05 17:40:32,707 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981947.ts
+下载ts文件: 528981948.ts
+2025-10-05 17:40:32,708 INFO 下载ts文件: 528981948.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981945.ts
+2025-10-05 17:40:34,903 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981945.ts
+下载ts文件: 528981949.ts
+2025-10-05 17:40:34,903 INFO 下载ts文件: 528981949.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981943.ts
+2025-10-05 17:40:35,023 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981943.ts
+下载ts文件: 528981950.ts
+2025-10-05 17:40:35,023 INFO 下载ts文件: 528981950.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981949.ts
+2025-10-05 17:40:35,052 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981949.ts
+下载ts文件: 528981951.ts
+2025-10-05 17:40:35,052 INFO 下载ts文件: 528981951.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981950.ts
+2025-10-05 17:40:35,119 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981950.ts
+下载ts文件: 528981952.ts
+2025-10-05 17:40:35,120 INFO 下载ts文件: 528981952.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981951.ts
+2025-10-05 17:40:35,150 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981951.ts
+下载ts文件: 528981953.ts
+2025-10-05 17:40:35,150 INFO 下载ts文件: 528981953.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981953.ts
+2025-10-05 17:40:35,510 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981953.ts
+下载ts文件: 528981954.ts
+2025-10-05 17:40:35,510 INFO 下载ts文件: 528981954.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981938.ts
+2025-10-05 17:40:35,570 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981938.ts
+下载ts文件: 528981955.ts
+2025-10-05 17:40:35,572 INFO 下载ts文件: 528981955.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981948.ts
+2025-10-05 17:40:35,833 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981948.ts
+下载ts文件: 528981956.ts
+2025-10-05 17:40:35,834 INFO 下载ts文件: 528981956.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981956.ts
+2025-10-05 17:40:35,933 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981956.ts
+下载ts文件: 528981957.ts
+2025-10-05 17:40:35,933 INFO 下载ts文件: 528981957.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981954.ts
+2025-10-05 17:40:35,974 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981954.ts
+下载ts文件: 528981958.ts
+2025-10-05 17:40:35,974 INFO 下载ts文件: 528981958.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981955.ts
+2025-10-05 17:40:37,180 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981955.ts
+下载ts文件: 528981959.ts
+2025-10-05 17:40:37,181 INFO 下载ts文件: 528981959.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981959.ts
+2025-10-05 17:40:37,276 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981959.ts
+下载ts文件: 528981960.ts
+2025-10-05 17:40:37,277 INFO 下载ts文件: 528981960.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981958.ts
+2025-10-05 17:40:37,336 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981958.ts
+下载ts文件: 528981961.ts
+2025-10-05 17:40:37,336 INFO 下载ts文件: 528981961.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981960.ts
+2025-10-05 17:40:37,373 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981960.ts
+下载ts文件: 528981962.ts
+2025-10-05 17:40:37,373 INFO 下载ts文件: 528981962.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981952.ts
+2025-10-05 17:40:38,473 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981952.ts
+下载ts文件: 528981963.ts
+2025-10-05 17:40:38,474 INFO 下载ts文件: 528981963.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981957.ts
+2025-10-05 17:40:39,038 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981957.ts
+下载ts文件: 528981964.ts
+2025-10-05 17:40:39,039 INFO 下载ts文件: 528981964.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981963.ts
+2025-10-05 17:40:39,618 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981963.ts
+下载ts文件: 528981965.ts
+2025-10-05 17:40:39,618 INFO 下载ts文件: 528981965.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981965.ts
+2025-10-05 17:40:39,713 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981965.ts
+下载ts文件: 528981966.ts
+2025-10-05 17:40:39,713 INFO 下载ts文件: 528981966.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981922.ts
+2025-10-05 17:40:39,740 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981922.ts
+下载ts文件: 528981967.ts
+2025-10-05 17:40:39,740 INFO 下载ts文件: 528981967.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981966.ts
+2025-10-05 17:40:39,811 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981966.ts
+下载ts文件: 528981968.ts
+2025-10-05 17:40:39,811 INFO 下载ts文件: 528981968.ts
+下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981961.ts
+2025-10-05 17:40:39,839 ERROR 下载ts文件失败,url:https://astin-cowing.mushroomtrack.com/hls/xy7wGNT8LcjjNhRnanDUQw/1759660182/52000/52898/528981961.ts
+下载ts文件: 528981969.ts
+2025-10-05 17:40:39,840 INFO 下载ts文件: 528981969.ts
+m3u8文件已变化, 重新下载
+2025-10-05 17:46:34,886 INFO m3u8文件已变化, 重新下载
+文件损坏,文件名:528981904.ts
+2025-10-05 17:46:35,417 WARNING 文件损坏,文件名:528981904.ts
+文件损坏,文件名:528981906.ts
+2025-10-05 17:46:35,433 WARNING 文件损坏,文件名:528981906.ts
+文件损坏,文件名:528981908.ts
+2025-10-05 17:46:35,433 WARNING 文件损坏,文件名:528981908.ts
+未下载的ts文件数量: 393
+2025-10-05 17:46:35,791 INFO 未下载的ts文件数量: 393
+开始下载ts文件...
+2025-10-05 17:46:35,791 INFO 开始下载ts文件...
+下载ts文件: 528981904.ts
+2025-10-05 17:46:35,791 INFO 下载ts文件: 528981904.ts
+下载ts文件: 528981906.ts
+2025-10-05 17:46:35,791 INFO 下载ts文件: 528981906.ts
+下载ts文件: 528981908.ts
+2025-10-05 17:46:35,804 INFO 下载ts文件: 528981908.ts
+下载ts文件: 528981909.ts
+2025-10-05 17:46:35,805 INFO 下载ts文件: 528981909.ts
+下载ts文件: 528981910.ts
+2025-10-05 17:46:35,805 INFO 下载ts文件: 528981910.ts
+下载ts文件: 528981911.ts
+2025-10-05 17:46:35,806 INFO 下载ts文件: 528981911.ts
+下载ts文件: 528981912.ts
+2025-10-05 17:46:35,806 INFO 下载ts文件: 528981912.ts
+下载ts文件: 528981913.ts
+2025-10-05 17:46:35,807 INFO 下载ts文件: 528981913.ts
+下载ts文件: 528981914.ts
+2025-10-05 17:46:35,807 INFO 下载ts文件: 528981914.ts
+下载ts文件: 528981915.ts
+2025-10-05 17:46:35,807 INFO 下载ts文件: 528981915.ts
+下载ts文件: 528981916.ts
+2025-10-05 17:46:35,808 INFO 下载ts文件: 528981916.ts
+下载ts文件: 528981917.ts
+2025-10-05 17:46:35,808 INFO 下载ts文件: 528981917.ts
+下载ts文件: 528981918.ts
+2025-10-05 17:46:35,808 INFO 下载ts文件: 528981918.ts
+下载ts文件: 528981919.ts
+2025-10-05 17:46:35,809 INFO 下载ts文件: 528981919.ts
+下载ts文件: 528981920.ts
+2025-10-05 17:46:35,809 INFO 下载ts文件: 528981920.ts
+下载ts文件: 528981921.ts
+2025-10-05 17:46:35,810 INFO 下载ts文件: 528981921.ts
+下载ts文件: 528981922.ts
+2025-10-05 17:46:43,853 INFO 下载ts文件: 528981922.ts
+下载ts文件: 528981923.ts
+2025-10-05 17:46:45,814 INFO 下载ts文件: 528981923.ts
+下载ts文件: 528981924.ts
+2025-10-05 17:46:50,201 INFO 下载ts文件: 528981924.ts
+下载ts文件: 528981925.ts
+2025-10-05 17:46:53,144 INFO 下载ts文件: 528981925.ts
+下载ts文件: 528981926.ts
+2025-10-05 17:46:55,045 INFO 下载ts文件: 528981926.ts
+下载ts文件: 528981927.ts
+2025-10-05 17:46:55,626 INFO 下载ts文件: 528981927.ts
+下载ts文件: 528981928.ts
+2025-10-05 17:46:57,874 INFO 下载ts文件: 528981928.ts
+下载ts文件: 528981929.ts
+2025-10-05 17:46:58,856 INFO 下载ts文件: 528981929.ts
+下载ts文件: 528981930.ts
+2025-10-05 17:47:01,602 INFO 下载ts文件: 528981930.ts
+下载ts文件: 528981931.ts
+2025-10-05 17:47:02,710 INFO 下载ts文件: 528981931.ts
+下载ts文件: 528981932.ts
+2025-10-05 17:47:03,436 INFO 下载ts文件: 528981932.ts
+下载ts文件: 528981933.ts
+2025-10-05 17:47:03,500 INFO 下载ts文件: 528981933.ts
+下载ts文件: 528981934.ts
+2025-10-05 17:47:04,889 INFO 下载ts文件: 528981934.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981917.ts
+2025-10-05 17:47:06,031 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981917.ts
+下载ts文件: 528981935.ts
+2025-10-05 17:47:06,032 INFO 下载ts文件: 528981935.ts
+下载ts文件: 528981936.ts
+2025-10-05 17:47:07,773 INFO 下载ts文件: 528981936.ts
+下载ts文件: 528981937.ts
+2025-10-05 17:47:11,601 INFO 下载ts文件: 528981937.ts
+下载ts文件: 528981938.ts
+2025-10-05 17:47:11,821 INFO 下载ts文件: 528981938.ts
+下载ts文件: 528981939.ts
+2025-10-05 17:47:12,671 INFO 下载ts文件: 528981939.ts
+下载ts文件: 528981940.ts
+2025-10-05 17:47:15,134 INFO 下载ts文件: 528981940.ts
+下载ts文件: 528981941.ts
+2025-10-05 17:47:15,645 INFO 下载ts文件: 528981941.ts
+下载ts文件: 528981942.ts
+2025-10-05 17:47:15,763 INFO 下载ts文件: 528981942.ts
+下载ts文件: 528981943.ts
+2025-10-05 17:47:16,700 INFO 下载ts文件: 528981943.ts
+下载ts文件: 528981944.ts
+2025-10-05 17:47:18,110 INFO 下载ts文件: 528981944.ts
+下载ts文件: 528981945.ts
+2025-10-05 17:47:22,814 INFO 下载ts文件: 528981945.ts
+下载ts文件: 528981946.ts
+2025-10-05 17:47:23,784 INFO 下载ts文件: 528981946.ts
+下载ts文件: 528981947.ts
+2025-10-05 17:47:24,546 INFO 下载ts文件: 528981947.ts
+下载ts文件: 528981948.ts
+2025-10-05 17:47:24,753 INFO 下载ts文件: 528981948.ts
+下载ts文件: 528981949.ts
+2025-10-05 17:47:25,501 INFO 下载ts文件: 528981949.ts
+下载ts文件: 528981950.ts
+2025-10-05 17:47:26,158 INFO 下载ts文件: 528981950.ts
+下载ts文件: 528981951.ts
+2025-10-05 17:47:26,396 INFO 下载ts文件: 528981951.ts
+下载ts文件: 528981952.ts
+2025-10-05 17:47:27,425 INFO 下载ts文件: 528981952.ts
+下载ts文件: 528981953.ts
+2025-10-05 17:47:30,252 INFO 下载ts文件: 528981953.ts
+下载ts文件: 528981954.ts
+2025-10-05 17:47:31,092 INFO 下载ts文件: 528981954.ts
+下载ts文件: 528981955.ts
+2025-10-05 17:47:32,026 INFO 下载ts文件: 528981955.ts
+下载ts文件: 528981956.ts
+2025-10-05 17:47:32,332 INFO 下载ts文件: 528981956.ts
+下载ts文件: 528981957.ts
+2025-10-05 17:47:34,148 INFO 下载ts文件: 528981957.ts
+下载ts文件: 528981958.ts
+2025-10-05 17:47:35,250 INFO 下载ts文件: 528981958.ts
+下载ts文件: 528981959.ts
+2025-10-05 17:47:35,842 INFO 下载ts文件: 528981959.ts
+下载ts文件: 528981960.ts
+2025-10-05 17:47:38,575 INFO 下载ts文件: 528981960.ts
+下载ts文件: 528981961.ts
+2025-10-05 17:47:39,236 INFO 下载ts文件: 528981961.ts
+下载ts文件: 528981962.ts
+2025-10-05 17:47:39,320 INFO 下载ts文件: 528981962.ts
+下载ts文件: 528981963.ts
+2025-10-05 17:47:39,658 INFO 下载ts文件: 528981963.ts
+下载ts文件: 528981964.ts
+2025-10-05 17:47:40,626 INFO 下载ts文件: 528981964.ts
+下载ts文件: 528981965.ts
+2025-10-05 17:47:41,144 INFO 下载ts文件: 528981965.ts
+下载ts文件: 528981966.ts
+2025-10-05 17:47:41,926 INFO 下载ts文件: 528981966.ts
+下载ts文件: 528981967.ts
+2025-10-05 17:47:43,034 INFO 下载ts文件: 528981967.ts
+下载ts文件: 528981968.ts
+2025-10-05 17:47:44,706 INFO 下载ts文件: 528981968.ts
+下载ts文件: 528981969.ts
+2025-10-05 17:47:48,467 INFO 下载ts文件: 528981969.ts
+下载ts文件: 528981970.ts
+2025-10-05 17:47:48,838 INFO 下载ts文件: 528981970.ts
+下载ts文件: 528981971.ts
+2025-10-05 17:47:51,538 INFO 下载ts文件: 528981971.ts
+下载ts文件: 528981972.ts
+2025-10-05 17:47:52,409 INFO 下载ts文件: 528981972.ts
+下载ts文件: 528981973.ts
+2025-10-05 17:47:53,258 INFO 下载ts文件: 528981973.ts
+下载ts文件: 528981974.ts
+2025-10-05 17:47:53,651 INFO 下载ts文件: 528981974.ts
+下载ts文件: 528981975.ts
+2025-10-05 17:47:55,425 INFO 下载ts文件: 528981975.ts
+下载ts文件: 528981976.ts
+2025-10-05 17:47:55,586 INFO 下载ts文件: 528981976.ts
+下载ts文件: 528981977.ts
+2025-10-05 17:47:57,569 INFO 下载ts文件: 528981977.ts
+下载ts文件: 528981978.ts
+2025-10-05 17:47:57,728 INFO 下载ts文件: 528981978.ts
+下载ts文件: 528981979.ts
+2025-10-05 17:47:58,659 INFO 下载ts文件: 528981979.ts
+下载ts文件: 528981980.ts
+2025-10-05 17:48:03,544 INFO 下载ts文件: 528981980.ts
+下载ts文件: 528981981.ts
+2025-10-05 17:48:04,062 INFO 下载ts文件: 528981981.ts
+下载ts文件: 528981982.ts
+2025-10-05 17:48:04,160 INFO 下载ts文件: 528981982.ts
+下载ts文件: 528981983.ts
+2025-10-05 17:48:06,428 INFO 下载ts文件: 528981983.ts
+下载ts文件: 528981984.ts
+2025-10-05 17:48:07,216 INFO 下载ts文件: 528981984.ts
+下载ts文件: 528981985.ts
+2025-10-05 17:48:08,965 INFO 下载ts文件: 528981985.ts
+下载ts文件: 528981986.ts
+2025-10-05 17:48:09,212 INFO 下载ts文件: 528981986.ts
+下载ts文件: 528981987.ts
+2025-10-05 17:48:11,869 INFO 下载ts文件: 528981987.ts
+下载ts文件: 528981988.ts
+2025-10-05 17:48:12,821 INFO 下载ts文件: 528981988.ts
+下载ts文件: 528981989.ts
+2025-10-05 17:48:14,502 INFO 下载ts文件: 528981989.ts
+下载ts文件: 528981990.ts
+2025-10-05 17:48:16,023 INFO 下载ts文件: 528981990.ts
+下载ts文件: 528981991.ts
+2025-10-05 17:48:16,548 INFO 下载ts文件: 528981991.ts
+下载ts文件: 528981992.ts
+2025-10-05 17:48:17,905 INFO 下载ts文件: 528981992.ts
+下载ts文件: 528981993.ts
+2025-10-05 17:48:18,517 INFO 下载ts文件: 528981993.ts
+下载ts文件: 528981994.ts
+2025-10-05 17:48:21,482 INFO 下载ts文件: 528981994.ts
+下载ts文件: 528981995.ts
+2025-10-05 17:48:21,760 INFO 下载ts文件: 528981995.ts
+下载ts文件: 528981996.ts
+2025-10-05 17:48:24,580 INFO 下载ts文件: 528981996.ts
+下载ts文件: 528981997.ts
+2025-10-05 17:48:24,853 INFO 下载ts文件: 528981997.ts
+下载ts文件: 528981998.ts
+2025-10-05 17:48:25,739 INFO 下载ts文件: 528981998.ts
+下载ts文件: 528981999.ts
+2025-10-05 17:48:26,023 INFO 下载ts文件: 528981999.ts
+下载ts文件: 528982000.ts
+2025-10-05 17:48:27,830 INFO 下载ts文件: 528982000.ts
+下载ts文件: 528982001.ts
+2025-10-05 17:48:29,991 INFO 下载ts文件: 528982001.ts
+下载ts文件: 528982002.ts
+2025-10-05 17:48:33,752 INFO 下载ts文件: 528982002.ts
+下载ts文件: 528982003.ts
+2025-10-05 17:48:34,934 INFO 下载ts文件: 528982003.ts
+下载ts文件: 528982004.ts
+2025-10-05 17:48:35,188 INFO 下载ts文件: 528982004.ts
+下载ts文件: 528982005.ts
+2025-10-05 17:48:36,500 INFO 下载ts文件: 528982005.ts
+下载ts文件: 528982006.ts
+2025-10-05 17:48:37,206 INFO 下载ts文件: 528982006.ts
+下载ts文件: 528982007.ts
+2025-10-05 17:48:39,433 INFO 下载ts文件: 528982007.ts
+下载ts文件: 528982008.ts
+2025-10-05 17:48:39,806 INFO 下载ts文件: 528982008.ts
+下载ts文件: 528982009.ts
+2025-10-05 17:48:40,332 INFO 下载ts文件: 528982009.ts
+下载ts文件: 528982010.ts
+2025-10-05 17:48:41,533 INFO 下载ts文件: 528982010.ts
+下载ts文件: 528982011.ts
+2025-10-05 17:48:43,262 INFO 下载ts文件: 528982011.ts
+下载ts文件: 528982012.ts
+2025-10-05 17:48:43,747 INFO 下载ts文件: 528982012.ts
+下载ts文件: 528982013.ts
+2025-10-05 17:48:44,491 INFO 下载ts文件: 528982013.ts
+下载ts文件: 528982014.ts
+2025-10-05 17:48:45,080 INFO 下载ts文件: 528982014.ts
+下载ts文件: 528982015.ts
+2025-10-05 17:48:48,638 INFO 下载ts文件: 528982015.ts
+下载ts文件: 528982016.ts
+2025-10-05 17:48:49,130 INFO 下载ts文件: 528982016.ts
+下载ts文件: 528982017.ts
+2025-10-05 17:48:51,830 INFO 下载ts文件: 528982017.ts
+下载ts文件: 528982018.ts
+2025-10-05 17:48:51,926 INFO 下载ts文件: 528982018.ts
+下载ts文件: 528982019.ts
+2025-10-05 17:48:54,054 INFO 下载ts文件: 528982019.ts
+下载ts文件: 528982020.ts
+2025-10-05 17:48:55,318 INFO 下载ts文件: 528982020.ts
+下载ts文件: 528982021.ts
+2025-10-05 17:48:57,549 INFO 下载ts文件: 528982021.ts
+下载ts文件: 528982022.ts
+2025-10-05 17:49:01,658 INFO 下载ts文件: 528982022.ts
+下载ts文件: 528982023.ts
+2025-10-05 17:49:02,592 INFO 下载ts文件: 528982023.ts
+下载ts文件: 528982024.ts
+2025-10-05 17:49:03,306 INFO 下载ts文件: 528982024.ts
+下载ts文件: 528982025.ts
+2025-10-05 17:49:04,908 INFO 下载ts文件: 528982025.ts
+下载ts文件: 528982026.ts
+2025-10-05 17:49:05,628 INFO 下载ts文件: 528982026.ts
+下载ts文件: 528982027.ts
+2025-10-05 17:49:09,252 INFO 下载ts文件: 528982027.ts
+下载ts文件: 528982028.ts
+2025-10-05 17:49:10,848 INFO 下载ts文件: 528982028.ts
+下载ts文件: 528982029.ts
+2025-10-05 17:49:12,085 INFO 下载ts文件: 528982029.ts
+下载ts文件: 528982030.ts
+2025-10-05 17:49:14,419 INFO 下载ts文件: 528982030.ts
+下载ts文件: 528982031.ts
+2025-10-05 17:49:17,189 INFO 下载ts文件: 528982031.ts
+下载ts文件: 528982032.ts
+2025-10-05 17:49:21,271 INFO 下载ts文件: 528982032.ts
+下载ts文件: 528982033.ts
+2025-10-05 17:49:22,094 INFO 下载ts文件: 528982033.ts
+下载ts文件: 528982034.ts
+2025-10-05 17:49:22,960 INFO 下载ts文件: 528982034.ts
+下载ts文件: 528982035.ts
+2025-10-05 17:49:23,459 INFO 下载ts文件: 528982035.ts
+下载ts文件: 528982036.ts
+2025-10-05 17:49:29,514 INFO 下载ts文件: 528982036.ts
+下载ts文件: 528982037.ts
+2025-10-05 17:49:30,863 INFO 下载ts文件: 528982037.ts
+下载ts文件: 528982038.ts
+2025-10-05 17:49:34,463 INFO 下载ts文件: 528982038.ts
+下载ts文件: 528982039.ts
+2025-10-05 17:49:35,812 INFO 下载ts文件: 528982039.ts
+下载ts文件: 528982040.ts
+2025-10-05 17:49:39,166 INFO 下载ts文件: 528982040.ts
+下载ts文件: 528982041.ts
+2025-10-05 17:49:39,185 INFO 下载ts文件: 528982041.ts
+下载ts文件: 528982042.ts
+2025-10-05 17:49:39,617 INFO 下载ts文件: 528982042.ts
+下载ts文件: 528982043.ts
+2025-10-05 17:49:40,386 INFO 下载ts文件: 528982043.ts
+下载ts文件: 528982044.ts
+2025-10-05 17:49:45,444 INFO 下载ts文件: 528982044.ts
+下载ts文件: 528982045.ts
+2025-10-05 17:49:48,718 INFO 下载ts文件: 528982045.ts
+下载ts文件: 528982046.ts
+2025-10-05 17:49:48,755 INFO 下载ts文件: 528982046.ts
+下载ts文件: 528982047.ts
+2025-10-05 17:49:49,558 INFO 下载ts文件: 528982047.ts
+下载ts文件: 528982048.ts
+2025-10-05 17:49:55,453 INFO 下载ts文件: 528982048.ts
+下载ts文件: 528982049.ts
+2025-10-05 17:49:57,502 INFO 下载ts文件: 528982049.ts
+下载ts文件: 528982050.ts
+2025-10-05 17:49:59,366 INFO 下载ts文件: 528982050.ts
+下载ts文件: 528982051.ts
+2025-10-05 17:50:00,253 INFO 下载ts文件: 528982051.ts
+下载ts文件: 528982052.ts
+2025-10-05 17:50:02,901 INFO 下载ts文件: 528982052.ts
+下载ts文件: 528982053.ts
+2025-10-05 17:50:07,314 INFO 下载ts文件: 528982053.ts
+下载ts文件: 528982054.ts
+2025-10-05 17:50:08,669 INFO 下载ts文件: 528982054.ts
+下载ts文件: 528982055.ts
+2025-10-05 17:50:09,450 INFO 下载ts文件: 528982055.ts
+下载ts文件: 528982056.ts
+2025-10-05 17:50:09,909 INFO 下载ts文件: 528982056.ts
+下载ts文件: 528982057.ts
+2025-10-05 17:50:10,263 INFO 下载ts文件: 528982057.ts
+下载ts文件: 528982058.ts
+2025-10-05 17:50:11,619 INFO 下载ts文件: 528982058.ts
+下载ts文件: 528982059.ts
+2025-10-05 17:50:17,844 INFO 下载ts文件: 528982059.ts
+下载ts文件: 528982060.ts
+2025-10-05 17:50:20,769 INFO 下载ts文件: 528982060.ts
+下载ts文件: 528982061.ts
+2025-10-05 17:50:22,124 INFO 下载ts文件: 528982061.ts
+下载ts文件: 528982062.ts
+2025-10-05 17:50:24,084 INFO 下载ts文件: 528982062.ts
+下载ts文件: 528982063.ts
+2025-10-05 17:50:24,728 INFO 下载ts文件: 528982063.ts
+下载ts文件: 528982064.ts
+2025-10-05 17:50:26,103 INFO 下载ts文件: 528982064.ts
+下载ts文件: 528982065.ts
+2025-10-05 17:50:30,250 INFO 下载ts文件: 528982065.ts
+下载ts文件: 528982066.ts
+2025-10-05 17:50:30,988 INFO 下载ts文件: 528982066.ts
+下载ts文件: 528982067.ts
+2025-10-05 17:50:31,203 INFO 下载ts文件: 528982067.ts
+下载ts文件: 528982068.ts
+2025-10-05 17:50:37,786 INFO 下载ts文件: 528982068.ts
+下载ts文件: 528982069.ts
+2025-10-05 17:50:37,973 INFO 下载ts文件: 528982069.ts
+下载ts文件: 528982070.ts
+2025-10-05 17:50:39,398 INFO 下载ts文件: 528982070.ts
+下载ts文件: 528982071.ts
+2025-10-05 17:50:46,308 INFO 下载ts文件: 528982071.ts
+下载ts文件: 528982072.ts
+2025-10-05 17:50:49,838 INFO 下载ts文件: 528982072.ts
+下载ts文件: 528982073.ts
+2025-10-05 17:50:50,185 INFO 下载ts文件: 528982073.ts
+下载ts文件: 528982074.ts
+2025-10-05 17:50:56,085 INFO 下载ts文件: 528982074.ts
+下载ts文件: 528982075.ts
+2025-10-05 17:50:56,366 INFO 下载ts文件: 528982075.ts
+下载ts文件: 528982076.ts
+2025-10-05 17:50:56,970 INFO 下载ts文件: 528982076.ts
+下载ts文件: 528982077.ts
+2025-10-05 17:51:01,399 INFO 下载ts文件: 528982077.ts
+下载ts文件: 528982078.ts
+2025-10-05 17:51:04,719 INFO 下载ts文件: 528982078.ts
+下载ts文件: 528982079.ts
+2025-10-05 17:51:09,725 INFO 下载ts文件: 528982079.ts
+下载ts文件: 528982080.ts
+2025-10-05 17:51:14,524 INFO 下载ts文件: 528982080.ts
+下载ts文件: 528982081.ts
+2025-10-05 17:51:15,250 INFO 下载ts文件: 528982081.ts
+下载ts文件: 528982082.ts
+2025-10-05 17:51:19,522 INFO 下载ts文件: 528982082.ts
+下载ts文件: 528982083.ts
+2025-10-05 17:51:23,581 INFO 下载ts文件: 528982083.ts
+下载ts文件: 528982084.ts
+2025-10-05 17:51:23,772 INFO 下载ts文件: 528982084.ts
+下载ts文件: 528982085.ts
+2025-10-05 17:51:27,696 INFO 下载ts文件: 528982085.ts
+下载ts文件: 528982086.ts
+2025-10-05 17:51:27,977 INFO 下载ts文件: 528982086.ts
+下载ts文件: 528982087.ts
+2025-10-05 17:51:28,059 INFO 下载ts文件: 528982087.ts
+下载ts文件: 528982088.ts
+2025-10-05 17:51:35,469 INFO 下载ts文件: 528982088.ts
+下载ts文件: 528982089.ts
+2025-10-05 17:51:35,755 INFO 下载ts文件: 528982089.ts
+下载ts文件: 528982090.ts
+2025-10-05 17:51:35,990 INFO 下载ts文件: 528982090.ts
+下载ts文件: 528982091.ts
+2025-10-05 17:51:40,058 INFO 下载ts文件: 528982091.ts
+下载ts文件: 528982092.ts
+2025-10-05 17:51:44,166 INFO 下载ts文件: 528982092.ts
+下载ts文件: 528982093.ts
+2025-10-05 17:51:44,181 INFO 下载ts文件: 528982093.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981989.ts
+2025-10-05 17:51:44,765 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981989.ts
+下载ts文件: 528982094.ts
+2025-10-05 17:51:44,765 INFO 下载ts文件: 528982094.ts
+下载ts文件: 528982095.ts
+2025-10-05 17:51:44,941 INFO 下载ts文件: 528982095.ts
+下载ts文件: 528982096.ts
+2025-10-05 17:51:48,893 INFO 下载ts文件: 528982096.ts
+下载ts文件: 528982097.ts
+2025-10-05 17:51:50,198 INFO 下载ts文件: 528982097.ts
+下载ts文件: 528982098.ts
+2025-10-05 17:51:51,536 INFO 下载ts文件: 528982098.ts
+下载ts文件: 528982099.ts
+2025-10-05 17:51:52,831 INFO 下载ts文件: 528982099.ts
+下载ts文件: 528982100.ts
+2025-10-05 17:51:52,849 INFO 下载ts文件: 528982100.ts
+下载ts文件: 528982101.ts
+2025-10-05 17:51:55,505 INFO 下载ts文件: 528982101.ts
+下载ts文件: 528982102.ts
+2025-10-05 17:51:56,052 INFO 下载ts文件: 528982102.ts
+下载ts文件: 528982103.ts
+2025-10-05 17:51:58,928 INFO 下载ts文件: 528982103.ts
+下载ts文件: 528982104.ts
+2025-10-05 17:52:00,809 INFO 下载ts文件: 528982104.ts
+下载ts文件: 528982105.ts
+2025-10-05 17:52:03,827 INFO 下载ts文件: 528982105.ts
+下载ts文件: 528982106.ts
+2025-10-05 17:52:04,949 INFO 下载ts文件: 528982106.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981971.ts
+2025-10-05 17:52:06,021 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981971.ts
+下载ts文件: 528982107.ts
+2025-10-05 17:52:06,021 INFO 下载ts文件: 528982107.ts
+下载ts文件: 528982108.ts
+2025-10-05 17:52:12,246 INFO 下载ts文件: 528982108.ts
+下载ts文件: 528982109.ts
+2025-10-05 17:52:12,799 INFO 下载ts文件: 528982109.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981953.ts
+2025-10-05 17:52:13,823 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528981953.ts
+下载ts文件: 528982110.ts
+2025-10-05 17:52:13,823 INFO 下载ts文件: 528982110.ts
+下载ts文件: 528982111.ts
+2025-10-05 17:52:14,051 INFO 下载ts文件: 528982111.ts
+下载ts文件: 528982112.ts
+2025-10-05 17:52:15,842 INFO 下载ts文件: 528982112.ts
+下载ts文件: 528982113.ts
+2025-10-05 17:52:15,984 INFO 下载ts文件: 528982113.ts
+下载ts文件: 528982114.ts
+2025-10-05 17:52:17,756 INFO 下载ts文件: 528982114.ts
+下载ts文件: 528982115.ts
+2025-10-05 17:52:19,311 INFO 下载ts文件: 528982115.ts
+下载ts文件: 528982116.ts
+2025-10-05 17:52:19,485 INFO 下载ts文件: 528982116.ts
+下载ts文件: 528982117.ts
+2025-10-05 17:52:22,761 INFO 下载ts文件: 528982117.ts
+下载ts文件: 528982118.ts
+2025-10-05 17:52:25,292 INFO 下载ts文件: 528982118.ts
+下载ts文件: 528982119.ts
+2025-10-05 17:52:28,477 INFO 下载ts文件: 528982119.ts
+下载ts文件: 528982120.ts
+2025-10-05 17:52:30,499 INFO 下载ts文件: 528982120.ts
+下载ts文件: 528982121.ts
+2025-10-05 17:52:30,706 INFO 下载ts文件: 528982121.ts
+下载ts文件: 528982122.ts
+2025-10-05 17:52:31,939 INFO 下载ts文件: 528982122.ts
+下载ts文件: 528982123.ts
+2025-10-05 17:52:32,754 INFO 下载ts文件: 528982123.ts
+下载ts文件: 528982124.ts
+2025-10-05 17:52:38,519 INFO 下载ts文件: 528982124.ts
+下载ts文件: 528982125.ts
+2025-10-05 17:52:38,883 INFO 下载ts文件: 528982125.ts
+下载ts文件: 528982126.ts
+2025-10-05 17:52:39,243 INFO 下载ts文件: 528982126.ts
+下载ts文件: 528982127.ts
+2025-10-05 17:52:40,274 INFO 下载ts文件: 528982127.ts
+下载ts文件: 528982128.ts
+2025-10-05 17:52:40,291 INFO 下载ts文件: 528982128.ts
+下载ts文件: 528982129.ts
+2025-10-05 17:52:40,482 INFO 下载ts文件: 528982129.ts
+下载ts文件: 528982130.ts
+2025-10-05 17:52:48,688 INFO 下载ts文件: 528982130.ts
+下载ts文件: 528982131.ts
+2025-10-05 17:52:51,569 INFO 下载ts文件: 528982131.ts
+下载ts文件: 528982132.ts
+2025-10-05 17:52:52,366 INFO 下载ts文件: 528982132.ts
+下载ts文件: 528982133.ts
+2025-10-05 17:52:54,758 INFO 下载ts文件: 528982133.ts
+下载ts文件: 528982134.ts
+2025-10-05 17:52:55,004 INFO 下载ts文件: 528982134.ts
+下载ts文件: 528982135.ts
+2025-10-05 17:52:57,126 INFO 下载ts文件: 528982135.ts
+下载ts文件: 528982136.ts
+2025-10-05 17:52:58,032 INFO 下载ts文件: 528982136.ts
+下载ts文件: 528982137.ts
+2025-10-05 17:52:58,422 INFO 下载ts文件: 528982137.ts
+下载ts文件: 528982138.ts
+2025-10-05 17:52:58,910 INFO 下载ts文件: 528982138.ts
+下载ts文件: 528982139.ts
+2025-10-05 17:53:01,686 INFO 下载ts文件: 528982139.ts
+下载ts文件: 528982140.ts
+2025-10-05 17:53:02,392 INFO 下载ts文件: 528982140.ts
+下载ts文件: 528982141.ts
+2025-10-05 17:53:02,632 INFO 下载ts文件: 528982141.ts
+下载ts文件: 528982142.ts
+2025-10-05 17:53:08,888 INFO 下载ts文件: 528982142.ts
+下载ts文件: 528982143.ts
+2025-10-05 17:53:09,979 INFO 下载ts文件: 528982143.ts
+下载ts文件: 528982144.ts
+2025-10-05 17:53:10,043 INFO 下载ts文件: 528982144.ts
+下载ts文件: 528982145.ts
+2025-10-05 17:53:11,245 INFO 下载ts文件: 528982145.ts
+下载ts文件: 528982146.ts
+2025-10-05 17:53:13,623 INFO 下载ts文件: 528982146.ts
+下载ts文件: 528982147.ts
+2025-10-05 17:53:14,132 INFO 下载ts文件: 528982147.ts
+下载ts文件: 528982148.ts
+2025-10-05 17:53:19,195 INFO 下载ts文件: 528982148.ts
+下载ts文件: 528982149.ts
+2025-10-05 17:53:19,334 INFO 下载ts文件: 528982149.ts
+下载ts文件: 528982150.ts
+2025-10-05 17:53:19,917 INFO 下载ts文件: 528982150.ts
+下载ts文件: 528982151.ts
+2025-10-05 17:53:20,244 INFO 下载ts文件: 528982151.ts
+下载ts文件: 528982152.ts
+2025-10-05 17:53:20,739 INFO 下载ts文件: 528982152.ts
+下载ts文件: 528982153.ts
+2025-10-05 17:53:21,322 INFO 下载ts文件: 528982153.ts
+下载ts文件: 528982154.ts
+2025-10-05 17:53:22,148 INFO 下载ts文件: 528982154.ts
+下载ts文件: 528982155.ts
+2025-10-05 17:53:27,817 INFO 下载ts文件: 528982155.ts
+下载ts文件: 528982156.ts
+2025-10-05 17:53:28,505 INFO 下载ts文件: 528982156.ts
+下载ts文件: 528982157.ts
+2025-10-05 17:53:30,307 INFO 下载ts文件: 528982157.ts
+下载ts文件: 528982158.ts
+2025-10-05 17:53:31,313 INFO 下载ts文件: 528982158.ts
+下载ts文件: 528982159.ts
+2025-10-05 17:53:33,059 INFO 下载ts文件: 528982159.ts
+下载ts文件: 528982160.ts
+2025-10-05 17:53:35,532 INFO 下载ts文件: 528982160.ts
+下载ts文件: 528982161.ts
+2025-10-05 17:53:35,679 INFO 下载ts文件: 528982161.ts
+下载ts文件: 528982162.ts
+2025-10-05 17:53:36,201 INFO 下载ts文件: 528982162.ts
+下载ts文件: 528982163.ts
+2025-10-05 17:53:39,310 INFO 下载ts文件: 528982163.ts
+下载ts文件: 528982164.ts
+2025-10-05 17:53:43,307 INFO 下载ts文件: 528982164.ts
+下载ts文件: 528982165.ts
+2025-10-05 17:53:43,722 INFO 下载ts文件: 528982165.ts
+下载ts文件: 528982166.ts
+2025-10-05 17:53:43,797 INFO 下载ts文件: 528982166.ts
+下载ts文件: 528982167.ts
+2025-10-05 17:53:44,935 INFO 下载ts文件: 528982167.ts
+下载ts文件: 528982168.ts
+2025-10-05 17:53:45,370 INFO 下载ts文件: 528982168.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982014.ts
+2025-10-05 17:53:45,957 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982014.ts
+下载ts文件: 528982169.ts
+2025-10-05 17:53:45,957 INFO 下载ts文件: 528982169.ts
+下载ts文件: 528982170.ts
+2025-10-05 17:53:51,096 INFO 下载ts文件: 528982170.ts
+下载ts文件: 528982171.ts
+2025-10-05 17:53:51,555 INFO 下载ts文件: 528982171.ts
+下载ts文件: 528982172.ts
+2025-10-05 17:53:51,682 INFO 下载ts文件: 528982172.ts
+下载ts文件: 528982173.ts
+2025-10-05 17:53:52,048 INFO 下载ts文件: 528982173.ts
+下载ts文件: 528982174.ts
+2025-10-05 17:53:57,440 INFO 下载ts文件: 528982174.ts
+下载ts文件: 528982175.ts
+2025-10-05 17:53:58,421 INFO 下载ts文件: 528982175.ts
+下载ts文件: 528982176.ts
+2025-10-05 17:54:01,560 INFO 下载ts文件: 528982176.ts
+下载ts文件: 528982177.ts
+2025-10-05 17:54:02,697 INFO 下载ts文件: 528982177.ts
+下载ts文件: 528982178.ts
+2025-10-05 17:54:07,588 INFO 下载ts文件: 528982178.ts
+下载ts文件: 528982179.ts
+2025-10-05 17:54:11,298 INFO 下载ts文件: 528982179.ts
+下载ts文件: 528982180.ts
+2025-10-05 17:54:11,464 INFO 下载ts文件: 528982180.ts
+下载ts文件: 528982181.ts
+2025-10-05 17:54:12,118 INFO 下载ts文件: 528982181.ts
+下载ts文件: 528982182.ts
+2025-10-05 17:54:12,891 INFO 下载ts文件: 528982182.ts
+下载ts文件: 528982183.ts
+2025-10-05 17:54:18,828 INFO 下载ts文件: 528982183.ts
+下载ts文件: 528982184.ts
+2025-10-05 17:54:19,407 INFO 下载ts文件: 528982184.ts
+下载ts文件: 528982185.ts
+2025-10-05 17:54:20,114 INFO 下载ts文件: 528982185.ts
+下载ts文件: 528982186.ts
+2025-10-05 17:54:23,438 INFO 下载ts文件: 528982186.ts
+下载ts文件: 528982187.ts
+2025-10-05 17:54:29,950 INFO 下载ts文件: 528982187.ts
+下载ts文件: 528982188.ts
+2025-10-05 17:54:30,662 INFO 下载ts文件: 528982188.ts
+下载ts文件: 528982189.ts
+2025-10-05 17:54:31,625 INFO 下载ts文件: 528982189.ts
+下载ts文件: 528982190.ts
+2025-10-05 17:54:31,673 INFO 下载ts文件: 528982190.ts
+下载ts文件: 528982191.ts
+2025-10-05 17:54:32,857 INFO 下载ts文件: 528982191.ts
+下载ts文件: 528982192.ts
+2025-10-05 17:54:33,273 INFO 下载ts文件: 528982192.ts
+下载ts文件: 528982193.ts
+2025-10-05 17:54:38,792 INFO 下载ts文件: 528982193.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982069.ts
+2025-10-05 17:54:40,936 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982069.ts
+下载ts文件: 528982194.ts
+2025-10-05 17:54:40,936 INFO 下载ts文件: 528982194.ts
+下载ts文件: 528982195.ts
+2025-10-05 17:54:41,599 INFO 下载ts文件: 528982195.ts
+下载ts文件: 528982196.ts
+2025-10-05 17:54:42,658 INFO 下载ts文件: 528982196.ts
+下载ts文件: 528982197.ts
+2025-10-05 17:54:50,073 INFO 下载ts文件: 528982197.ts
+下载ts文件: 528982198.ts
+2025-10-05 17:54:50,192 INFO 下载ts文件: 528982198.ts
+下载ts文件: 528982199.ts
+2025-10-05 17:54:52,454 INFO 下载ts文件: 528982199.ts
+下载ts文件: 528982200.ts
+2025-10-05 17:54:52,712 INFO 下载ts文件: 528982200.ts
+下载ts文件: 528982201.ts
+2025-10-05 17:54:57,631 INFO 下载ts文件: 528982201.ts
+下载ts文件: 528982202.ts
+2025-10-05 17:55:00,525 INFO 下载ts文件: 528982202.ts
+下载ts文件: 528982203.ts
+2025-10-05 17:55:03,552 INFO 下载ts文件: 528982203.ts
+下载ts文件: 528982204.ts
+2025-10-05 17:55:04,544 INFO 下载ts文件: 528982204.ts
+下载ts文件: 528982205.ts
+2025-10-05 17:55:06,217 INFO 下载ts文件: 528982205.ts
+下载ts文件: 528982206.ts
+2025-10-05 17:55:08,497 INFO 下载ts文件: 528982206.ts
+下载ts文件: 528982207.ts
+2025-10-05 17:55:13,178 INFO 下载ts文件: 528982207.ts
+下载ts文件: 528982208.ts
+2025-10-05 17:55:14,738 INFO 下载ts文件: 528982208.ts
+下载ts文件: 528982209.ts
+2025-10-05 17:55:15,471 INFO 下载ts文件: 528982209.ts
+下载ts文件: 528982210.ts
+2025-10-05 17:55:17,458 INFO 下载ts文件: 528982210.ts
+下载ts文件: 528982211.ts
+2025-10-05 17:55:20,491 INFO 下载ts文件: 528982211.ts
+下载ts文件: 528982212.ts
+2025-10-05 17:55:24,617 INFO 下载ts文件: 528982212.ts
+下载ts文件: 528982213.ts
+2025-10-05 17:55:25,718 INFO 下载ts文件: 528982213.ts
+下载ts文件: 528982214.ts
+2025-10-05 17:55:30,082 INFO 下载ts文件: 528982214.ts
+下载ts文件: 528982215.ts
+2025-10-05 17:55:30,494 INFO 下载ts文件: 528982215.ts
+下载ts文件: 528982216.ts
+2025-10-05 17:55:32,171 INFO 下载ts文件: 528982216.ts
+下载ts文件: 528982217.ts
+2025-10-05 17:55:33,431 INFO 下载ts文件: 528982217.ts
+下载ts文件: 528982218.ts
+2025-10-05 17:55:38,916 INFO 下载ts文件: 528982218.ts
+下载ts文件: 528982219.ts
+2025-10-05 17:55:40,116 INFO 下载ts文件: 528982219.ts
+下载ts文件: 528982220.ts
+2025-10-05 17:55:40,982 INFO 下载ts文件: 528982220.ts
+下载ts文件: 528982221.ts
+2025-10-05 17:55:45,845 INFO 下载ts文件: 528982221.ts
+下载ts文件: 528982222.ts
+2025-10-05 17:55:49,281 INFO 下载ts文件: 528982222.ts
+下载ts文件: 528982223.ts
+2025-10-05 17:55:49,693 INFO 下载ts文件: 528982223.ts
+下载ts文件: 528982224.ts
+2025-10-05 17:55:54,428 INFO 下载ts文件: 528982224.ts
+下载ts文件: 528982225.ts
+2025-10-05 17:55:55,335 INFO 下载ts文件: 528982225.ts
+下载ts文件: 528982226.ts
+2025-10-05 17:55:57,326 INFO 下载ts文件: 528982226.ts
+下载ts文件: 528982227.ts
+2025-10-05 17:55:57,764 INFO 下载ts文件: 528982227.ts
+下载ts文件: 528982228.ts
+2025-10-05 17:56:00,258 INFO 下载ts文件: 528982228.ts
+下载ts文件: 528982229.ts
+2025-10-05 17:56:03,932 INFO 下载ts文件: 528982229.ts
+下载ts文件: 528982230.ts
+2025-10-05 17:56:07,356 INFO 下载ts文件: 528982230.ts
+下载ts文件: 528982231.ts
+2025-10-05 17:56:07,633 INFO 下载ts文件: 528982231.ts
+下载ts文件: 528982232.ts
+2025-10-05 17:56:11,177 INFO 下载ts文件: 528982232.ts
+下载ts文件: 528982233.ts
+2025-10-05 17:56:12,701 INFO 下载ts文件: 528982233.ts
+下载ts文件: 528982234.ts
+2025-10-05 17:56:13,011 INFO 下载ts文件: 528982234.ts
+下载ts文件: 528982235.ts
+2025-10-05 17:56:13,667 INFO 下载ts文件: 528982235.ts
+下载ts文件: 528982236.ts
+2025-10-05 17:56:15,656 INFO 下载ts文件: 528982236.ts
+下载ts文件: 528982237.ts
+2025-10-05 17:56:16,576 INFO 下载ts文件: 528982237.ts
+下载ts文件: 528982238.ts
+2025-10-05 17:56:18,857 INFO 下载ts文件: 528982238.ts
+下载ts文件: 528982239.ts
+2025-10-05 17:56:20,686 INFO 下载ts文件: 528982239.ts
+下载ts文件: 528982240.ts
+2025-10-05 17:56:22,232 INFO 下载ts文件: 528982240.ts
+下载ts文件: 528982241.ts
+2025-10-05 17:56:23,007 INFO 下载ts文件: 528982241.ts
+下载ts文件: 528982242.ts
+2025-10-05 17:56:26,700 INFO 下载ts文件: 528982242.ts
+下载ts文件: 528982243.ts
+2025-10-05 17:56:30,369 INFO 下载ts文件: 528982243.ts
+下载ts文件: 528982244.ts
+2025-10-05 17:56:30,573 INFO 下载ts文件: 528982244.ts
+下载ts文件: 528982245.ts
+2025-10-05 17:56:30,708 INFO 下载ts文件: 528982245.ts
+下载ts文件: 528982246.ts
+2025-10-05 17:56:30,958 INFO 下载ts文件: 528982246.ts
+下载ts文件: 528982247.ts
+2025-10-05 17:56:33,475 INFO 下载ts文件: 528982247.ts
+下载ts文件: 528982248.ts
+2025-10-05 17:56:37,707 INFO 下载ts文件: 528982248.ts
+下载ts文件: 528982249.ts
+2025-10-05 17:56:43,401 INFO 下载ts文件: 528982249.ts
+下载ts文件: 528982250.ts
+2025-10-05 17:56:44,296 INFO 下载ts文件: 528982250.ts
+下载ts文件: 528982251.ts
+2025-10-05 17:56:46,328 INFO 下载ts文件: 528982251.ts
+下载ts文件: 528982252.ts
+2025-10-05 17:56:49,187 INFO 下载ts文件: 528982252.ts
+下载ts文件: 528982253.ts
+2025-10-05 17:56:49,709 INFO 下载ts文件: 528982253.ts
+下载ts文件: 528982254.ts
+2025-10-05 17:56:51,975 INFO 下载ts文件: 528982254.ts
+下载ts文件: 528982255.ts
+2025-10-05 17:56:56,327 INFO 下载ts文件: 528982255.ts
+下载ts文件: 528982256.ts
+2025-10-05 17:56:56,708 INFO 下载ts文件: 528982256.ts
+下载ts文件: 528982257.ts
+2025-10-05 17:56:58,218 INFO 下载ts文件: 528982257.ts
+下载ts文件: 528982258.ts
+2025-10-05 17:57:00,573 INFO 下载ts文件: 528982258.ts
+下载ts文件: 528982259.ts
+2025-10-05 17:57:01,535 INFO 下载ts文件: 528982259.ts
+下载ts文件: 528982260.ts
+2025-10-05 17:57:04,842 INFO 下载ts文件: 528982260.ts
+下载ts文件: 528982261.ts
+2025-10-05 17:57:06,289 INFO 下载ts文件: 528982261.ts
+下载ts文件: 528982262.ts
+2025-10-05 17:57:08,010 INFO 下载ts文件: 528982262.ts
+下载ts文件: 528982263.ts
+2025-10-05 17:57:14,042 INFO 下载ts文件: 528982263.ts
+下载ts文件: 528982264.ts
+2025-10-05 17:57:15,422 INFO 下载ts文件: 528982264.ts
+下载ts文件: 528982265.ts
+2025-10-05 17:57:16,509 INFO 下载ts文件: 528982265.ts
+下载ts文件: 528982266.ts
+2025-10-05 17:57:17,448 INFO 下载ts文件: 528982266.ts
+下载ts文件: 528982267.ts
+2025-10-05 17:57:21,867 INFO 下载ts文件: 528982267.ts
+下载ts文件: 528982268.ts
+2025-10-05 17:57:25,901 INFO 下载ts文件: 528982268.ts
+下载ts文件: 528982269.ts
+2025-10-05 17:57:26,633 INFO 下载ts文件: 528982269.ts
+下载ts文件: 528982270.ts
+2025-10-05 17:57:29,900 INFO 下载ts文件: 528982270.ts
+下载ts文件: 528982271.ts
+2025-10-05 17:57:33,983 INFO 下载ts文件: 528982271.ts
+下载ts文件: 528982272.ts
+2025-10-05 17:57:35,404 INFO 下载ts文件: 528982272.ts
+下载ts文件: 528982273.ts
+2025-10-05 17:57:36,691 INFO 下载ts文件: 528982273.ts
+下载ts文件: 528982274.ts
+2025-10-05 17:57:41,031 INFO 下载ts文件: 528982274.ts
+下载ts文件: 528982275.ts
+2025-10-05 17:57:42,212 INFO 下载ts文件: 528982275.ts
+下载ts文件: 528982276.ts
+2025-10-05 17:57:42,686 INFO 下载ts文件: 528982276.ts
+下载ts文件: 528982277.ts
+2025-10-05 17:57:44,040 INFO 下载ts文件: 528982277.ts
+下载ts文件: 528982278.ts
+2025-10-05 17:57:45,116 INFO 下载ts文件: 528982278.ts
+下载ts文件: 528982279.ts
+2025-10-05 17:57:46,156 INFO 下载ts文件: 528982279.ts
+下载ts文件: 528982280.ts
+2025-10-05 17:57:46,419 INFO 下载ts文件: 528982280.ts
+下载ts文件: 528982281.ts
+2025-10-05 17:57:49,454 INFO 下载ts文件: 528982281.ts
+下载ts文件: 528982282.ts
+2025-10-05 17:57:53,432 INFO 下载ts文件: 528982282.ts
+下载ts文件: 528982283.ts
+2025-10-05 17:57:55,925 INFO 下载ts文件: 528982283.ts
+下载ts文件: 528982284.ts
+2025-10-05 17:57:56,860 INFO 下载ts文件: 528982284.ts
+下载ts文件: 528982285.ts
+2025-10-05 17:58:04,455 INFO 下载ts文件: 528982285.ts
+下载ts文件: 528982286.ts
+2025-10-05 17:58:05,104 INFO 下载ts文件: 528982286.ts
+下载ts文件: 528982287.ts
+2025-10-05 17:58:07,835 INFO 下载ts文件: 528982287.ts
+下载ts文件: 528982288.ts
+2025-10-05 17:58:08,199 INFO 下载ts文件: 528982288.ts
+下载ts文件: 528982289.ts
+2025-10-05 17:58:11,990 INFO 下载ts文件: 528982289.ts
+下载ts文件: 528982290.ts
+2025-10-05 17:58:13,157 INFO 下载ts文件: 528982290.ts
+下载ts文件: 528982291.ts
+2025-10-05 17:58:14,300 INFO 下载ts文件: 528982291.ts
+下载ts文件: 528982292.ts
+2025-10-05 17:58:16,914 INFO 下载ts文件: 528982292.ts
+下载ts文件: 528982293.ts
+2025-10-05 17:58:18,768 INFO 下载ts文件: 528982293.ts
+下载ts文件: 528982294.ts
+2025-10-05 17:58:19,613 INFO 下载ts文件: 528982294.ts
+下载ts文件: 528982295.ts
+2025-10-05 17:58:20,893 INFO 下载ts文件: 528982295.ts
+下载ts文件: 528982296.ts
+2025-10-05 17:58:21,031 INFO 下载ts文件: 528982296.ts
+下载ts文件: 528982297.ts
+2025-10-05 17:58:22,967 INFO 下载ts文件: 528982297.ts
+下载ts文件: 528982298.ts
+2025-10-05 17:58:25,617 INFO 下载ts文件: 528982298.ts
+下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982199.ts
+2025-10-05 17:58:44,458 ERROR 下载ts文件失败,url:https://honi-moly-yami.mushroomtrack.com/hls/7lpK7_ZQg3DGRkZNm8MZ9Q/1759667850/52000/52898/528982199.ts
+文件损坏,文件名:528981953.ts
+2025-10-05 18:41:49,387 WARNING 文件损坏,文件名:528981953.ts
+文件损坏,文件名:528981971.ts
+2025-10-05 18:41:49,465 WARNING 文件损坏,文件名:528981971.ts
+文件损坏,文件名:528981977.ts
+2025-10-05 18:41:49,497 WARNING 文件损坏,文件名:528981977.ts
+文件损坏,文件名:528982127.ts
+2025-10-05 18:41:50,198 WARNING 文件损坏,文件名:528982127.ts
+文件损坏,文件名:528982192.ts
+2025-10-05 18:41:50,501 WARNING 文件损坏,文件名:528982192.ts
+文件损坏,文件名:528982199.ts
+2025-10-05 18:41:50,541 WARNING 文件损坏,文件名:528982199.ts
+文件损坏,文件名:528981953.ts
+2025-10-05 18:44:42,049 WARNING 文件损坏,文件名:528981953.ts
+文件损坏,文件名:528981971.ts
+2025-10-05 18:44:42,060 WARNING 文件损坏,文件名:528981971.ts
+文件损坏,文件名:528981977.ts
+2025-10-05 18:44:42,060 WARNING 文件损坏,文件名:528981977.ts
+文件损坏,文件名:528982127.ts
+2025-10-05 18:44:42,194 WARNING 文件损坏,文件名:528982127.ts
+文件损坏,文件名:528982192.ts
+2025-10-05 18:44:42,229 WARNING 文件损坏,文件名:528982192.ts
+文件损坏,文件名:528982199.ts
+2025-10-05 18:44:42,233 WARNING 文件损坏,文件名:528982199.ts
+m3u8文件已变化, 重新下载
+2025-10-05 18:45:04,025 INFO m3u8文件已变化, 重新下载
+文件损坏,文件名:528981953.ts
+2025-10-05 18:45:04,481 WARNING 文件损坏,文件名:528981953.ts
+文件损坏,文件名:528981971.ts
+2025-10-05 18:45:04,496 WARNING 文件损坏,文件名:528981971.ts
+文件损坏,文件名:528981977.ts
+2025-10-05 18:45:04,496 WARNING 文件损坏,文件名:528981977.ts
+文件损坏,文件名:528982127.ts
+2025-10-05 18:45:04,585 WARNING 文件损坏,文件名:528982127.ts
+文件损坏,文件名:528982192.ts
+2025-10-05 18:45:04,616 WARNING 文件损坏,文件名:528982192.ts
+文件损坏,文件名:528982199.ts
+2025-10-05 18:45:04,636 WARNING 文件损坏,文件名:528982199.ts
+未下载的ts文件数量: 7
+2025-10-05 18:45:04,993 INFO 未下载的ts文件数量: 7
+开始下载ts文件...
+2025-10-05 18:45:04,993 INFO 开始下载ts文件...
+下载ts文件: 528981917.ts
+2025-10-05 18:45:04,993 INFO 下载ts文件: 528981917.ts
+下载ts文件: 528981953.ts
+2025-10-05 18:45:05,008 INFO 下载ts文件: 528981953.ts
+下载ts文件: 528981971.ts
+2025-10-05 18:45:05,009 INFO 下载ts文件: 528981971.ts
+下载ts文件: 528981977.ts
+2025-10-05 18:45:05,010 INFO 下载ts文件: 528981977.ts
+下载ts文件: 528982127.ts
+2025-10-05 18:45:05,010 INFO 下载ts文件: 528982127.ts
+下载ts文件: 528982192.ts
+2025-10-05 18:45:05,010 INFO 下载ts文件: 528982192.ts
+下载ts文件: 528982199.ts
+2025-10-05 18:45:05,010 INFO 下载ts文件: 528982199.ts
