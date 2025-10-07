@@ -1,5 +1,6 @@
-__pychache__/
-downloads/
-logs/
-tmp/
-test.*
+__pycache__/*
+downloads/*
+logs/*
+tmp/*
+test.html
+test.txt

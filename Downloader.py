@@ -229,6 +229,13 @@ class Downloader:
                 json.dump(dump_data, f, indent=4)
     
     @staticmethod
+    def _get_folder_mtime(primary_folder : Path, sub_folder_name : str) -> float:
+        folder_path = primary_folder / sub_folder_name
+        if not folder_path.exists():
+            return 0
+        return folder_path.stat().st_mtime
+
+    @staticmethod
     def _ts_is_corrupted(
         file_path : Path,
         ) -> bool:
@@ -239,11 +246,31 @@ class Downloader:
         except UnicodeDecodeError:
             return True
     
+    def _get_undownload_ts(
+            self,
+            package : DownloadPackage,
+            m3u8_obj : m3u8.M3U8,
+            ) -> m3u8.SegmentList:
+        '''
+        处理未下载的ts文件
+
+        Args:
+            package (DownloadPackage): 下载包
+            m3u8_obj (m3u8.M3U8): m3u8对象
+            folder_mtime (float): 文件夹的修改时间
+
+        Returns:
+            m3u8.SegmentList: 未下载的ts文件列表
+        '''
+        _folder_mtime = self._get_folder_mtime(config.tmp_ts_dir, f'{package.id.lower()}')
+        return self._undownload_ts(package, m3u8_obj, _folder_mtime)
+
     @staticmethod
     @lru_cache(maxsize=5)
     def _undownload_ts(
         package : DownloadPackage,
         m3u8_obj : m3u8.M3U8,
+        folder_mtime : float,
     ) -> m3u8.SegmentList:
         # 当不改变视频分割时
         downloaded_ts_index = {}
@@ -714,7 +741,11 @@ class Downloader:
                 iv=decypt_info_dict['iv']
                 ))
         # TODO
-        while len(self._undownload_ts(package=package, m3u8_obj=m3u8.loads(decypt_info_dict['m3u8']))) != 0:
+        undownload_segments = self._get_undownload_ts(
+            package = package,
+            m3u8_obj = m3u8.loads(decypt_info_dict['m3u8']),
+        )
+        while len(undownload_segments) != 0:
             self._redownload(package=package)
         package.status = DownloadStatus.MERGING
         logger.info("所有ts文件已下载完成")
@@ -731,9 +762,9 @@ class Downloader:
             package=package,
             tmp_file_type=['m3u8', 'key', 'iv']
         )
-        undownload_segments = self._undownload_ts(
+        undownload_segments = self._get_undownload_ts(
             package=package,
-            m3u8_obj=m3u8.loads(decrpt_info['m3u8']), 
+            m3u8_obj=m3u8.loads(decrpt_info['m3u8']),
         )
         if len(undownload_segments) == 0:
             logger.info("所有ts文件已下载完成")
@@ -757,6 +788,3 @@ class Downloader:
             return
         else:
             raise ValueError("不支持的下载类型")
-
-if __name__ == '__main__':
-    print(config.tmp_ts_dir.stat().st_mtime)
