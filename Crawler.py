@@ -121,15 +121,31 @@ class JabVideoCrawler(VideoCrawlerBase):
         page = self._parse_page_content()
         if page == Page.SINGLE_VIDEO:
             html_text = self._get_html_text()
+            print(html_text[:500])
             parser = JabPageParser(html_text)
             package_info_dict = parser.parse()
             return self._init_download_package(package_info_dict)
         else:
             logger.error(f'不支持的视频链接: {self.url}')
     
-    def download_video(self, package : DownloadPackage):
+    def download_video(self):
+        package = self.parse()
         downloader = Downloader(package)
         downloader.download()
+    
+    @staticmethod
+    def download_video_with_id(id : str) -> None:
+        url = f'https://jable.tv/videos/{id}/'
+        crawler = JabVideoCrawler(url)
+        crawler.download_video()
 
     def _validate_src(self):
         return self.src == 'jable.tv' and self.src in self.url
+
+if __name__ == '__main__':
+    url = "https://jable.tv/videos/abp-933/"
+    crawler = JabVideoCrawler(url)
+    package = crawler.parse()
+    package.hls_url = 'https://jable.tv/videos/abp-933/hls/index.m3u8'
+    downloader = Downloader(package)
+    downloader._redownload(package=package)

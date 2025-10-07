@@ -12,7 +12,7 @@ class Logger:
     def get_logger(
             self, 
             module_name : str,
-            log_level : logging._Level = logging.DEBUG
+            log_level : int = logging.INFO
             ) -> logging.Logger:
         logger = logging.getLogger(module_name)
         logger.setLevel(level=log_level)
