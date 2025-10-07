@@ -39,7 +39,7 @@ class Config:
         self._create_dir()
 
         self.max_concurrency = 5
-        self.max_ts_concurrency = 8
+        self.max_ts_concurrency = 10
         self.max_retries = 3
         self.retry_wait_time = 5
         self.headers = {

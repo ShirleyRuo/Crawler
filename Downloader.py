@@ -23,6 +23,7 @@ from typing import List, Optional, Callable, Any, Union, Tuple, Dict, overload
 
 from Config import config
 from Logger import Logger
+from Exception import M3u8ExpiredException, ForbiddenError
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
 
@@ -52,6 +53,15 @@ class DownloadPackage:
     has_chinese : bool = False
     release_date : str = None
     time_length : str = None
+
+    def __hash__(self):
+        string = f"{self.id}{self.name}{self.actress}{self.hls_url}{self.cover_url}{self.src}"
+        return hash(string)
+    
+    def __eq__(self, other):
+        if not isinstance(other, DownloadPackage):
+            return False
+        return hash(self) == hash(other)
 
     def __post_init__(self) -> None:
         self.base_url = self.hls_url.rsplit('/', 1)[0] + '/'
@@ -223,10 +233,10 @@ class Downloader:
             else:
                 origin_data.update(dump_data)
             with open(download_info_path, 'w', encoding='utf-8') as f:
-                json.dump(origin_data, f, indent=4)
+                json.dump(origin_data, f, indent=4, ensure_ascii=False)
         else:
             with open(download_info_path, 'w', encoding='utf-8') as f:
-                json.dump(dump_data, f, indent=4)
+                json.dump(dump_data, f, indent=4, ensure_ascii=False)
     
     @staticmethod
     def _get_folder_mtime(primary_folder : Path, sub_folder_name : str) -> float:
@@ -301,8 +311,9 @@ class Downloader:
                             continue
                         for prefix in prefixes:
                             if file.name.startswith(prefix):
-                                downloaded_ts_index.get(prefix, [])
-                                downloaded_ts_index[prefix].append(int(file.name.split('.')[0].split(prefix)[-1]))
+                                downloaded_ts_index_list_partial = downloaded_ts_index.get(prefix, [])
+                                downloaded_ts_index_list_partial.append(int(file.name.split('.')[0].split(prefix)[-1]))
+                                downloaded_ts_index[prefix] = downloaded_ts_index_list_partial
                 for value in downloaded_ts_index.values():
                     downloaded_ts_index_list.extend(value)
             else:
@@ -473,28 +484,6 @@ class Downloader:
                     return callback()
             return tmp_files
     
-    def _update_hls_url(
-            self,
-            package : DownloadPackage,
-    ) -> str:
-        # TODO: 实现更新hls_url的逻辑
-        domain = package.src
-        if domain.endswith('/'):
-            domain = domain[:-1]
-        if not domain.startswith('https://'):
-            domain = 'https://' + domain
-        video_address = urljoin(domain, f"/videos/{package.id.lower()}/")
-        response = requests.get(video_address, headers=config.headers, proxies=config.proxies, timeout=10)
-        if response.status_code == 200:
-            page_parser = JabPageParser(response.text)
-            return page_parser.parse_hls_url()
-        elif response.status_code == 403:
-            logger.error(f"获取视频地址失败,url:{video_address},状态码:{response.status_code}")
-            raise Exception(f"403 forbidden, url:{video_address}")
-        else:
-            logger.error(f"获取视频地址失败,url:{video_address},状态码:{response.status_code}")
-            raise Exception(f"获取视频地址失败,url:{video_address},状态码:{response.status_code}")
-    
     async def _async_download_ts(
                 self, 
                 package : DownloadPackage,
@@ -512,8 +501,22 @@ class Downloader:
             semaphore = asyncio.Semaphore(config.max_ts_concurrency)
 
             tasks = []
+            # for segment in segments:
+            #     task = self._download_single_ts(
+            #         session=session,
+            #         segment=segment,
+            #         base_url=base_url,
+            #         tmp_ts_dir=tmp_ts_dir,
+            #         key_bytes=key_bytes,
+            #         iv=iv,
+            #         semaphore=semaphore
+            #     )
+            #     tasks.append(task)
+            
+            # await asyncio.gather(*tasks, return_exceptions=True)
+
             for segment in segments:
-                task = self._download_single_ts(
+                task = asyncio.create_task(self._download_single_ts(
                     session=session,
                     segment=segment,
                     base_url=base_url,
@@ -521,11 +524,31 @@ class Downloader:
                     key_bytes=key_bytes,
                     iv=iv,
                     semaphore=semaphore
-                )
+                ))
                 tasks.append(task)
-            
-            await asyncio.gather(*tasks, return_exceptions=True)
-    
+            done, pending = await asyncio.wait(
+                tasks, 
+                return_when=asyncio.FIRST_EXCEPTION
+                )
+            m3u8_expired = False
+            forbidden_error = False
+            for task in done:
+                if task.exception() and isinstance(task.exception(), M3u8ExpiredException):
+                    m3u8_expired = True
+                    break
+                if task.exception() and isinstance(task.exception(), ForbiddenError):
+                    forbidden_error = True
+                    break
+            if forbidden_error:
+                raise ForbiddenError("403 forbidden, 请更换IP")
+            if m3u8_expired:
+                for task in pending:
+                    task.cancel()
+                self._redownload(package=package)
+            else:
+                if pending:
+                    await asyncio.wait(pending)
+
     async def _download_single_ts(
             self,
             session : aiohttp.ClientSession,
@@ -555,15 +578,14 @@ class Downloader:
                             return
                         elif ts_response.status == 403:
                             logger.error(f"下载ts文件失败,url:{ts_url},状态码:{ts_response.status}")
-                            raise Exception(f"403 forbidden, url:{ts_url}")
+                            raise ForbiddenError(f"403 forbidden, url:{ts_url}")
                         elif ts_response.status == 410:
-                            logger.warning("m3u8文件已过期,将重新下载")
-                            # TODO: 实现重新下载m3u8文件的逻辑
-                            raise Exception("m3u8文件已过期,将重新下载")
+                            logger.warning("m3u8文件已过期")
+                            raise M3u8ExpiredException("m3u8文件已过期")
                         else:
                             logger.warning(f"下载ts文件失败,url:{ts_url},状态码:{ts_response.status}")
-                except aiohttp.ClientError:
-                    logger.warning(f"下载ts文件失败,url:{ts_url}")
+                except aiohttp.ClientError as e:
+                    logger.warning(f"下载ts文件失败,url:{ts_url}, 错误信息:{e}")
                 if retry_count < config.max_retries - 1:
                     wait_time = config.retry_wait_time * (2 ** retry_count)
                     logger.info(f"重试第{retry_count+1}次,等待{wait_time}秒...")
@@ -645,7 +667,6 @@ class Downloader:
     
     def _download_m3u8(
             self,
-            hls_url : str,
             package : DownloadPackage,
     ) -> None:
         dirs = self._init_dir(package)
@@ -653,28 +674,27 @@ class Downloader:
         if download_info_path.exists():
             with open(download_info_path, 'r', encoding='utf-8') as f:
                 download_info = json.load(f)
-            if package.id.lower() in download_info:
-                old_hls_url = download_info[package.id.lower()][-1]['hls_url']
+            if package.id.upper() in download_info:
+                old_hls_url = download_info[package.id.upper()][-1]['hls_url']
             else:
-                logger.warning(f"未找到{package.id.lower()}的下载信息, 将使用默认的hls_url")
+                logger.warning(f"未找到{package.id.upper()}的下载信息, 将使用默认的hls_url")
         else:
             old_hls_url = package.hls_url
         try:
-            m3u8_str = requests.get(hls_url, headers = config.headers, proxies = config.proxies).text
+            m3u8_str = requests.get(package.hls_url, headers = config.headers, proxies = config.proxies).text
             m3u8_obj = m3u8.loads(m3u8_str)
             if os.path.exists(dirs['tmp_m3u8']):
                 with open(dirs['tmp_m3u8'], 'r') as f:
                     m3u8_file_str = f.read()
                 if (
                     hash(m3u8_file_str) == hash(m3u8_str)
-                    and hash(hls_url) == hash(old_hls_url) 
+                    and hash(package.hls_url) == hash(old_hls_url) 
                     and os.path.exists(dirs['tmp_key']) 
                     and os.path.exists(dirs['tmp_iv'])
                     ):
                     logger.info("m3u8文件未变化, 跳过下载")
                     return
                 else:
-                    package.update(hls_url=hls_url)
                     iv = m3u8_obj.keys[0].iv
                     key_uri = m3u8_obj.keys[0].uri
                     key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
@@ -686,7 +706,6 @@ class Downloader:
                     logger.info("m3u8文件已变化, 重新下载")
                     self._write_tmp(write_dict)
             else:
-                package.update(hls_url=hls_url)
                 iv = m3u8_obj.keys[0].iv
                 key_uri = m3u8_obj.keys[0].uri
                 key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
@@ -724,7 +743,6 @@ class Downloader:
             package.status == DownloadStatus.DOWNLOADING
             self._download_m3u8(
                 package=package,
-                hls_url=package.hls_url, 
                 )
             self._dump_download_info(package=package)
             self._download_cover(package=package)
@@ -740,24 +758,27 @@ class Downloader:
                 key_bytes=decypt_info_dict['key'],
                 iv=decypt_info_dict['iv']
                 ))
-        # TODO
         undownload_segments = self._get_undownload_ts(
-            package = package,
-            m3u8_obj = m3u8.loads(decypt_info_dict['m3u8']),
+                package = package,
+                m3u8_obj = m3u8.loads(decypt_info_dict['m3u8']),
         )
         while len(undownload_segments) != 0:
             self._redownload(package=package)
+            undownload_segments = self._get_undownload_ts(
+                package=package,
+                m3u8_obj=m3u8.loads(decypt_info_dict['m3u8']),
+            )
         package.status = DownloadStatus.MERGING
         logger.info("所有ts文件已下载完成")
         self._merge_ts(package=package, list_file_path=dirs['list_file_path'], m3u8_obj=m3u8.loads(decypt_info_dict['m3u8']))
+        package.status = DownloadStatus.FINISHED
         self._clear_all_tmp(package=package)
     
     def _redownload(
             self,
             package : DownloadPackage,
             ) -> None:
-        hls_url = self._update_hls_url(package=package)
-        self._download_m3u8(hls_url=hls_url, package=package)
+        self._download_m3u8(package=package)
         decrpt_info = self._load_tmp(
             package=package,
             tmp_file_type=['m3u8', 'key', 'iv']
@@ -788,3 +809,6 @@ class Downloader:
             return
         else:
             raise ValueError("不支持的下载类型")
+
+if __name__ == '__main__':
+    pass
