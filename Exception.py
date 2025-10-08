@@ -4,3 +4,6 @@ class M3u8ExpiredException(Exception):
 
 class ForbiddenError(Exception):
     pass
+
+class NotFoundError(Exception):
+    pass

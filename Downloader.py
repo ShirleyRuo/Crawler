@@ -16,150 +16,16 @@ import logging
 from pathlib import Path
 from functools import lru_cache
 from urllib.parse import urljoin
-from enum import Enum
-from Crypto.Cipher import AES
-from dataclasses import dataclass
 from typing import List, Optional, Callable, Any, Union, Tuple, Dict, overload
 
 from Config import config
 from Logger import Logger
+from Decrypter import Decrypter
+from DataUnit import DownloadPackage
+from EnumType import DecrptyType, DownloadStatus
 from Exception import M3u8ExpiredException, ForbiddenError
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
-
-class DownloadStatus(Enum):
-
-    PENDING = 1
-    DOWNLOADING = 2
-    PAUSED = 3
-    DECRYPTING = 4
-    MERGING = 5
-    FINISHED = 6
-    FAILED = 7
-
-class DecrptyType(Enum):
-    AES = 1
-
-@dataclass
-class DownloadPackage:
-    id : str
-    name : str
-    actress : str
-    hash_tag : Tuple[str]
-    hls_url : str
-    cover_url : str
-    src : str = 'Unknown'
-    status : DownloadStatus = DownloadStatus.PENDING
-    has_chinese : bool = False
-    release_date : str = None
-    time_length : str = None
-
-    def __hash__(self):
-        string = f"{self.id}{self.name}{self.actress}{self.hls_url}{self.cover_url}{self.src}"
-        return hash(string)
-    
-    def __eq__(self, other):
-        if not isinstance(other, DownloadPackage):
-            return False
-        return hash(self) == hash(other)
-
-    def __post_init__(self) -> None:
-        self.base_url = self.hls_url.rsplit('/', 1)[0] + '/'
-    
-    def update(self, hls_url : str = None) -> None:
-        if hls_url:
-            self.hls_url = hls_url
-            self.base_url = self.hls_url.rsplit('/', 1)[0] + '/'
-
-class Decrypter:
-
-    def __init__(
-            self,
-            decrpty_type : DecrptyType,
-            **kwargs : Any
-            ) -> None:
-        self._decrypty_type = decrpty_type
-    
-    def decrypt(
-            self,
-            file_obj : Optional[bytes] = None,
-            key : Optional[bytes] = None,
-            iv : Optional[str] = None,
-            **kwargs : Any
-            ) -> bytes:
-        if iv.startswith('0x'):
-            iv = bytes.fromhex(iv[2:])
-        else:
-            iv = bytes.fromhex(iv)
-        if self._decrypty_type == DecrptyType.AES:
-            cipher = AES.new(key, AES.MODE_CBC, iv)
-            decrypted_data = cipher.decrypt(file_obj)
-            return decrypted_data
-        else:
-            raise ValueError("不支持的解密类型")
-        
-class JabPageParser:
-
-    def __init__(self, html_text : str) -> None:
-        self._html_text = html_text
-    
-    def parse_id_name_actress(self) -> Tuple[str, str, str]:
-        name_str = re.search(r'<title>(.*?)</title>', self._html_text).group(1)
-        id = name_str.split()[0]
-
-        name_and_actress = name_str.split('- Jable.TV')[0]
-
-        actress = re.search(r'name\s*=\s*"keywords"\s*content\s*=\s*"(.*?)"', self._html_text).group(1).split(',')[-1].strip()
-        actress_ = name_and_actress.split()[-1]
-
-        if actress == actress_:
-            name = " ".join(name_and_actress.split()[1:-1]).strip()
-        else:
-            name = " ".join(name_and_actress.split()[1:]).strip()
-        return id, name, actress
-    
-    def parse_hls_url(self) -> str:
-        return re.search(r"hlsUrl\s*=\s*'(https?://.*?\.m3u8)'", self._html_text).group(1)
-    
-    def parse_cover_url(self) -> str:
-        cover_url = re.search(r'"og:image"\s*content\s*=\s*"(.*?)"', self._html_text).group(1)
-        return cover_url
-
-    def parse_hash_tag(self) -> Tuple[str]:
-        hashtags = re.search(r'name\s*=\s*"keywords"\s*content\s*=\s*"(.*?)"', self._html_text).group(1)
-        return tuple(hashtags.split(',')[:-1])
-
-    def parse_release_date(self) -> str:
-        return "Unknown"
-
-    def parse_time_length(self) -> str:
-        return "Unknown"
-
-    def parse_has_chinese(self) -> bool:
-        chinese_description = re.search(r'name\s*=\s*"description"\s*content\s*=\s*"(.*?)"', self._html_text)
-        if "中文" not in chinese_description.group(1):
-            return False
-        return True
-
-    def parse(self) -> Dict:
-        id, name, actress = self.parse_id_name_actress()
-        hls_url = self.parse_hls_url()
-        cover_url = self.parse_cover_url()
-        hash_tag = self.parse_hash_tag()
-        release_date = self.parse_release_date()
-        time_length = self.parse_time_length()
-        has_chinese = self.parse_has_chinese()
-        return {
-            'id' : id,
-            'name' : name,
-            'actress' : actress,
-            'hash_tag' : hash_tag,
-            'hls_url' : hls_url,
-            'cover_url' : cover_url,
-            'release_date' : release_date,
-            'time_length' : time_length,
-            'has_chinese' : has_chinese,
-        }
 
 class Downloader:
     '''
@@ -514,7 +380,7 @@ class Downloader:
             #     tasks.append(task)
             
             # await asyncio.gather(*tasks, return_exceptions=True)
-
+            logger.info(f"开始下载{len(segments)}个ts文件...")
             for segment in segments:
                 task = asyncio.create_task(self._download_single_ts(
                     session=session,
@@ -644,7 +510,7 @@ class Downloader:
             logger.error(f"合并视频片段失败:{e.stderr.decode('utf-8')}")
     
     @overload
-    def _merge_ts(self, package : DownloadPackage, list_file_path = None, m3u8_obj = None) -> None:...
+    def _merge_ts(self, package : DownloadPackage) -> None:...
 
     @overload
     def _merge_ts(self, package : DownloadPackage, list_file_path : Path, m3u8_obj : m3u8.M3U8) -> None:...
@@ -656,7 +522,7 @@ class Downloader:
         m3u8_obj : Optional[m3u8.M3U8] = None,
         ) -> None:
         logger.info("正在合并TS文件...")
-        if self._use_ffmpeg and list_file_path and m3u8_obj:
+        if self._use_ffmpeg and list_file_path is not None and m3u8_obj is not None:
             self._merge_ts_with_ffmpeg(
                 package=package,
                 list_file_path=list_file_path,
@@ -705,6 +571,7 @@ class Downloader:
                     }
                     logger.info("m3u8文件已变化, 重新下载")
                     self._write_tmp(write_dict)
+                    self._dump_download_info(package=package)
             else:
                 iv = m3u8_obj.keys[0].iv
                 key_uri = m3u8_obj.keys[0].uri
@@ -716,8 +583,10 @@ class Downloader:
                 }
                 logger.info("m3u8文件不存在, 下载")
                 self._write_tmp(write_dict)
+                self._dump_download_info(package=package)
         except requests.exceptions.RequestException:
-            logger.error("下载m3u8文件失败")   
+            logger.error("下载m3u8文件失败")
+            raise Exception("下载m3u8文件失败")   
 
     def _download_cover(
             self, 
@@ -744,7 +613,6 @@ class Downloader:
             self._download_m3u8(
                 package=package,
                 )
-            self._dump_download_info(package=package)
             self._download_cover(package=package)
             decypt_info_dict = self._load_tmp(
                 package=package,
@@ -809,6 +677,3 @@ class Downloader:
             return
         else:
             raise ValueError("不支持的下载类型")
-
-if __name__ == '__main__':
-    pass

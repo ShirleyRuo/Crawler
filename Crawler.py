@@ -1,26 +1,21 @@
 import os
 import sys
 
+import time
 import logging
 import requests
-from enum import Enum, auto
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 
 from Config import config
 from Logger import Logger
-from Downloader import JabPageParser, DownloadPackage, Downloader
+from EnumType import Page
+from PageParser import JabPageParser
+from DataUnit import DownloadPackage
+from Exception import ForbiddenError, NotFoundError
+from Downloader import Downloader
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
-
-class Page(Enum):
-
-    OTHERPAGE = auto()
-    CAPTACHA = auto()
-    SINGLE_VIDEO = auto()
-    WEBSITE_HOME = auto()
-    ACTRESS_HOME = auto()
-    VIDEO_LIST = auto()
 
 class VideoCrawlerBase(ABC):
 
@@ -72,7 +67,7 @@ class JabVideoCrawler(VideoCrawlerBase):
             config.headers.update(headers)
         else:
             logger.error(f'不支持的视频网站: {self.src}')
-            sys.exit(1)
+            raise ValueError(f'不支持的视频网站: {self.src}')
     
     def _set_proxy(self) -> None:
         #TODO
@@ -81,25 +76,36 @@ class JabVideoCrawler(VideoCrawlerBase):
     def _get_html_text(self) -> str:
         self._get_headers()
         self._set_proxy()
-        try:
-            response = requests.get(self.url, headers=config.headers, proxies=config.proxies, timeout=10)
-            if response.status_code == 200:
-                return response.text
-            elif response.status_code == 403:
-                logger.error(f'请求视频页面被禁止: {response.status_code}')
-                sys.exit(1)
-            else:
-                logger.error(f'请求视频页面失败: {response.status_code}')
-        except requests.exceptions.RequestException as e:
-            logger.error(f'请求视频页面失败: {e}')
-            sys.exit(1)
-    
+        NotFound_count = 0
+        for retry_count in range(config.max_retries):
+            try:
+                response = requests.get(self.url, headers=config.headers, proxies=config.proxies, timeout=10)
+                if response.status_code == 200:
+                    return response.text
+                elif response.status_code == 403:
+                    logger.error(f'请求视频页面被禁止: {response.status_code}')
+                    raise ForbiddenError(f'请求视频页面被禁止: {response.status_code}')
+                elif response.status_code == 404:
+                    NotFound_count += 1
+                    logger.warning(f'请求视频页面不存在: {response.status_code}')
+                else:
+                    logger.error(f'请求视频页面失败: {response.status_code},正在重试...')
+            except requests.exceptions.RequestException as e:
+                logger.error(f'请求视频页面失败: {e},正在重试...')
+            wait_time = config.retry_wait_time * (2 ** retry_count + 1)
+            logger.info(f'等待 {wait_time} 秒后重试...')
+            time.sleep(wait_time)
+        logger.error(f'请求视频页面失败: 超过最大重试次数')
+        if NotFound_count >= config.max_retries:
+            raise NotFoundError(f'请求视频页面不存在: {response.status_code}')
+        raise Exception(f'请求视频页面失败: 超过最大重试次数')
+                
     def _parse_page_content(self) -> Page:
         if 'videos' in self.url:
             return Page.SINGLE_VIDEO
         else:
             logger.error(f'不支持的视频链接: {self.url}')
-            sys.exit(1)
+            raise ValueError(f'不支持的视频链接: {self.url}')
 
     def _init_download_package(
             self,
@@ -143,43 +149,3 @@ class JabVideoCrawler(VideoCrawlerBase):
 
     def _validate_src(self):
         return self.src == 'jable.tv' and self.src in self.url
-
-if __name__ == '__main__':
-    url = 'https://jable.tv/videos/ABW-087/'
-    crawler = JabVideoCrawler(url = url)
-    import m3u8
-    from Downloader import DownloadStatus
-    # crawler.download_video_with_id('ABW-087')
-    package = crawler.parse()
-    # package = DownloadPackage(
-    #     id = 'ABW-087',
-    #     name = 'ABW-087',
-    #     actress = 'ABW-087',
-    #     hash_tag = ('ABW-087',),
-    #     hls_url = 'https://jable.tv/videos/ABW-087/hls/index.m3u8',
-    #     cover_url = 'https://jable.tv/videos/ABW-087/cover.jpg',
-    #     src = 'jable.tv',
-    #     time_length='10:00',
-    #     release_date='2021-08-25',
-    #     has_chinese=False,
-    # )
-    loader = Downloader(package)
-    decrypt_info = loader._load_tmp(package=package, tmp_file_type='m3u8')
-    undownload_segments = loader._get_undownload_ts(
-        package = package,
-        m3u8_obj = m3u8.loads(decrypt_info),
-    )
-    dirs = loader._init_dir(package=package)
-    for segment in undownload_segments:
-        print(segment.uri)
-    while len(undownload_segments) != 0:
-        loader._redownload(package=package)
-        undownload_segments = loader._get_undownload_ts(
-            package = package,
-            m3u8_obj = m3u8.loads(decrypt_info),
-        )
-    package.status = DownloadStatus.MERGING
-    logger.info("所有ts文件已下载完成")
-    loader._merge_ts(package=package, list_file_path=dirs['list_file_path'], m3u8_obj=m3u8.loads(decrypt_info))
-    package.status = DownloadStatus.FINISHED
-    loader._clear_all_tmp(package=package)
