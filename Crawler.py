@@ -1,6 +1,3 @@
-import os
-import sys
-
 import time
 import logging
 import requests
@@ -72,6 +69,15 @@ class JabVideoCrawler(VideoCrawlerBase):
     def _set_proxy(self) -> None:
         #TODO
         return
+    
+    def _is_available(self, type : str) -> bool:
+        if type == 'video':
+            pass
+        elif type == 'cover':
+            pass
+        else:
+            logger.error(f'不支持的类型: {type}')
+            raise ValueError(f'不支持的类型: {type}')
     
     def _get_html_text(self) -> str:
         self._get_headers()

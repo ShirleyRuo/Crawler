@@ -33,3 +33,14 @@ class DownloadPackage:
         if hls_url:
             self.hls_url = hls_url
             self.base_url = self.hls_url.rsplit('/', 1)[0] + '/'
+
+@dataclass
+class InfoPackage:
+    id : str
+    name : str
+    actress : str
+    hash_tag : Tuple[str]
+    has_chinese : bool
+    release_date : str
+    time_length : str
+    src : str

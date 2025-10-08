@@ -21,11 +21,17 @@ from typing import List, Optional, Callable, Any, Union, Tuple, Dict, overload
 from Config import config
 from Logger import Logger
 from Decrypter import Decrypter
+from Manager import DownloadInfoManager
 from DataUnit import DownloadPackage
 from EnumType import DecrptyType, DownloadStatus
 from Exception import M3u8ExpiredException, ForbiddenError
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
+
+_DOWNLOAD_INFO_PATH = config.download_dir / 'download_info.json'
+_download_info_manager = DownloadInfoManager(
+    _DOWNLOAD_INFO_PATH,
+)
 
 class Downloader:
     '''
@@ -75,34 +81,6 @@ class Downloader:
         self._clear_tmp_decrpt_info(package=package)
         self._clear_tmp_merge_info(package=package)
         logger.info(f"清理完成,{package.id}")
-
-    def _dump_download_info(
-            self, 
-            package : DownloadPackage,
-            ) -> None:
-        download_info_path = config.download_dir / 'download_info.json'
-        package_data = {
-            'name' : package.name,
-            'actress' : package.actress,
-            'hash_tag' : package.hash_tag,
-            'hls_url' : package.hls_url,
-            'cover_url' : package.cover_url,
-            'src' : package.src,
-            'status' : package.status.name,
-        }
-        dump_data = {package.id : [package_data]}
-        if download_info_path.exists():
-            with open(download_info_path, 'r', encoding='utf-8') as f:
-                origin_data : Dict[str, List[Dict]] = json.load(f)
-            if package.id in origin_data:
-                origin_data[package.id].append(package_data)
-            else:
-                origin_data.update(dump_data)
-            with open(download_info_path, 'w', encoding='utf-8') as f:
-                json.dump(origin_data, f, indent=4, ensure_ascii=False)
-        else:
-            with open(download_info_path, 'w', encoding='utf-8') as f:
-                json.dump(dump_data, f, indent=4, ensure_ascii=False)
     
     @staticmethod
     def _get_folder_mtime(primary_folder : Path, sub_folder_name : str) -> float:
@@ -157,9 +135,8 @@ class Downloader:
         if not tmp_ts_dir.exists():
             logger.error(f"临时ts目录{tmp_ts_dir}不存在!")
             raise FileNotFoundError(f"临时ts目录{tmp_ts_dir}不存在!")
-        download_info_path = config.download_dir / 'download_info.json'
-        if download_info_path.exists():
-            with open(download_info_path, 'r', encoding='utf-8') as f:
+        if _DOWNLOAD_INFO_PATH.exists():
+            with open(_DOWNLOAD_INFO_PATH, 'r', encoding='utf-8') as f:
                 data : Dict[str, List[Dict]] = json.load(f)
             if package.id in data:
                 package_data_list = data[package.id]
@@ -367,19 +344,6 @@ class Downloader:
             semaphore = asyncio.Semaphore(config.max_ts_concurrency)
 
             tasks = []
-            # for segment in segments:
-            #     task = self._download_single_ts(
-            #         session=session,
-            #         segment=segment,
-            #         base_url=base_url,
-            #         tmp_ts_dir=tmp_ts_dir,
-            #         key_bytes=key_bytes,
-            #         iv=iv,
-            #         semaphore=semaphore
-            #     )
-            #     tasks.append(task)
-            
-            # await asyncio.gather(*tasks, return_exceptions=True)
             logger.info(f"开始下载{len(segments)}个ts文件...")
             for segment in segments:
                 task = asyncio.create_task(self._download_single_ts(
@@ -536,9 +500,8 @@ class Downloader:
             package : DownloadPackage,
     ) -> None:
         dirs = self._init_dir(package)
-        download_info_path = config.download_dir / 'download_info.json'
-        if download_info_path.exists():
-            with open(download_info_path, 'r', encoding='utf-8') as f:
+        if _DOWNLOAD_INFO_PATH.exists():
+            with open(_DOWNLOAD_INFO_PATH, 'r', encoding='utf-8') as f:
                 download_info = json.load(f)
             if package.id.upper() in download_info:
                 old_hls_url = download_info[package.id.upper()][-1]['hls_url']
@@ -571,7 +534,7 @@ class Downloader:
                     }
                     logger.info("m3u8文件已变化, 重新下载")
                     self._write_tmp(write_dict)
-                    self._dump_download_info(package=package)
+                    _download_info_manager._save_download_info(package=package)
             else:
                 iv = m3u8_obj.keys[0].iv
                 key_uri = m3u8_obj.keys[0].uri
@@ -583,7 +546,7 @@ class Downloader:
                 }
                 logger.info("m3u8文件不存在, 下载")
                 self._write_tmp(write_dict)
-                self._dump_download_info(package=package)
+                _download_info_manager._save_download_info(package=package)
         except requests.exceptions.RequestException:
             logger.error("下载m3u8文件失败")
             raise Exception("下载m3u8文件失败")   
