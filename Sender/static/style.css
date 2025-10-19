@@ -1,0 +1,185 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    background: white; 
+    min-height: 100vh;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+}
+.header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+.header h1 { 
+    font-size: 2.5em; 
+    margin-bottom: 10px; 
+    font-weight: 300;
+}
+.access-info {
+    background: #e8f4fd;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+.tabs {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+.tab {
+    padding: 15px 30px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+.tab.active {
+    border-bottom-color: #3498db;
+    color: #3498db;
+    background: white;
+}
+.tab-content {
+    display: none;
+    padding: 30px;
+}
+.tab-content.active {
+    display: block;
+}
+.upload-area { 
+    border: 3px dashed #3498db; 
+    padding: 50px 20px; 
+    text-align: center; 
+    margin: 20px 0;
+    border-radius: 15px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.upload-area:hover {
+    background: #e3f2fd;
+    border-color: #2980b9;
+}
+.speed-test { 
+    margin: 20px 0; 
+    padding: 20px; 
+    background: #f0f8ff; 
+    border-radius: 10px;
+    border-left: 4px solid #2ecc71;
+}
+.speed-result { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    margin-top: 10px;
+}
+.progress-area { margin: 20px 0; }
+.progress-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    width: 0%;
+    transition: width 0.3s;
+    border-radius: 10px;
+}
+.file-list { 
+    margin-top: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.file-item { 
+    padding: 15px 20px; 
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.file-item:hover { background: #f8f9fa; }
+button { 
+    background: #3498db; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s;
+}
+button:hover { background: #2980b9; }
+button.success { background: #27ae60; }
+button.success:hover { background: #219a52; }
+button.danger { background: #e74c3c; }
+button.danger:hover { background: #c0392b; }
+.status {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+.status.success { background: #d4edda; color: #155724; }
+.status.error { background: #f8d7da; color: #721c24; }
+.optimization-info {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+/* 删除确认模态框样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-left: 4px solid #e74c3c;
+}
+.password-input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+.password-input:focus {
+    border-color: #3498db;
+    outline: none;
+}

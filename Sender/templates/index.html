@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件传输系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='style.css') }}"></link>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>文件传输</h1>
+        </div>
+        
+        <div class="access-info">
+            <strong>访问地址:</strong><br>
+            • 本机: <a href="http://localhost:5000" target="_blank">http://localhost:5000</a><br>
+            • 局域网: <a href="http://{{local_ip}}:5000" target="_blank">http://{{local_ip}}:5000</a>
+        </div>
+
+        <div class="optimization-info">
+            <strong>🚀 特性:</strong>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>分块上传 </li>
+                <li>并行传输 </li>
+                <li>实时进度显示</li>
+            </ul>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('upload')">📤 高速上传</div>
+            <div class="tab" onclick="switchTab('download')">📥 文件下载</div>
+            <div class="tab" onclick="switchTab('speed')">📊 速度测试</div>
+        </div>
+
+        <!-- 高速上传标签页 -->
+        <div id="upload" class="tab-content active">
+            <h2>⚡ 文件上传</h2>
+            <div class="upload-area" id="dropArea" onclick="document.getElementById('fileInput').click()">
+                <h3>📤 点击选择文件</h3>
+                <p>支持大文件，自动分块并行上传</p>
+                <input type="file" id="fileInput" multiple style="display:none">
+            </div>
+            <div style="text-align: center; margin: 20px 0;">
+                <button onclick="uploadFileOptimized()" class="success">🚀 开始上传</button>
+                <button onclick="clearUploads()" class="danger">🗑️ 清空进度</button>
+            </div>
+            
+            <div id="progressArea" class="progress-area"></div>
+            <div id="statusMessage"></div>
+        </div>
+
+        <!-- 文件下载标签页 -->
+        <div id="download" class="tab-content">
+            <h2>📥 文件下载</h2>
+            <p>下载已上传的文件</p>
+            
+            <div class="file-list">
+                <h3>文件列表 
+                    <button onclick="loadFiles()" class="success">🔄 刷新</button>
+                </h3>
+                <div id="fileList">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 删除确认密码模态框 -->
+        <div id="deleteModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>🔒 确认删除</h3>
+                <p>您即将删除文件: <span id="deleteFileName" style="font-weight: bold; color: #e74c3c;"></span></p>
+                <p>此操作不可撤销，请输入密码确认：</p>
+                <input type="password" id="deletePassword" placeholder="输入管理员密码" class="password-input">
+                <div id="deleteMessage" style="margin: 10px 0;"></div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <button onclick="closeDeleteModal()">取消</button>
+                    <button onclick="confirmDelete()" class="danger">确认删除</button>
+                </div>
+            </div>
+        </div>     
+
+        <!-- 速度测试标签页 -->
+        <div id="speed" class="tab-content">
+            <h2>📊 网络速度测试</h2>
+            
+            <div class="speed-test">
+                <h3>上传速度测试</h3>
+                <p>测试服务器上传带宽性能</p>
+                <button onclick="testSpeed()" class="success">开始速度测试</button>
+                <div id="speedResult" class="speed-result"></div>
+            </div>
+            <!-- 新增下载速度测试部分 -->
+            <div class="speed-test" style="border-left-color: #3498db;">
+                <h3>📥 下载速度测试</h3>
+                <p>测试从服务器下载文件的带宽性能</p>
+                
+                <div id="testFileInfo" style="margin: 15px 0; padding: 10px; background: #e8f4fd; border-radius: 5px;">
+                    <div>测试文件状态: <span id="fileStatus">检查中...</span></div>
+                    <div id="fileDetails" style="margin-top: 5px;"></div>
+                </div>
+                
+                <button onclick="testDownloadSpeed()" class="success" id="downloadTestBtn" disabled>
+                    开始下载速度测试
+                </button>
+                <div id="downloadSpeedResult" class="speed-result"></div>
+            </div>
+        </div>
+    </div>
+    <script src = "{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -4,3 +4,7 @@ logs/*
 tmp/*
 test.html
 test.txt
+src/__pycache__/*
+Sender/__pycache__/*
+Sender/uploads/*
+uploads/*
