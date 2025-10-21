@@ -1,5 +1,11 @@
 import re
-from typing import Tuple, Dict
+import time
+from typing import Tuple, Dict, Optional
+
+from ..Config import config
+from ..Logger import Logger
+
+logger = Logger(config.log_dir).get_logger(__name__)
 
 jab_pattern : Dict[str, re.Pattern] = {
     "title" : re.compile(r'<title>(.*?)</title>'),
@@ -12,8 +18,26 @@ jab_pattern : Dict[str, re.Pattern] = {
 
 class JabPageParser:
 
-    def __init__(self, html_text : str) -> None:
+    def __init__(
+            self, 
+            html_text : Optional[str] = None
+            ) -> None:
         self._html_text = html_text
+    
+    @staticmethod
+    def validation(url : str) -> str:
+        try:
+            from selenium import webdriver
+            driver = webdriver.Chrome()
+            driver.get(url=url)
+            time.sleep(10)
+            html_text = driver.page_source
+            config.cookie = driver.get_cookies()
+            driver.quit()
+            return html_text
+        except:
+            logger.error('请安装Chrome浏览器并配置环境变量')
+            return ""
     
     def parse_id_name_actress(self) -> Tuple[str, str, str]:
         name_str = jab_pattern["title"].search(self._html_text).group(1)
@@ -52,3 +76,23 @@ class JabPageParser:
         if "中文" not in chinese_description.group(1):
             return False
         return True
+    
+    def parse(self) -> Dict:
+        id, name, actress = self.parse_id_name_actress()
+        hls_url = self.parse_hls_url()
+        cover_url = self.parse_cover_url()
+        hash_tags = self.parse_hash_tag()
+        release_date = self.parse_release_date()
+        time_length = self.parse_time_length()
+        has_chinese = self.parse_has_chinese()
+        return {
+            "id" : id,
+            "name" : name,
+            "actress" : actress,
+            "hls_url" : hls_url,
+            "cover_url" : cover_url,
+            "hash_tag" : hash_tags,
+            "release_date" : release_date,
+            "time_length" : time_length,
+            "has_chinese" : has_chinese
+        }

@@ -4,13 +4,13 @@ import requests
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 
-from Config import config
-from Logger import Logger
-from EnumType import Page
-from PageParser import JabPageParser
-from DataUnit import DownloadPackage
-from Exception import ForbiddenError, NotFoundError
-from Downloader import Downloader
+from .Config import config
+from .Logger import Logger
+from .EnumType import Page
+from .PageParse.PageParser import JabPageParser
+from .DataUnit import DownloadPackage
+from .Exception import ForbiddenError, NotFoundError
+from .Downloader import Downloader
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
 
@@ -68,7 +68,7 @@ class JabVideoCrawler(VideoCrawlerBase):
         '''
         if self._validate_src():
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0',
                 'Origin' : 'https://jable.tv',
                 'Referer' : 'https://jable.tv/',
                 'Priority' : 'u=1, i',
@@ -115,6 +115,16 @@ class JabVideoCrawler(VideoCrawlerBase):
                 if response.status_code == 200:
                     return response.text
                 elif response.status_code == 403:
+                    if self._parse_page_content(response.text) == Page.CAPTACHA:
+                        logger.info(f'请求视频页面被拦截,正在验证...')
+                        if html_text := JabPageParser.validation(self.url):
+                            logger.info(f'验证成功,继续请求...')
+                            cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
+                            config.headers.update({'Cookie': '; '.join(cookies_list)})
+                            return html_text
+                        else:
+                            logger.error('验证失败')
+                            raise ForbiddenError('验证失败')
                     logger.error(f'请求视频页面被禁止: {response.status_code}')
                     raise ForbiddenError(f'请求视频页面被禁止: {response.status_code}')
                 elif response.status_code == 404:
@@ -132,15 +142,25 @@ class JabVideoCrawler(VideoCrawlerBase):
             raise NotFoundError(f'请求视频页面不存在: {response.status_code}')
         raise Exception(f'请求视频页面失败: 超过最大重试次数')
                 
-    def _parse_page_content(self) -> Page:
+    def _parse_page_content(
+            self,
+            html_text : str = None,
+            ) -> Page:
         '''
         获取页面类型
-
+        Args:
+            html_text(str): 页面文本,默认为None
         Returns:
             Page: 页面类型
         Raises:
             ValueError: 不支持的视频链接
         '''
+        if html_text:
+            if 'just a moment' in html_text.lower():
+                return Page.CAPTACHA
+            else:
+                logger.error('未知错误')
+                raise ValueError('未知错误')
         if 'videos' in self.url:
             return Page.SINGLE_VIDEO
         else:

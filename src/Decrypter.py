@@ -1,6 +1,7 @@
 from Crypto.Cipher import AES
 from typing import Any, Optional
-from EnumType import DecrptyType
+
+from .EnumType import DecrptyType
 
 class Decrypter:
 

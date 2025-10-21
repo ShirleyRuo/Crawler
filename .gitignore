@@ -5,6 +5,9 @@ tmp/*
 test.html
 test.txt
 src/__pycache__/*
+src/PageParse/__pycache__/*
 Sender/__pycache__/*
 Sender/uploads/*
 uploads/*
+assets/analysis.html
+test/*

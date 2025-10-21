@@ -5,9 +5,9 @@ import json
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from Config import config
-from Logger import Logger
-from DataUnit import DownloadPackage, InfoPackage
+from .Config import config
+from .Logger import Logger
+from .DataUnit import DownloadPackage, InfoPackage
 
 logger = Logger(config.log_dir).get_logger(__name__)
 
@@ -132,7 +132,3 @@ class VideoManager:
             from Sender.sender import start_server
         sender_config.upload_folder = os.path.abspath(str(config.download_dir / 'video'))
         start_server()
-
-if __name__ == '__main__':
-    video_manager = VideoManager()
-    video_manager.send_to_mobile()

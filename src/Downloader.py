@@ -2,6 +2,7 @@ import os
 
 import re
 import json
+import time
 import shutil
 import asyncio
 import aiohttp
@@ -16,13 +17,13 @@ from urllib.parse import urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional, Callable, Any, Union, Dict, overload
 
-from Config import config
-from Logger import Logger
-from Decrypter import Decrypter
-from Manager import DownloadInfoManager
-from DataUnit import DownloadPackage
-from EnumType import DecrptyType, DownloadStatus
-from Exception import M3u8ExpiredException, ForbiddenError
+from .Config import config
+from .Logger import Logger
+from .Decrypter import Decrypter
+from .Manager import DownloadInfoManager
+from .DataUnit import DownloadPackage
+from .EnumType import DecrptyType, DownloadStatus
+from .Exception import M3u8ExpiredException, ForbiddenError
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
 
@@ -136,8 +137,8 @@ class Downloader:
         if _DOWNLOAD_INFO_PATH.exists():
             with open(_DOWNLOAD_INFO_PATH, 'r', encoding='utf-8') as f:
                 data : Dict[str, List[Dict]] = json.load(f)
-            if package.id in data:
-                package_data_list = data[package.id]
+            if package.id.lower() in data:
+                package_data_list = data[package.id.lower()]
                 for package_data in package_data_list:
                     prefix = package_data['hls_url'].split('/')[-1].split('.m3u8')[0]
                     if prefix == package_data['hls_url'].split('/')[-2]:
@@ -505,23 +506,38 @@ class Downloader:
             if package.id.lower() in download_info:
                 old_hls_url = download_info[package.id.lower()][-1]['hls_url']
             else:
+                old_hls_url = " "
                 logger.warning(f"未找到{package.id.lower()}的下载信息, 将使用默认的hls_url")
         else:
             old_hls_url = package.hls_url
-        try:
-            m3u8_str = requests.get(package.hls_url, headers = config.headers, proxies = config.proxies).text
-            m3u8_obj = m3u8.loads(m3u8_str)
-            if os.path.exists(dirs['tmp_m3u8']):
-                with open(dirs['tmp_m3u8'], 'r') as f:
-                    m3u8_file_str = f.read()
-                if (
-                    hash(m3u8_file_str) == hash(m3u8_str)
-                    and hash(package.hls_url) == hash(old_hls_url) 
-                    and os.path.exists(dirs['tmp_key']) 
-                    and os.path.exists(dirs['tmp_iv'])
-                    ):
-                    logger.info("m3u8文件未变化, 跳过下载")
-                    return
+        for i in range(config.max_retries):
+            try:
+                m3u8_str = requests.get(package.hls_url, headers = config.headers, proxies = config.proxies).text
+                m3u8_obj = m3u8.loads(m3u8_str)
+                if os.path.exists(dirs['tmp_m3u8']):
+                    with open(dirs['tmp_m3u8'], 'r') as f:
+                        m3u8_file_str = f.read()
+                    if (
+                        hash(m3u8_file_str) == hash(m3u8_str)
+                        and hash(package.hls_url) == hash(old_hls_url) 
+                        and os.path.exists(dirs['tmp_key']) 
+                        and os.path.exists(dirs['tmp_iv'])
+                        ):
+                        logger.info("m3u8文件未变化, 跳过下载")
+                        return
+                    else:
+                        iv = m3u8_obj.keys[0].iv
+                        key_uri = m3u8_obj.keys[0].uri
+                        key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
+                        write_dict = {
+                            dirs['tmp_m3u8'] : m3u8_str,
+                            dirs['tmp_key'] : key_bytes,
+                            dirs['tmp_iv'] : iv
+                        }
+                        logger.info("m3u8文件已变化, 重新下载")
+                        self._write_tmp(write_dict)
+                        _download_info_manager._save_download_info(package=package)
+                        return
                 else:
                     iv = m3u8_obj.keys[0].iv
                     key_uri = m3u8_obj.keys[0].uri
@@ -531,24 +547,16 @@ class Downloader:
                         dirs['tmp_key'] : key_bytes,
                         dirs['tmp_iv'] : iv
                     }
-                    logger.info("m3u8文件已变化, 重新下载")
+                    logger.info("m3u8文件不存在, 下载")
                     self._write_tmp(write_dict)
                     _download_info_manager._save_download_info(package=package)
-            else:
-                iv = m3u8_obj.keys[0].iv
-                key_uri = m3u8_obj.keys[0].uri
-                key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
-                write_dict = {
-                    dirs['tmp_m3u8'] : m3u8_str,
-                    dirs['tmp_key'] : key_bytes,
-                    dirs['tmp_iv'] : iv
-                }
-                logger.info("m3u8文件不存在, 下载")
-                self._write_tmp(write_dict)
-                _download_info_manager._save_download_info(package=package)
-        except requests.exceptions.RequestException:
-            logger.error("下载m3u8文件失败")
-            raise Exception("下载m3u8文件失败")   
+                    return
+            except requests.exceptions.RequestException:
+                logger.error("下载m3u8文件失败,正在重试...")
+                wait_time = config.retry_wait_time * (2 ** i)
+                logger.info(f"重试第{i+1}次,等待{wait_time}秒...")
+                time.sleep(wait_time)
+        raise Exception("下载m3u8文件失败")   
 
     def _download_cover(
             self, 

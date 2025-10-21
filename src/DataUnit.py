@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Tuple
 
-from EnumType import DownloadStatus
+from .EnumType import DownloadStatus
 
 @dataclass
 class DownloadPackage:

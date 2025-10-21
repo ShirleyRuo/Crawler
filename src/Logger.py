@@ -21,7 +21,7 @@ class Logger:
             return logger
 
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        file_handler = logging.FileHandler(self._log_dir / f'{module_name}.log', mode='a')
+        file_handler = logging.FileHandler(self._log_dir / f'{module_name}.log', mode='a', encoding='utf-8')
         file_handler.setLevel(level=log_level)
         file_handler.setFormatter(formatter)
 
