@@ -2,7 +2,9 @@ import os
 
 import re
 import json
-from typing import Dict, Tuple, Optional
+from typing import Dict, Tuple, Optional, Union, List
+
+from ..Config import config
 
 SRC : Tuple[str] = {
     'jable'
@@ -25,7 +27,7 @@ class TagParser:
 
     def __init__(
             self, 
-            html_text : str,
+            html_text : str = None,
             src : Optional[str] = None,
             ) -> None:
         self.html_text = html_text
@@ -40,6 +42,19 @@ class TagParser:
         for tag_title in del_tag_titles:
             del standard_tag_mapping[tag_title]
         return standard_tag_mapping
+    
+    @staticmethod
+    def _input_tag2_hant(*tags : str) -> Union[List[str], str]:
+        from zhconv import convert
+        normal_tags = []
+        for tag in tags:
+            for char in tag:
+                if char.isdigit() or char.isalpha():
+                    continue
+                else:
+                    break
+            normal_tags.append(convert(tag, 'zh-tw'))
+        return normal_tags
     
     def _parse_src(self) -> None:
         if not self.src:
@@ -74,8 +89,7 @@ class TagParser:
     
     def _dump(self, standard_tag_mapping : Dict[str, Dict[str, str]]) -> None:
         filename = 'tag_mapping.json'
-        assets_path = r'.\assets'
-        file_path = os.path.abspath(os.path.join(assets_path, filename))
+        file_path = os.path.abspath(os.path.join(config.assets_dir, filename))
         if not os.path.exists(file_path):
             mapping = {
                 self.src : standard_tag_mapping

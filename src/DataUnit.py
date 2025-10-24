@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Tuple
 
 from .EnumType import DownloadStatus
@@ -53,3 +53,26 @@ class InfoPackage:
         if not isinstance(other, InfoPackage):
             return False
         return hash(self) == hash(other)
+
+@dataclass
+class VideoPackage:
+    '''
+    储存视频信息的类,其中影片名称以及演员名称仅作参考,可能由于参演人数多于1出现误差.
+    '''
+    id : str = ''
+    name : str = ''
+    actress : str = ''
+    url : str = ''
+    cover_url : str = ''
+    time_length : str = ''
+    src : str = ''
+
+    def __hash__(self):
+        string = f"{self.id}{self.name}{self.actress}{self.cover_url}{self.url}{self.time_length}{self.src}"
+        return hash(string)
+    
+    def __eq__(self, other):
+        if not isinstance(other, VideoPackage):
+            return False
+        return hash(self) == hash(other)
+    

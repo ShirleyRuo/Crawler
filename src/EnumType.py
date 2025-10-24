@@ -20,3 +20,4 @@ class Page(Enum):
     WEBSITE_HOME = auto()
     ACTRESS_HOME = auto()
     VIDEO_LIST = auto()
+    SEARCH_RESULT = auto()
