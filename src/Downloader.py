@@ -17,13 +17,13 @@ from urllib.parse import urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional, Callable, Any, Union, Dict, overload
 
-from .Config import config
-from .Logger import Logger
-from .Decrypter import Decrypter
+from .Config.Config import config
+from .utils.Logger import Logger
+from .utils.Decrypter import Decrypter
 from .Manager import DownloadInfoManager
-from .DataUnit import DownloadPackage
-from .EnumType import DecrptyType, DownloadStatus
-from .Exception import M3u8ExpiredException, ForbiddenError
+from .utils.DataUnit import DownloadPackage
+from .utils.EnumType import DecrptyType, DownloadStatus
+from .Error.Exception import M3u8ExpiredException, ForbiddenError
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
 
@@ -374,7 +374,7 @@ class Downloader:
             if m3u8_expired:
                 for task in pending:
                     task.cancel()
-                self._redownload(package=package)
+                await self._redownload(package=package)
             else:
                 if pending:
                     await asyncio.wait(pending)
@@ -414,8 +414,11 @@ class Downloader:
                             raise M3u8ExpiredException("m3u8文件已过期")
                         else:
                             logger.warning(f"下载ts文件失败,url:{ts_url},状态码:{ts_response.status}")
-                except aiohttp.ClientError as e:
+                except (asyncio.TimeoutError, aiohttp.ClientError) as e:
                     logger.warning(f"下载ts文件失败,url:{ts_url}, 错误信息:{e}")
+                    # 加入M3u8ExpiredException异常处理
+                    if "Cannot connect to host" in str(e):
+                        raise M3u8ExpiredException("m3u8文件已过期")
                 if retry_count < config.max_retries - 1:
                     wait_time = config.retry_wait_time * (2 ** retry_count)
                     logger.info(f"重试第{retry_count+1}次,等待{wait_time}秒...")
@@ -580,7 +583,10 @@ class Downloader:
         self._download_m3u8(
             package=package,
             )
-        self._download_cover(package=package)
+        if os.path.exists(config.cover_dir / f'{package.id.lower()}.jpg'):
+            logger.info(f"封面文件已存在, 跳过下载")
+        else:
+            self._download_cover(package=package)
         decypt_info_dict = self._load_tmp(
             package=package,
             tmp_file_type=['m3u8', 'key', 'iv']
@@ -605,7 +611,7 @@ class Downloader:
                 m3u8_obj = m3u8.loads(decypt_info_dict['m3u8']),
         )
         while len(undownload_segments) != 0:
-            self._redownload(package=package)
+            asyncio.run(self._redownload(package=package))
             undownload_segments = self._get_undownload_ts(
                 package=package,
                 m3u8_obj=m3u8.loads(decypt_info_dict['m3u8']),
@@ -616,7 +622,7 @@ class Downloader:
         package.status = DownloadStatus.FINISHED
         self._clear_all_tmp(package=package)
     
-    def _redownload(
+    async def _redownload(
             self,
             package : DownloadPackage,
             ) -> None:
@@ -633,14 +639,14 @@ class Downloader:
             logger.info("所有ts文件已下载完成")
             return
         logger.info(f'未下载的ts文件数量: {len(undownload_segments)}')
-        asyncio.run(self._async_download_ts(
+        await self._async_download_ts(
             package=package,
             segments=undownload_segments,
             base_url=package.base_url,
             tmp_folder_name=package.id.lower(),
             key_bytes=decrpt_info['key'],
             iv=decrpt_info['iv']
-            ))
+            )
                 
     def thread_downloader(self) -> None:
         '''

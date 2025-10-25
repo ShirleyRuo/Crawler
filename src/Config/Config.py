@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 class Config:
@@ -45,7 +46,7 @@ class Config:
         self.max_retries = 3
         self.retry_wait_time = 5
         self.headers = {
-            'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'
+            'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36'
         }
         self.proxies = {
             'http' : 'http://127.0.0.1:10809',
@@ -64,7 +65,14 @@ class Config:
         for dir_name in self.download_subdirs.keys():
             dir_path : Path = getattr(self, dir_name)
             dir_path.mkdir(parents=True, exist_ok=True)
+    
+    def save_headers(self) -> None:
+        with open(self.assets_dir / 'headers.json', 'w', encoding='utf-8') as f:
+            json.dump(self.headers, f, ensure_ascii=False, indent=4)
 
+    def load_headers(self) -> None:
+        with open(self.assets_dir / 'headers.json', 'r', encoding='utf-8') as f:
+            self.headers = json.load(f)
 
 config = Config(
     download_dir = r'./downloads',

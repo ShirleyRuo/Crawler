@@ -11,3 +11,4 @@ Sender/uploads/*
 uploads/*
 assets/analysis.html
 test/*
+src/utils/__pycache__/*

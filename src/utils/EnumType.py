@@ -19,5 +19,6 @@ class Page(Enum):
     SINGLE_VIDEO = auto()
     WEBSITE_HOME = auto()
     ACTRESS_HOME = auto()
+    MODEL_SELECT = auto()
     VIDEO_LIST = auto()
     SEARCH_RESULT = auto()

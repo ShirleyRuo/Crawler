@@ -8,13 +8,13 @@ from collections import namedtuple
 from abc import ABC, abstractmethod
 from typing import Dict, List, Any, Optional, Tuple, Union
 
-from .Config import config
-from .Logger import Logger
-from .EnumType import Page
-from .DataUnit import DownloadPackage, VideoPackage
+from .Config.Config import config
+from .utils.Logger import Logger
+from .utils.EnumType import Page
+from .utils.DataUnit import DownloadPackage, VideoPackage
 from .PageParse.PageParser import JabPageParser
 from .PageParse.tagMapping import TagParser
-from .Exception import ForbiddenError, NotFoundError
+from .Error.Exception import ForbiddenError, NotFoundError
 from .Downloader import Downloader
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
@@ -59,6 +59,7 @@ class JabVideoCrawler(VideoCrawlerBase):
             ):
         super().__init__(url, src)
         self.videos_per_page = videos_per_page
+        self._download_list = []
     
     def _get_headers(
             self,
@@ -75,18 +76,24 @@ class JabVideoCrawler(VideoCrawlerBase):
         '''
         if self._validate_src():
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
                 'Origin' : 'https://jable.tv',
                 'Referer' : 'https://jable.tv/',
                 'Priority' : 'u=1, i',
             }
             headers.update({**kwargs})
+            try:
+                config.load_headers()
+            except FileNotFoundError:
+                pass
             config.headers.update(headers)
         else:
             logger.error(f'不支持的视频网站: {self.src}')
             raise ValueError(f'不支持的视频网站: {self.src}')
     
-    def _set_proxy(self, proxies : Dict = None) -> None:
+    def _set_proxy(self, proxies : Optional[Dict] = None) -> None:
+        if not proxies:
+            return
         config.proxies.update(proxies)
     
     def _is_available(self, type : str) -> bool:
@@ -127,6 +134,7 @@ class JabVideoCrawler(VideoCrawlerBase):
                             logger.info(f'验证成功,继续请求...')
                             cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
                             config.headers.update({'Cookie': '; '.join(cookies_list)})
+                            config.save_headers()
                             return html_text
                         else:
                             logger.error('验证失败')
@@ -246,19 +254,22 @@ class JabVideoCrawler(VideoCrawlerBase):
         '''
         根据提供的标签关键词搜索视频,返回搜索得到的视频数和页数以及第一页视频.
         '''
+        SearchInfo = namedtuple('SearchInfo', ['videos', 'pages', 'first_page_videos'])
+        parser = JabPageParser()
         search_api = f'https://jable.tv/search/{search_word}'
         for retry_count in range(config.max_retries):
             try:
                 response = requests.get(search_api, headers=config.headers, proxies=config.proxies, timeout=10)
                 if response.status_code == 200:
                     html_text = response.text
-                    parser = JabPageParser(html_text)
+                    parser._html_text = html_text
                     videos = parser._parse_videos_num()
                     video_list = parser.parse()
                     pages, remainder = divmod(videos, self.videos_per_page)
                     if remainder > 0:
                         pages += 1
                     logger.info(f'搜索成功!')
+                    return SearchInfo(videos=videos, pages=pages, first_page_videos=video_list)
                 elif response.status_code == 404:
                     logger.error(f'搜索失败: {response.status_code}')
                     raise NotFoundError(f'搜索失败: {response.status_code}')
@@ -268,7 +279,14 @@ class JabVideoCrawler(VideoCrawlerBase):
                         logger.info(f"验证成功,继续请求...")
                         cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
                         config.headers.update({'Cookie': '; '.join(cookies_list)})
-                        
+                        parser._html_text = html_text
+                        videos = parser._parse_videos_num()
+                        video_list = parser.parse()
+                        pages, remainder = divmod(videos, self.videos_per_page)
+                        if remainder > 0:
+                            pages += 1
+                        logger.info(f'搜索成功!')
+                        return SearchInfo(videos=videos, pages=pages, first_page_videos=video_list)
                     else:
                         logger.error(f"验证失败")
                         raise ForbiddenError(f"验证失败")
@@ -346,6 +364,25 @@ class JabVideoCrawler(VideoCrawlerBase):
         url = f'https://jable.tv/videos/{id}/'
         crawler = JabVideoCrawler(url)
         crawler.download_video()
+    
+    def add_task(self, download_package : DownloadPackage) -> None:
+        self._download_list.append(download_package)
+    
+    def run_tasks(self) -> None:
+        if self._download_list:
+            downloader = Downloader(self._download_list)
+            downloader.download()
+        else:
+            logger.error('下载列表为空')
+            raise ValueError('下载列表为空')
+    
+    def muti_download(self, ids : List[str]) -> None:
+        for id in ids:
+            url = f'https://jable.tv/videos/{id}/'
+            crawler = JabVideoCrawler(url)
+            package = crawler.parse()
+            self.add_task(package)
+        self.run_tasks()
 
     def _validate_src(self):
         return self.src == 'jable.tv' and self.src in self.url

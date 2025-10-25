@@ -5,9 +5,9 @@ import json
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from .Config import config
-from .Logger import Logger
-from .DataUnit import DownloadPackage, InfoPackage
+from .Config.Config import config
+from .utils.Logger import Logger
+from .utils.DataUnit import DownloadPackage, InfoPackage
 
 logger = Logger(config.log_dir).get_logger(__name__)
 

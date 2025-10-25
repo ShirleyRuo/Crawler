@@ -4,7 +4,7 @@ import re
 import json
 from typing import Dict, Tuple, Optional, Union, List
 
-from ..Config import config
+from ..Config.Config import config
 
 SRC : Tuple[str] = {
     'jable'

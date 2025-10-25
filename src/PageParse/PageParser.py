@@ -2,11 +2,11 @@ import re
 import time
 from typing import Tuple, Dict, Optional, List, Any, Union
 
-from ..Config import config
-from ..Logger import Logger
+from ..Config.Config import config
+from ..utils.Logger import Logger
 
-from ..EnumType import Page
-from ..DataUnit import VideoPackage
+from ..utils.EnumType import Page
+from ..utils.DataUnit import VideoPackage
 
 logger = Logger(config.log_dir).get_logger(__name__)
 
@@ -23,7 +23,15 @@ jab_pattern : Dict[str, re.Pattern] = {
     "cover_url_via_api" : re.compile(r'data-src\s*=\s*"(.*?)"'),
     "search_page" : re.compile(r'<div\s*id="list_videos_videos_list_search_result">'),
     "has_search_result" : re.compile(r'<span class="inactive-color fs-2 mb-0">(\d+).*?</span>'),
-    "no_search_result" : re.compile(r'<h5 class="inactive-color">.*?</h5>')
+    "no_search_result" : re.compile(r'<h5 class="inactive-color">.*?</h5>'),
+    "model_id" : re.compile(r'<a class="model" href="(.*?)">'),
+    "model_name" : re.compile(r'<span class="placeholder rounded-circle" data-toggle="tooltip" data-placement="bottom" title="(.*?)">'),
+    "model_select" : re.compile(r'<div id="list_models_models_list">'),
+    "model_select_id" : re.compile(r'<a href="https://jable.tv/models/(.*?)/">'),
+    "model_select_name" : re.compile(r'<h6 class="title">(.*?)</h6>'),
+    "actress_home" : re.compile(r'<div id="list_videos_common_videos_list">'),
+    "actress_id" : re.compile(r'<a class="page-link" href="/models/(.*?)/.*?"'),
+    "actress_name" : re.compile(r'<h2 class="h3-md mb-1">(.*?)</h2>')
 }
 
 class JabPageParser:
@@ -42,26 +50,29 @@ class JabPageParser:
         使用seleniumwire获取网页源代码并获取User-Agent同步到config.headers
         '''
         try:
-            from seleniumwire import webdriver
+            from selenium import webdriver
             driver = webdriver.Chrome()
             driver.get(url=url)
-            time.sleep(10)
-            for request in driver.requests:
-                if request.response:
-                    config.headers['User-Agent'] = request.headers.get('User-Agent')
-                    break
+            time.sleep(20)
             html_text = driver.page_source
             config.cookie = driver.get_cookies()
             driver.quit()
             return html_text
-        except:
-            logger.error('请安装Chrome浏览器并配置环境变量')
+        except Exception as e:
+            logger.error(f'请安装Chrome浏览器并配置环境变量,{e}')
             return ""
     
     def _get_page_type(self) -> Page:
+        '''
+        解析页面类型,正则表达式有包含关系,需关注顺序
+        '''
+        if jab_pattern["actress_home"].search(self._html_text):
+            return Page.ACTRESS_HOME
+        if jab_pattern["model_select"].search(self._html_text):
+            return Page.MODEL_SELECT
         if jab_pattern["search_page"].search(self._html_text):
             return Page.SEARCH_RESULT
-        if jab_pattern["videos"].search(self._html_text):
+        if jab_pattern["videos"].search(self._html_text) and not jab_pattern["model_select"].search(self._html_text):
             return Page.VIDEO_LIST
         if jab_pattern["hls_url"].search(self._html_text).group(1):
             return Page.SINGLE_VIDEO
