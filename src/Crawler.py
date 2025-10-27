@@ -4,9 +4,8 @@ import time
 import json
 import logging
 import requests
-from threading import Thread, Lock
+from threading import Thread
 from collections import namedtuple
-from abc import ABC, abstractmethod
 from typing import Dict, List, Any, Optional, Tuple, Union
 
 from .Config.Config import config
@@ -18,45 +17,16 @@ from .PageParse.PageParser import JabPageParser
 from .PageParse.tagMapping import TagParser
 from .Error.Exception import ForbiddenError, NotFoundError
 from .Downloader import Downloader
+from .Bases.CrawlerBases import VideoCrawlerBase
 
 logger = Logger(config.log_dir).get_logger(__name__, logging.INFO)
-
-class VideoCrawlerBase(ABC):
-
-    def __init__(
-            self, 
-            url : str,
-            src : str,
-            ) -> None:
-        self.url = url
-        self.src = src
-
-    @abstractmethod
-    def _parse_page_content(self) -> Any:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def _init_download_package(self) -> None:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def parse(self) -> DownloadPackage:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def download_video(self) -> None:
-        raise NotImplementedError
-    
-    @abstractmethod
-    def _validate_src(self) -> bool:
-        raise NotImplementedError
 
 class JabVideoCrawler(VideoCrawlerBase):
 
     def __init__(
             self, 
             url : Optional[str] = None,
-            src : str = 'jable.tv',
+            src : str = 'jable',
             videos_per_page : int = 24,
             ):
         super().__init__(url, src)
@@ -406,4 +376,8 @@ class JabVideoCrawler(VideoCrawlerBase):
         self.run_tasks()
 
     def _validate_src(self):
-        return self.src == 'jable.tv' and self.src in self.url
+        return self.src == 'jable' and self.src in self.url
+
+class MissavVideoCrawler(VideoCrawlerBase):
+    # TODO
+    pass

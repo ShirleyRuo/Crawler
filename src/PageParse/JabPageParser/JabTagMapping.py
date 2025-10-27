@@ -3,10 +3,10 @@ import os
 import json
 from typing import Dict, Optional, Union, List
 
-from ..Config.Config import config
-from .utils.JabPageParseUtils import SRC, src_tag, src_prefix
+from ...Config.Config import config
+from ..utils.JabPageParseUtils import SRC, src_tag, src_prefix
 
-class TagParser:
+class JabTagParser:
 
     def __init__(
             self, 

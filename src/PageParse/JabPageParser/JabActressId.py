@@ -5,16 +5,16 @@ import json
 from collections import namedtuple
 from typing import List
 
-from ..Config.Config import config
-from ..utils.Logger import Logger
-from ..utils.EnumType import Page
-from .utils.JabPageParseUtils import _get_page_type, jab_pattern
+from ...Config.Config import config
+from ...utils.Logger import Logger
+from ...utils.EnumType import Page
+from ..utils.JabPageParseUtils import _get_page_type, jab_pattern
 
 logger = Logger(config.log_dir).get_logger(__name__)
 
 ActessInfo = namedtuple('ActressInfo', ['actress_id', 'actress_name'], defaults=["", ""])
 
-class ActressId:
+class JabActressId:
 
     def __init__(
             self, 

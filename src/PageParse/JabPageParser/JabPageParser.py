@@ -1,11 +1,11 @@
 import time
 from typing import Tuple, Dict, Optional, List, Any, Union
 
-from ..Config.Config import config
-from ..utils.Logger import Logger
-from ..utils.EnumType import Page
-from ..utils.DataUnit import VideoPackage
-from .utils.JabPageParseUtils import jab_pattern, _get_page_type
+from ...Config.Config import config
+from ...utils.Logger import Logger
+from ...utils.EnumType import Page
+from ...utils.DataUnit import VideoPackage
+from ..utils.JabPageParseUtils import jab_pattern, _get_page_type
 
 logger = Logger(config.log_dir).get_logger(__name__)
 

@@ -10,5 +10,14 @@ Sender/__pycache__/*
 Sender/uploads/*
 uploads/*
 assets/analysis.html
-test/*
+test/*.py
 src/utils/__pycache__/*
+src/PageParse/utils/__pycache__/*
+src/PageParse/__pycache__/*
+src/PageParse/JabPageParser/__pycache__/*
+src/PageParse/MissavPageParser/__pycache__/*
+src/encoder/__pycache__/*
+src/decoder/__pycache__/*
+src/Config/__pycache__/*
+src/Bases/__pycache__/*
+src/Error/__pycache__/*
