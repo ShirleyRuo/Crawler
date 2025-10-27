@@ -51,7 +51,15 @@ class JabPageParser:
         '''
         try:
             from selenium import webdriver
-            driver = webdriver.Chrome()
+            from selenium.webdriver import ChromeOptions
+            options = ChromeOptions()
+            options.add_argument("--disable-blink-features=AutomationControlled")
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            options.add_argument(f'user-agent={config.headers["User-Agent"]}')
+            options.add_argument('--incognito')
+            driver = webdriver.Chrome(options=options)
+            driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
             driver.get(url=url)
             time.sleep(20)
             html_text = driver.page_source
@@ -72,7 +80,7 @@ class JabPageParser:
             return Page.MODEL_SELECT
         if jab_pattern["search_page"].search(self._html_text):
             return Page.SEARCH_RESULT
-        if jab_pattern["videos"].search(self._html_text) and not jab_pattern["model_select"].search(self._html_text):
+        if jab_pattern["videos"].search(self._html_text):
             return Page.VIDEO_LIST
         if jab_pattern["hls_url"].search(self._html_text).group(1):
             return Page.SINGLE_VIDEO

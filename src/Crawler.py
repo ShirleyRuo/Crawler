@@ -4,6 +4,7 @@ import time
 import json
 import logging
 import requests
+from threading import Thread, Lock
 from collections import namedtuple
 from abc import ABC, abstractmethod
 from typing import Dict, List, Any, Optional, Tuple, Union
@@ -11,6 +12,7 @@ from typing import Dict, List, Any, Optional, Tuple, Union
 from .Config.Config import config
 from .utils.Logger import Logger
 from .utils.EnumType import Page
+from .PageParse.actressId import ActressId
 from .utils.DataUnit import DownloadPackage, VideoPackage
 from .PageParse.PageParser import JabPageParser
 from .PageParse.tagMapping import TagParser
@@ -84,6 +86,7 @@ class JabVideoCrawler(VideoCrawlerBase):
             headers.update({**kwargs})
             try:
                 config.load_headers()
+                logger.info(f'加载请求头成功!')
             except FileNotFoundError:
                 pass
             config.headers.update(headers)
@@ -209,6 +212,9 @@ class JabVideoCrawler(VideoCrawlerBase):
         page = self._parse_page_content()
         if page == Page.SINGLE_VIDEO:
             html_text = self._get_html_text()
+            _actress_id = ActressId(html_text=html_text)
+            _actress_id._parse()
+            _actress_id._dump()
             logger.info(f"解析页面: \n{html_text[:500]}")
             parser = JabPageParser(html_text)
             package_info_dict = parser.parse()
@@ -368,15 +374,30 @@ class JabVideoCrawler(VideoCrawlerBase):
     def add_task(self, download_package : DownloadPackage) -> None:
         self._download_list.append(download_package)
     
+    def display_tasks(self, downloader : Downloader, wait_time : int = 1) -> None:
+        total = ''
+        for name, counter in downloader._counters.items():
+            total += f"\r{name} : {counter.current_id} / {counter.total_num}\n"
+        print(total, end='')
+        time.sleep(wait_time)
+
     def run_tasks(self) -> None:
         if self._download_list:
             downloader = Downloader(self._download_list)
+            task = Thread(target=self.display_tasks, args=(downloader, 5))
+            task.start()
             downloader.download()
         else:
             logger.error('下载列表为空')
             raise ValueError('下载列表为空')
     
-    def muti_download(self, ids : List[str]) -> None:
+    def muti_download(
+            self, 
+            ids : List[str],
+            quiet : bool = False,
+            ) -> None:
+        if quiet:
+            Logger(config.log_dir).disable_stream_handler('src.Downloader')
         for id in ids:
             url = f'https://jable.tv/videos/{id}/'
             crawler = JabVideoCrawler(url)

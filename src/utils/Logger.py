@@ -5,6 +5,8 @@ from pathlib import Path
 
 class Logger:
 
+    _registry = {}
+
     def __init__(self, log_dir : Path) -> None:
         self._log_dir = log_dir
         self._log_dir.mkdir(exist_ok=True)
@@ -32,4 +34,13 @@ class Logger:
         logger.addHandler(file_handler)
         logger.addHandler(stream_handler)
 
+        Logger._registry[module_name] = logger
         return logger
+    
+    def disable_stream_handler(self, module_name : str) -> None:
+        if module_name in Logger._registry:
+            logger : logging.Logger = Logger._registry[module_name]
+            for handler in logger.handlers[:]:
+                if type(handler) is logging.StreamHandler:
+                    logger.removeHandler(handler)
+                    break

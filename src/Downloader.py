@@ -19,6 +19,7 @@ from typing import List, Optional, Callable, Any, Union, Dict, overload
 
 from .Config.Config import config
 from .utils.Logger import Logger
+from .utils.Counter import Counter
 from .utils.Decrypter import Decrypter
 from .Manager import DownloadInfoManager
 from .utils.DataUnit import DownloadPackage
@@ -51,6 +52,7 @@ class Downloader:
         self._headers = headers or {}
         self._proxies = proxies or {}
         self._use_ffmpeg = use_ffmpeg
+        self._counters : Dict[str, Counter] = {}
         self._kwargs = kwargs
     
     def _clear_tmp_ts(self, package : DownloadPackage) -> None:
@@ -352,7 +354,8 @@ class Downloader:
                     tmp_ts_dir=tmp_ts_dir,
                     key_bytes=key_bytes,
                     iv=iv,
-                    semaphore=semaphore
+                    semaphore=semaphore,
+                    _package = package,
                 ))
                 tasks.append(task)
             done, pending = await asyncio.wait(
@@ -388,6 +391,8 @@ class Downloader:
             key_bytes : bytes,
             iv : str,
             semaphore : asyncio.Semaphore,
+            *,
+            _package : DownloadPackage = None,
             ) -> None:
         async with semaphore:
             for retry_count in range(config.max_retries):
@@ -405,6 +410,8 @@ class Downloader:
                                 iv = iv,
                                 ts_name = segment.uri
                             )
+                            async with asyncio.Lock():
+                                self._counters[_package.id.lower()].increment()
                             return
                         elif ts_response.status == 403:
                             logger.error(f"下载ts文件失败,url:{ts_url},状态码:{ts_response.status}")
@@ -598,6 +605,7 @@ class Downloader:
             )
         except FileNotFoundError:
             undownload_segments = m3u8.loads(decypt_info_dict['m3u8']).segments
+        self._counters[package.id.lower()].total_num = undownload_segments
         asyncio.run(self._async_download_ts(
             package=package,
             segments=undownload_segments, 
@@ -666,6 +674,9 @@ class Downloader:
                     raise e
 
     def download(self) -> None:
+        # 注册计数器
+        for package in self._packages:
+            self._counters[package.id.lower()] = Counter(name=package.id.lower())
         if len(self._packages) == 1:
             return self.single_downloader(package=self._packages[0])
         else:

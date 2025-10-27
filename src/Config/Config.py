@@ -9,12 +9,14 @@ class Config:
             tmp_dir: str,
             log_dir: str,
             assets_dir : str,
+            config_dir : str,
             ) -> None:
 
         self.download_dir = Path(download_dir).absolute().resolve()
         self.log_dir = Path(log_dir).absolute().resolve()
         self.tmp_dir = Path(tmp_dir).absolute().resolve()
         self.assets_dir = Path(assets_dir).absolute().resolve()
+        self.config_dir = Path(config_dir).absolute().resolve()
 
         self.tmp_m3u8_dir = self.tmp_dir / 'm3u8'
         self.tmp_key_dir = self.tmp_dir / 'key'
@@ -58,6 +60,7 @@ class Config:
         self.log_dir.mkdir(parents=True, exist_ok=True)
         self.tmp_dir.mkdir(parents=True, exist_ok=True)
         self.assets_dir.mkdir(parents=True, exist_ok=True)
+        self.config_dir.mkdir(parents=True, exist_ok=True)
 
         for dir_name in self.tmp_subdirs.keys():
             dir_path : Path = getattr(self, dir_name)
@@ -67,11 +70,11 @@ class Config:
             dir_path.mkdir(parents=True, exist_ok=True)
     
     def save_headers(self) -> None:
-        with open(self.assets_dir / 'headers.json', 'w', encoding='utf-8') as f:
+        with open(self.config_dir / 'headers.json', 'w', encoding='utf-8') as f:
             json.dump(self.headers, f, ensure_ascii=False, indent=4)
 
     def load_headers(self) -> None:
-        with open(self.assets_dir / 'headers.json', 'r', encoding='utf-8') as f:
+        with open(self.config_dir / 'headers.json', 'r', encoding='utf-8') as f:
             self.headers = json.load(f)
 
 config = Config(
@@ -79,4 +82,5 @@ config = Config(
     tmp_dir = r'./tmp',
     log_dir = r'./logs',
     assets_dir = r'./assets',
+    config_dir = r'./conf',
 )
