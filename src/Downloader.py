@@ -11,7 +11,6 @@ import requests
 import m3u8
 import logging
 from pathlib import Path
-from threading import Thread
 from functools import lru_cache
 from urllib.parse import urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -20,7 +19,7 @@ from typing import List, Optional, Callable, Any, Union, Dict, overload
 from .Config.Config import config
 from .utils.Logger import Logger
 from .utils.Counter import Counter
-from .utils.Decrypter import Decrypter
+from .utils.Decrypter import Decrypter, is_encrypted
 from .Manager import DownloadInfoManager
 from .utils.DataUnit import DownloadPackage
 from .utils.EnumType import DecrptyType, DownloadStatus
@@ -84,6 +83,10 @@ class Downloader:
         logger.info(f"清理完成,{package.id}")
     
     @staticmethod
+    def _is_ts_file(file_path : Path) -> bool:
+        return file_path.is_file() and (file_path.name.endswith('.ts') or file_path.name.endswith('.jpeg'))
+    
+    @staticmethod
     def _get_folder_mtime(primary_folder : Path, sub_folder_name : str) -> float:
         folder_path = primary_folder / sub_folder_name
         if not folder_path.exists():
@@ -94,6 +97,8 @@ class Downloader:
     def _ts_is_corrupted(
         file_path : Path,
         ) -> bool:
+        if file_path.name.endswith('.jpeg'):
+            return False
         try:
             with open(file_path, 'rb') as f:
                 data = f.read()
@@ -149,7 +154,7 @@ class Downloader:
                         prefixes.add(prefix)
                         logger.warning(f"hls_url中存在多个分段,将使用倒数第一个作为分段前缀")
                 for file in tmp_ts_dir.iterdir():
-                    if file.is_file() and file.name.endswith('.ts'):
+                    if Downloader._is_ts_file(file):
                         if Downloader._ts_is_corrupted(file):
                             logger.warning(f"文件损坏,文件名:{file.name}")
                             continue
@@ -259,7 +264,7 @@ class Downloader:
     def _load_tmp(
         package : DownloadPackage,
         tmp_file_type : Union[str, List[str]],
-    ) -> Union[bytes, str, Dict, None]:
+    ) -> Union[Dict, None]:
         if isinstance(tmp_file_type, str):
             if tmp_file_type == 'm3u8':
                 file_path = config.tmp_m3u8_dir / f'{package.id.lower()}.m3u8'
@@ -273,9 +278,9 @@ class Downloader:
             if file_path.exists():
                 if tmp_file_type == 'm3u8' or tmp_file_type == 'iv':
                     with open(file_path, 'r', encoding='utf-8') as f:
-                        return f.read()
+                        return {tmp_file_type: f.read()}
                 with open(file_path, 'rb') as f:
-                    return f.read()
+                    return {tmp_file_type: f.read()}
             return None
         elif isinstance(tmp_file_type, list):
             tmp_file_dict = {}
@@ -404,12 +409,13 @@ class Downloader:
                             content  = await ts_response.content.read()
                             with open(tmp_ts_dir / segment.uri, "wb") as f:
                                 f.write(content)
-                            self.decrypt_ts(
-                                tmp_ts_dir = tmp_ts_dir,
-                                key = key_bytes,
-                                iv = iv,
-                                ts_name = segment.uri
-                            )
+                            if key_bytes and iv:
+                                self.decrypt_ts(
+                                    tmp_ts_dir = tmp_ts_dir,
+                                    key = key_bytes,
+                                    iv = iv,
+                                    ts_name = segment.uri
+                                )
                             async with asyncio.Lock():
                                 self._counters[_package.id.lower()].increment()
                             return
@@ -508,7 +514,14 @@ class Downloader:
     def _download_m3u8(
             self,
             package : DownloadPackage,
-    ) -> None:
+    ) -> bool:
+        '''
+        下载m3u8文件,并判断视频是否加密,如果加密则下载密钥和iv,否则跳过下载
+        最后保存下载信息
+
+        Returns:
+            bool: 视频是否加密
+        '''
         dirs = self._init_dir(package)
         if _DOWNLOAD_INFO_PATH.exists():
             with open(_DOWNLOAD_INFO_PATH, 'r', encoding='utf-8') as f:
@@ -524,17 +537,33 @@ class Downloader:
             try:
                 m3u8_str = requests.get(package.hls_url, headers = config.headers, proxies = config.proxies).text
                 m3u8_obj = m3u8.loads(m3u8_str)
-                if os.path.exists(dirs['tmp_m3u8']):
-                    with open(dirs['tmp_m3u8'], 'r') as f:
-                        m3u8_file_str = f.read()
-                    if (
-                        hash(m3u8_file_str) == hash(m3u8_str)
-                        and hash(package.hls_url) == hash(old_hls_url) 
-                        and os.path.exists(dirs['tmp_key']) 
-                        and os.path.exists(dirs['tmp_iv'])
-                        ):
-                        logger.info("m3u8文件未变化, 跳过下载")
-                        return
+                is_encrypted_ = is_encrypted(m3u8_obj)
+                if is_encrypted_:
+                    logger.info("视频已加密, 开始下载密钥和iv")
+                    if os.path.exists(dirs['tmp_m3u8']):
+                        with open(dirs['tmp_m3u8'], 'r') as f:
+                            m3u8_file_str = f.read()
+                        if (
+                            hash(m3u8_file_str) == hash(m3u8_str)
+                            and hash(package.hls_url) == hash(old_hls_url) 
+                            and os.path.exists(dirs['tmp_key']) 
+                            and os.path.exists(dirs['tmp_iv'])
+                            ):
+                            logger.info("m3u8文件未变化, 跳过下载")
+                            return is_encrypted_
+                        else:
+                            iv = m3u8_obj.keys[0].iv
+                            key_uri = m3u8_obj.keys[0].uri
+                            key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
+                            write_dict = {
+                                dirs['tmp_m3u8'] : m3u8_str,
+                                dirs['tmp_key'] : key_bytes,
+                                dirs['tmp_iv'] : iv
+                            }
+                            logger.info("m3u8文件已变化, 重新下载")
+                            self._write_tmp(write_dict)
+                            _download_info_manager._save_download_info(package=package)
+                            return is_encrypted_  
                     else:
                         iv = m3u8_obj.keys[0].iv
                         key_uri = m3u8_obj.keys[0].uri
@@ -544,23 +573,34 @@ class Downloader:
                             dirs['tmp_key'] : key_bytes,
                             dirs['tmp_iv'] : iv
                         }
-                        logger.info("m3u8文件已变化, 重新下载")
+                        logger.info("m3u8文件不存在, 下载")
                         self._write_tmp(write_dict)
                         _download_info_manager._save_download_info(package=package)
-                        return
+                        return is_encrypted_
                 else:
-                    iv = m3u8_obj.keys[0].iv
-                    key_uri = m3u8_obj.keys[0].uri
-                    key_bytes = requests.get(urljoin(package.base_url, key_uri), headers=config.headers, proxies=config.proxies).content
-                    write_dict = {
-                        dirs['tmp_m3u8'] : m3u8_str,
-                        dirs['tmp_key'] : key_bytes,
-                        dirs['tmp_iv'] : iv
-                    }
-                    logger.info("m3u8文件不存在, 下载")
-                    self._write_tmp(write_dict)
-                    _download_info_manager._save_download_info(package=package)
-                    return
+                    logger.info("视频未加密, 跳过下载密钥,iv")
+                    if os.path.exists(dirs['tmp_m3u8']):
+                        with open(dirs['tmp_m3u8'], 'r') as f:
+                            m3u8_file_str = f.read()
+                        if hash(m3u8_file_str) == hash(m3u8_str) and hash(package.hls_url) == hash(old_hls_url):
+                            logger.info("m3u8文件未变化, 跳过下载")
+                            return is_encrypted_
+                        else:
+                            logger.info("m3u8文件已变化, 重新下载")
+                            write_dict = {
+                                dirs['tmp_m3u8'] : m3u8_str
+                            }
+                            self._write_tmp(write_dict)
+                            _download_info_manager._save_download_info(package=package)
+                            return is_encrypted_
+                    else:
+                        logger.info("m3u8文件不存在, 下载")
+                        write_dict = {
+                            dirs['tmp_m3u8'] : m3u8_str
+                        }
+                        self._write_tmp(write_dict)
+                        _download_info_manager._save_download_info(package=package)
+                        return is_encrypted_
             except requests.exceptions.RequestException:
                 logger.error("下载m3u8文件失败,正在重试...")
                 wait_time = config.retry_wait_time * (2 ** i)
@@ -587,17 +627,25 @@ class Downloader:
         self._init_request_headers()
         dirs = self._init_dir(package)
         package.status = DownloadStatus.DOWNLOADING
-        self._download_m3u8(
+        is_encrypted_ = self._download_m3u8(
             package=package,
             )
         if os.path.exists(config.cover_dir / f'{package.id.lower()}.jpg'):
             logger.info(f"封面文件已存在, 跳过下载")
         else:
             self._download_cover(package=package)
-        decypt_info_dict = self._load_tmp(
-            package=package,
-            tmp_file_type=['m3u8', 'key', 'iv']
-        )
+        if is_encrypted_:
+            decypt_info_dict = self._load_tmp(
+                package=package,
+                tmp_file_type=['m3u8', 'key', 'iv']
+            )
+        else:
+            decypt_info_dict = self._load_tmp(
+                package=package,
+                tmp_file_type='m3u8'
+            )
+            decypt_info_dict['key'] = None
+            decypt_info_dict['iv'] = None
         try:
             undownload_segments = self._get_undownload_ts(
                 package=package,
@@ -605,15 +653,16 @@ class Downloader:
             )
         except FileNotFoundError:
             undownload_segments = m3u8.loads(decypt_info_dict['m3u8']).segments
-        self._counters[package.id.lower()].total_num = undownload_segments
-        asyncio.run(self._async_download_ts(
-            package=package,
-            segments=undownload_segments, 
-            base_url=package.base_url, 
-            tmp_folder_name=package.id.lower(),
-            key_bytes=decypt_info_dict['key'],
-            iv=decypt_info_dict['iv']
-            ))
+        self._counters[package.id.lower()].total_num = len(undownload_segments)
+        if len(undownload_segments) != 0:
+            asyncio.run(self._async_download_ts(
+                package=package,
+                segments=undownload_segments, 
+                base_url=package.base_url, 
+                tmp_folder_name=package.id.lower(),
+                key_bytes=decypt_info_dict['key'],
+                iv=decypt_info_dict['iv']
+                ))
         undownload_segments = self._get_undownload_ts(
                 package = package,
                 m3u8_obj = m3u8.loads(decypt_info_dict['m3u8']),

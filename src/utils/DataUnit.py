@@ -75,4 +75,15 @@ class VideoPackage:
         if not isinstance(other, VideoPackage):
             return False
         return hash(self) == hash(other)
-    
+
+@dataclass
+class Parameters:
+    '''
+    网络下载时的参数集合
+    '''
+    mode : str = 'async'
+    function : str = 'get_block'
+    block_id : str = ''
+    from_ : int = 0
+    sort_by : str = ''
+    _ : int = 0

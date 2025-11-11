@@ -10,7 +10,7 @@ Sender/__pycache__/*
 Sender/uploads/*
 uploads/*
 assets/analysis.html
-test/*.py
+test_files/*.py
 src/utils/__pycache__/*
 src/PageParse/utils/__pycache__/*
 src/PageParse/__pycache__/*
@@ -21,3 +21,4 @@ src/decoder/__pycache__/*
 src/Config/__pycache__/*
 src/Bases/__pycache__/*
 src/Error/__pycache__/*
+test.py

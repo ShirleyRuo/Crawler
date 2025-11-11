@@ -11,10 +11,11 @@ from typing import Dict, List, Any, Optional, Tuple, Union
 from .Config.Config import config
 from .utils.Logger import Logger
 from .utils.EnumType import Page
-from .PageParse.actressId import ActressId
+from .PageParse.JabPageParser.JabActressId import JabActressId
 from .utils.DataUnit import DownloadPackage, VideoPackage
-from .PageParse.PageParser import JabPageParser
-from .PageParse.tagMapping import TagParser
+from .PageParse.JabPageParser.JabPageParser import JabPageParser
+from .PageParse.JabPageParser.JabTagMapping import JabTagParser
+from .PageParse.MissavPageParser.MissavPageParser import MissavPageParser
 from .Error.Exception import ForbiddenError, NotFoundError
 from .Downloader import Downloader
 from .Bases.CrawlerBases import VideoCrawlerBase
@@ -182,7 +183,7 @@ class JabVideoCrawler(VideoCrawlerBase):
         page = self._parse_page_content()
         if page == Page.SINGLE_VIDEO:
             html_text = self._get_html_text()
-            _actress_id = ActressId(html_text=html_text)
+            _actress_id = JabActressId(html_text=html_text)
             _actress_id._parse()
             _actress_id._dump()
             logger.info(f"解析页面: \n{html_text[:500]}")
@@ -206,7 +207,7 @@ class JabVideoCrawler(VideoCrawlerBase):
         Returns:
             str: 标签链接
         '''
-        _tag_parser = TagParser()
+        _tag_parser = JabTagParser()
         tag_title, tag = _tag_parser._input_tag2_hant(tag_title, tag)
         if os.path.exists(config.assets_dir / 'tag_mapping.json'):
             with open(config.assets_dir / 'tag_mapping.json', 'r', encoding='utf-8') as f:
@@ -379,5 +380,128 @@ class JabVideoCrawler(VideoCrawlerBase):
         return self.src == 'jable' and self.src in self.url
 
 class MissavVideoCrawler(VideoCrawlerBase):
-    # TODO
-    pass
+    
+    def __init__(self, url : Optional[str] = None, src : str = 'missav'):
+        super().__init__(url, src)
+        self._download_list = []
+        self._use_proxies = True
+    
+    def _parse_page_content(self, html_text : str = None) -> Page:
+        if html_text:
+            if 'just a moment' in html_text.lower():
+                return Page.CAPTACHA
+            else:
+                logger.error('未知错误')
+                raise ValueError('未知错误')
+        # if 'videos' in self.url:
+        return Page.SINGLE_VIDEO
+        # else:
+        #     logger.error(f'不支持的视频链接: {self.url}')
+        #     raise ValueError(f'不支持的视频链接: {self.url}')
+
+    def _validate_src(self):
+        return self.src =='missav' and self.src in self.url
+
+    def _init_download_package(
+            self,
+            package_info_dict : Dict,
+            ) -> DownloadPackage:
+        package = DownloadPackage(
+            id = package_info_dict['id'],
+            name = package_info_dict['name'],
+            actress = package_info_dict['actress'],
+            hls_url = package_info_dict['hls_url'],
+            hash_tag = package_info_dict['hash_tags'],
+            cover_url = package_info_dict['cover_url'],
+            src = self.src,
+            time_length=package_info_dict['time_length'],
+            release_date=package_info_dict['release_date'],
+            has_chinese=package_info_dict['has_chinese'],
+        )
+        return package
+    
+    def _get_headers(self) -> None:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+            'Origin' : 'https://missav.live',
+            'Referer' : 'https://missav.live/cn/jufe-590',
+            'Priority' : 'u=1, i',
+        }
+        config.headers.update(headers)
+    
+    def _set_proxy(self) -> None:
+        if self._use_proxies:
+            pass
+        else:
+            config.disable_proxies()
+    
+    def _get_html_text(self) -> str:
+        '''
+        获取html文本
+        Returns:
+            str: html文本
+        '''
+        self._get_headers()
+        self._set_proxy()
+        NotFound_count = 0
+        for retry_count in range(config.max_retries):
+            try:
+                response = requests.get(self.url, headers=config.headers, proxies=config.proxies, timeout=10)
+                if response.status_code == 200:
+                    return response.text
+                elif response.status_code == 403:
+                    if self._parse_page_content(response.text) == Page.CAPTACHA:
+                        logger.info(f'请求视频页面被拦截,正在验证...')
+                        if html_text := MissavPageParser.validation(self.url):
+                            logger.info(f'验证成功,继续请求...')
+                            cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
+                            config.headers.update({'Cookie': '; '.join(cookies_list)})
+                            config.save_headers()
+                            return html_text
+                        else:
+                            logger.error('验证失败')
+                            raise ForbiddenError('验证失败')
+                    logger.error(f'请求视频页面被禁止: {response.status_code}')
+                    raise ForbiddenError(f'请求视频页面被禁止: {response.status_code}')
+                elif response.status_code == 404:
+                    NotFound_count += 1
+                    logger.warning(f'请求视频页面不存在: {response.status_code}')
+                else:
+                    logger.error(f'请求视频页面失败: {response.status_code},正在重试...')
+            except requests.exceptions.RequestException as e:
+                logger.error(f'请求视频页面失败: {e},正在重试...')
+            wait_time = config.retry_wait_time * (2 ** retry_count + 1)
+            logger.info(f'等待 {wait_time} 秒后重试...')
+            time.sleep(wait_time)
+        logger.error(f'请求视频页面失败: 超过最大重试次数')
+        if NotFound_count >= config.max_retries:
+            raise NotFoundError(f'请求视频页面不存在: {response.status_code}')
+        raise Exception(f'请求视频页面失败: 超过最大重试次数')
+
+    def parse(self) -> Any:
+        '''
+        解析html页面,根据页面信息返回不同操作
+
+        Returns:
+            DownloadPackage: 下载信息
+        '''
+        page = self._parse_page_content()
+        if page == Page.SINGLE_VIDEO:
+            html_text = self._get_html_text()
+            logger.info(f"解析页面: \n{html_text[:500]}")
+            parser = MissavPageParser(html_text)
+            pacakge_info_dict = parser.parse()
+            return self._init_download_package(pacakge_info_dict)
+        else:
+            logger.error(f'不支持的视频链接: {self.url}')
+
+    def download_video(self):
+        package = self.parse()
+        downloader = Downloader(package)
+        downloader.download()
+
+    @staticmethod
+    def download_video_with_id(id : str) -> None:
+        url = f'https://missav.live/cn/{id.lower()}'
+        crawler = MissavVideoCrawler(url)
+        crawler.download_video()

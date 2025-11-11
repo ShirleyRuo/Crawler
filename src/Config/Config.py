@@ -1,3 +1,5 @@
+import os
+
 import json
 from pathlib import Path
 
@@ -10,6 +12,7 @@ class Config:
             log_dir: str,
             assets_dir : str,
             config_dir : str,
+            **kwargs
             ) -> None:
 
         self.download_dir = Path(download_dir).absolute().resolve()
@@ -76,6 +79,20 @@ class Config:
     def load_headers(self) -> None:
         with open(self.config_dir / 'headers.json', 'r', encoding='utf-8') as f:
             self.headers = json.load(f)
+    
+    # def _save_config(self) -> None:
+    #     with open(self.config_dir / 'config.json', 'w', encoding='utf-8') as f:
+    #         json.dump(self.__dict__, f, ensure_ascii=False, indent=4)
+    
+    # @classmethod
+    # def load_config(cls) -> Self:
+    #     if os.path.exists(CONFIG_DIR / 'config.json'):
+    #         with open(CONFIG_DIR / 'config.json', 'r', encoding='utf-8') as f:
+    #             config_dict = json.load(f)
+    #     return cls(**config_dict)
+
+    def disable_proxies(self) -> None:
+        self.proxies = {}
 
 config = Config(
     download_dir = r'./downloads',
@@ -83,4 +100,4 @@ config = Config(
     log_dir = r'./logs',
     assets_dir = r'./assets',
     config_dir = r'./conf',
-)
+    )

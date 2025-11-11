@@ -1,3 +1,4 @@
+import m3u8
 from Crypto.Cipher import AES
 from typing import Any, Optional
 
@@ -29,3 +30,16 @@ class Decrypter:
             return decrypted_data
         else:
             raise ValueError("不支持的解密类型")
+
+def is_encrypted(
+        m3u8_obj : m3u8.M3U8,
+        ) -> bool:
+    '''
+    判断m3u8对象是否需要解密
+    '''
+    if m3u8_obj.keys:
+        if len(m3u8_obj.keys) == 1 and not m3u8_obj.keys[0]:
+            return False
+        return True
+    else:
+        return False

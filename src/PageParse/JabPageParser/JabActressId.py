@@ -21,7 +21,7 @@ class JabActressId:
             html_text : str,
             actress_info : List[ActessInfo] = None
             ) -> None:
-        self._page_type = _get_page_type(html_text=self._html_text)
+        self._page_type = _get_page_type(html_text=html_text)
         self.html_text = html_text
         self.actress_info = actress_info
         self._file_path = os.path.join(config.assets_dir, 'actress_id.json')
