@@ -15,6 +15,7 @@ from .PageParse.JabPageParser.JabActressId import JabActressId
 from .utils.DataUnit import DownloadPackage, VideoPackage
 from .PageParse.JabPageParser.JabPageParser import JabPageParser
 from .PageParse.JabPageParser.JabTagMapping import JabTagParser
+from .PageParse.utils.PageValidation import validation
 from .PageParse.MissavPageParser.MissavPageParser import MissavPageParser
 from .Error.Exception import ForbiddenError, NotFoundError
 from .Downloader import Downloader
@@ -81,54 +82,6 @@ class JabVideoCrawler(VideoCrawlerBase):
         else:
             logger.error(f'不支持的类型: {type}')
             raise ValueError(f'不支持的类型: {type}')
-    
-    def _get_html_text(self) -> str:
-        '''
-        获取html文本
-
-        Returns:
-            str: html文本
-        Raises:
-            NotFoundError: 请求视频页面不存在
-            ForbiddenError: 请求视频页面被禁止
-            Exception: 请求视频页面失败
-        '''
-        self._get_headers()
-        self._set_proxy()
-        NotFound_count = 0
-        for retry_count in range(config.max_retries):
-            try:
-                response = requests.get(self.url, headers=config.headers, proxies=config.proxies, timeout=10)
-                if response.status_code == 200:
-                    return response.text
-                elif response.status_code == 403:
-                    if self._parse_page_content(response.text) == Page.CAPTACHA:
-                        logger.info(f'请求视频页面被拦截,正在验证...')
-                        if html_text := JabPageParser.validation(self.url):
-                            logger.info(f'验证成功,继续请求...')
-                            cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
-                            config.headers.update({'Cookie': '; '.join(cookies_list)})
-                            config.save_headers()
-                            return html_text
-                        else:
-                            logger.error('验证失败')
-                            raise ForbiddenError('验证失败')
-                    logger.error(f'请求视频页面被禁止: {response.status_code}')
-                    raise ForbiddenError(f'请求视频页面被禁止: {response.status_code}')
-                elif response.status_code == 404:
-                    NotFound_count += 1
-                    logger.warning(f'请求视频页面不存在: {response.status_code}')
-                else:
-                    logger.error(f'请求视频页面失败: {response.status_code},正在重试...')
-            except requests.exceptions.RequestException as e:
-                logger.error(f'请求视频页面失败: {e},正在重试...')
-            wait_time = config.retry_wait_time * (2 ** retry_count + 1)
-            logger.info(f'等待 {wait_time} 秒后重试...')
-            time.sleep(wait_time)
-        logger.error(f'请求视频页面失败: 超过最大重试次数')
-        if NotFound_count >= config.max_retries:
-            raise NotFoundError(f'请求视频页面不存在: {response.status_code}')
-        raise Exception(f'请求视频页面失败: 超过最大重试次数')
                 
     def _parse_page_content(
             self,
@@ -154,24 +107,6 @@ class JabVideoCrawler(VideoCrawlerBase):
         else:
             logger.error(f'不支持的视频链接: {self.url}')
             raise ValueError(f'不支持的视频链接: {self.url}')
-
-    def _init_download_package(
-            self,
-            package_info_dict : Dict,
-            ) -> DownloadPackage:
-        package = DownloadPackage(
-            id = package_info_dict['id'],
-            name = package_info_dict['name'],
-            actress = package_info_dict['actress'],
-            hash_tag = package_info_dict['hash_tag'],
-            hls_url = package_info_dict['hls_url'],
-            cover_url = package_info_dict['cover_url'],
-            src = self.src,
-            time_length=package_info_dict['time_length'],
-            release_date=package_info_dict['release_date'],
-            has_chinese=package_info_dict['has_chinese'],
-        )
-        return package
     
     def parse(self) -> Any:
         '''
@@ -252,7 +187,7 @@ class JabVideoCrawler(VideoCrawlerBase):
                     raise NotFoundError(f'搜索失败: {response.status_code}')
                 elif response.status_code == 403:
                     logger.info(f"请求搜索页面被拦截,正在验证...")
-                    if html_text := JabPageParser.validation(search_api):
+                    if html_text := validation(search_api):
                         logger.info(f"验证成功,继续请求...")
                         cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
                         config.headers.update({'Cookie': '; '.join(cookies_list)})
@@ -306,7 +241,7 @@ class JabVideoCrawler(VideoCrawlerBase):
                     raise NotFoundError(f'搜索失败: {response.status_code}')
                 elif response.status_code == 403:
                     logger.info(f"请求搜索页面被拦截,正在验证...")
-                    if html_text := JabPageParser.validation(search_api):
+                    if html_text := validation(search_api):
                         logger.info(f"验证成功,继续请求...")
                         cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
                         config.headers.update({'Cookie': '; '.join(cookies_list)})
@@ -331,11 +266,6 @@ class JabVideoCrawler(VideoCrawlerBase):
                 time.sleep(wait_time)
                 continue
 
-    def download_video(self):
-        package = self.parse()
-        downloader = Downloader(package)
-        downloader.download()
-    
     @staticmethod
     def download_video_with_id(id : str) -> None:
         url = f'https://jable.tv/videos/{id}/'
@@ -384,7 +314,7 @@ class MissavVideoCrawler(VideoCrawlerBase):
     def __init__(self, url : Optional[str] = None, src : str = 'missav'):
         super().__init__(url, src)
         self._download_list = []
-        self._use_proxies = True
+        self._use_proxies = False
     
     def _parse_page_content(self, html_text : str = None) -> Page:
         if html_text:
@@ -401,30 +331,11 @@ class MissavVideoCrawler(VideoCrawlerBase):
 
     def _validate_src(self):
         return self.src =='missav' and self.src in self.url
-
-    def _init_download_package(
-            self,
-            package_info_dict : Dict,
-            ) -> DownloadPackage:
-        package = DownloadPackage(
-            id = package_info_dict['id'],
-            name = package_info_dict['name'],
-            actress = package_info_dict['actress'],
-            hls_url = package_info_dict['hls_url'],
-            hash_tag = package_info_dict['hash_tags'],
-            cover_url = package_info_dict['cover_url'],
-            src = self.src,
-            time_length=package_info_dict['time_length'],
-            release_date=package_info_dict['release_date'],
-            has_chinese=package_info_dict['has_chinese'],
-        )
-        return package
     
     def _get_headers(self) -> None:
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
             'Origin' : 'https://missav.live',
-            'Referer' : 'https://missav.live/cn/jufe-590',
             'Priority' : 'u=1, i',
         }
         config.headers.update(headers)
@@ -434,49 +345,6 @@ class MissavVideoCrawler(VideoCrawlerBase):
             pass
         else:
             config.disable_proxies()
-    
-    def _get_html_text(self) -> str:
-        '''
-        获取html文本
-        Returns:
-            str: html文本
-        '''
-        self._get_headers()
-        self._set_proxy()
-        NotFound_count = 0
-        for retry_count in range(config.max_retries):
-            try:
-                response = requests.get(self.url, headers=config.headers, proxies=config.proxies, timeout=10)
-                if response.status_code == 200:
-                    return response.text
-                elif response.status_code == 403:
-                    if self._parse_page_content(response.text) == Page.CAPTACHA:
-                        logger.info(f'请求视频页面被拦截,正在验证...')
-                        if html_text := MissavPageParser.validation(self.url):
-                            logger.info(f'验证成功,继续请求...')
-                            cookies_list = [f"{cookies['name']}={cookies['value']}" for cookies in config.cookie]
-                            config.headers.update({'Cookie': '; '.join(cookies_list)})
-                            config.save_headers()
-                            return html_text
-                        else:
-                            logger.error('验证失败')
-                            raise ForbiddenError('验证失败')
-                    logger.error(f'请求视频页面被禁止: {response.status_code}')
-                    raise ForbiddenError(f'请求视频页面被禁止: {response.status_code}')
-                elif response.status_code == 404:
-                    NotFound_count += 1
-                    logger.warning(f'请求视频页面不存在: {response.status_code}')
-                else:
-                    logger.error(f'请求视频页面失败: {response.status_code},正在重试...')
-            except requests.exceptions.RequestException as e:
-                logger.error(f'请求视频页面失败: {e},正在重试...')
-            wait_time = config.retry_wait_time * (2 ** retry_count + 1)
-            logger.info(f'等待 {wait_time} 秒后重试...')
-            time.sleep(wait_time)
-        logger.error(f'请求视频页面失败: 超过最大重试次数')
-        if NotFound_count >= config.max_retries:
-            raise NotFoundError(f'请求视频页面不存在: {response.status_code}')
-        raise Exception(f'请求视频页面失败: 超过最大重试次数')
 
     def parse(self) -> Any:
         '''
@@ -494,11 +362,6 @@ class MissavVideoCrawler(VideoCrawlerBase):
             return self._init_download_package(pacakge_info_dict)
         else:
             logger.error(f'不支持的视频链接: {self.url}')
-
-    def download_video(self):
-        package = self.parse()
-        downloader = Downloader(package)
-        downloader.download()
 
     @staticmethod
     def download_video_with_id(id : str) -> None:

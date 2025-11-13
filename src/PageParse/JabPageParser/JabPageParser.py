@@ -1,6 +1,7 @@
 import time
 from typing import Tuple, Dict, Optional, List, Any, Union
 
+from ...Bases.PageParserBase import PageParserBase
 from ...Config.Config import config
 from ...utils.Logger import Logger
 from ...utils.EnumType import Page
@@ -9,7 +10,7 @@ from ..utils.JabPageParseUtils import jab_pattern, _get_page_type
 
 logger = Logger(config.log_dir).get_logger(__name__)
 
-class JabPageParser:
+class JabPageParser(PageParserBase):
 
     def __init__(
             self, 
@@ -18,46 +19,10 @@ class JabPageParser:
             ) -> None:
         self._html_text = html_text
         self._videos_per_page = videos_per_page
-    
-    @staticmethod
-    def validation(url : str) -> str:
-        '''
-        使用seleniumwire获取网页源代码并获取User-Agent同步到config.headers
-        '''
-        try:
-            from selenium import webdriver
-            from selenium.webdriver import ChromeOptions
-            options = ChromeOptions()
-            options.add_argument("--disable-blink-features=AutomationControlled")
-            options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            options.add_experimental_option('useAutomationExtension', False)
-            options.add_argument(f'user-agent={config.headers["User-Agent"]}')
-            options.add_argument('--incognito')
-            driver = webdriver.Chrome(options=options)
-            driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            driver.get(url=url)
-            time.sleep(20)
-            html_text = driver.page_source
-            config.cookie = driver.get_cookies()
-            driver.quit()
-            return html_text
-        except Exception as e:
-            logger.error(f'请安装Chrome浏览器并配置环境变量,{e}')
-            return ""
 
     def _parse_id_name_actress(self) -> Tuple[str, str, str]:
-        name_str = jab_pattern["title"].search(self._html_text).group(1)
-        id = name_str.split()[0]
-
-        name_and_actress = name_str.split('- Jable.TV')[0]
-
-        actress = jab_pattern["actress"].search(self._html_text).group(1).split(',')[-1].strip()
-        actress_ = name_and_actress.split()[-1]
-
-        if actress == actress_:
-            name = " ".join(name_and_actress.split()[1:-1]).strip()
-        else:
-            name = " ".join(name_and_actress.split()[1:]).strip()
+        id, name = self._parse_id_name()
+        actress = self._parse_actress()
         return id, name, actress
     
     def _parse_id_name(self) -> Tuple[str, str]:
@@ -131,28 +96,6 @@ class JabPageParser:
                 src="jable"
             ))
         return videos
-
-    def _parse_single_video(self) -> Dict:
-        # id, name, actress = self._parse_id_name_actress()
-        id, name = self._parse_id_name()
-        actress = self._parse_actress()
-        hls_url = self._parse_hls_url()
-        cover_url = self._parse_cover_url()
-        hash_tags = self._parse_hash_tag()
-        release_date = self._parse_release_date()
-        time_length = self._parse_time_length()
-        has_chinese = self._parse_has_chinese()
-        return {
-            "id" : id,
-            "name" : name,
-            "actress" : actress,
-            "hls_url" : hls_url,
-            "cover_url" : cover_url,
-            "hash_tag" : hash_tags,
-            "release_date" : release_date,
-            "time_length" : time_length,
-            "has_chinese" : has_chinese
-        }
     
     def _parse_search_result(self) -> Tuple[int, int, Union[List[VideoPackage], None]]:
         '''
@@ -175,13 +118,5 @@ class JabPageParser:
             logger.error("未知页面类型")
             raise ValueError("未知页面类型")
     
-    def parse(self) -> Any:
-        _page_type = _get_page_type(html_text=self._html_text)
-        if _page_type == Page.VIDEO_LIST:
-            return self._parse_video_list()
-        elif _page_type == Page.SINGLE_VIDEO:
-            return self._parse_single_video()
-        elif _page_type == Page.SEARCH_RESULT:
-            return self._parse_search_result()
-        else:
-            return None
+    def _get_page_type(self) -> Page | None:
+        return _get_page_type(self._html_text)

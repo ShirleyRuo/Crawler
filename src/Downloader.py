@@ -83,10 +83,6 @@ class Downloader:
         logger.info(f"清理完成,{package.id}")
     
     @staticmethod
-    def _is_ts_file(file_path : Path) -> bool:
-        return file_path.is_file() and (file_path.name.endswith('.ts') or file_path.name.endswith('.jpeg'))
-    
-    @staticmethod
     def _get_folder_mtime(primary_folder : Path, sub_folder_name : str) -> float:
         folder_path = primary_folder / sub_folder_name
         if not folder_path.exists():
@@ -154,15 +150,14 @@ class Downloader:
                         prefixes.add(prefix)
                         logger.warning(f"hls_url中存在多个分段,将使用倒数第一个作为分段前缀")
                 for file in tmp_ts_dir.iterdir():
-                    if Downloader._is_ts_file(file):
-                        if Downloader._ts_is_corrupted(file):
-                            logger.warning(f"文件损坏,文件名:{file.name}")
-                            continue
-                        for prefix in prefixes:
-                            if file.name.startswith(prefix):
-                                downloaded_ts_index_list_partial = downloaded_ts_index.get(prefix, [])
-                                downloaded_ts_index_list_partial.append(int(file.name.split('.')[0].split(prefix)[-1]))
-                                downloaded_ts_index[prefix] = downloaded_ts_index_list_partial
+                    if Downloader._ts_is_corrupted(file):
+                        logger.warning(f"文件损坏,文件名:{file.name}")
+                        continue
+                    for prefix in prefixes:
+                        if file.name.startswith(prefix):
+                            downloaded_ts_index_list_partial = downloaded_ts_index.get(prefix, [])
+                            downloaded_ts_index_list_partial.append(int(file.name.split('.')[0].split(prefix)[-1]))
+                            downloaded_ts_index[prefix] = downloaded_ts_index_list_partial
                 for value in downloaded_ts_index.values():
                     downloaded_ts_index_list.extend(value)
             else:
